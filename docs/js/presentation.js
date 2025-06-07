@@ -274,29 +274,53 @@ function setupKeyboardNavigation() {
 function toggleFullscreen() {
     console.log('Toggle fullscreen called, current state:', isFullscreen);
     
+    // モバイルデバイスの判定
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    
     if (!isFullscreen) {
-        enterFullscreen();
+        enterFullscreen(isMobile);
     } else {
-        exitFullscreen();
+        exitFullscreen(isMobile);
     }
 }
 
 /**
  * フルスクリーンモードに入る
  */
-function enterFullscreen() {
-    console.log('Entering fullscreen');
+function enterFullscreen(isMobile = false) {
+    console.log('Entering fullscreen, mobile:', isMobile);
     
     // まずCSSクラスを追加
     document.body.classList.add('fullscreen-mode');
     isFullscreen = true;
     
-    // フルスクリーンAPIを呼び出し
+    // モバイルの場合は疑似フルスクリーンを使用
+    if (isMobile) {
+        // iOSの場合、viewport meta tagを調整
+        const viewport = document.querySelector('meta[name="viewport"]');
+        if (viewport) {
+            viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover');
+        }
+        
+        // スクロールを無効化
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+        
+        // 疑似フルスクリーンクラスを追加
+        document.body.classList.add('pseudo-fullscreen');
+        
+        updateFullscreenButton();
+        return;
+    }
+    
+    // デスクトップの場合はフルスクリーンAPIを使用
     const element = document.documentElement;
     
     if (element.requestFullscreen) {
         element.requestFullscreen().catch(err => {
             console.error('Error attempting to enable fullscreen:', err);
+            // フルスクリーンAPIが失敗した場合は疑似フルスクリーンを使用
+            document.body.classList.add('pseudo-fullscreen');
         });
     } else if (element.mozRequestFullScreen) {
         element.mozRequestFullScreen();
@@ -305,7 +329,8 @@ function enterFullscreen() {
     } else if (element.msRequestFullscreen) {
         element.msRequestFullscreen();
     } else {
-        console.warn('Fullscreen API not supported, using CSS-only fullscreen');
+        console.warn('Fullscreen API not supported, using pseudo-fullscreen');
+        document.body.classList.add('pseudo-fullscreen');
     }
     
     updateFullscreenButton();
@@ -314,14 +339,31 @@ function enterFullscreen() {
 /**
  * フルスクリーンモードを終了
  */
-function exitFullscreen() {
-    console.log('Exiting fullscreen');
+function exitFullscreen(isMobile = false) {
+    console.log('Exiting fullscreen, mobile:', isMobile);
     
     // CSSクラスを削除
     document.body.classList.remove('fullscreen-mode');
+    document.body.classList.remove('pseudo-fullscreen');
     isFullscreen = false;
     
-    // フルスクリーンAPIで終了
+    // モバイルの場合の処理
+    if (isMobile) {
+        // viewport meta tagを元に戻す
+        const viewport = document.querySelector('meta[name="viewport"]');
+        if (viewport) {
+            viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
+        }
+        
+        // スクロールを有効化
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+        
+        updateFullscreenButton();
+        return;
+    }
+    
+    // デスクトップの場合はフルスクリーンAPIで終了
     if (document.exitFullscreen) {
         document.exitFullscreen().catch(err => {
             console.error('Error attempting to exit fullscreen:', err);
