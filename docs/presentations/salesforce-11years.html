@@ -3,49 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Salesforce11年目に思っていること - 吉田丈治のプレゼンテーション">
-    <title>Salesforce11年目に思っていること | 吉田丈治 プレゼンテーションアーカイブ</title>
+    <title>Salesforce11年目に思っていること - プレゼンテーション詳細</title>
+    <meta name="description" content="Salesforce導入から11年目を迎えて、これまでの取り組みと今後の展望について考察したプレゼンテーション">
+    <meta name="keywords" content="Salesforce, DX, 組織変革, AI, リバネス">
     
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Styles -->
+    <!-- CSS -->
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/presentation.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- ヘッダー -->
-    <header class="header">
-        <div class="container">
-            <div class="header-container">
-                <a href="../index.html" class="logo">プレゼンテーション アーカイブ</a>
-                
-                <nav class="nav">
-                    <ul class="nav-list">
-                        <li class="nav-item"><a href="../index.html#home" class="nav-link">ホーム</a></li>
-                        <li class="nav-item"><a href="../index.html#presentations" class="nav-link">プレゼンテーション</a></li>
-                        <li class="nav-item"><a href="../index.html#profile" class="nav-link">プロフィール</a></li>
-                        <li class="nav-item"><a href="../index.html#contact" class="nav-link">お問い合わせ</a></li>
-                    </ul>
-                </nav>
-                
-                <button class="hamburger" aria-label="メニューを開く">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <!-- プレゼンテーション詳細 -->
-    <main class="presentation-main">
-        <div class="container">
-            <!-- プレゼンテーション情報 -->
-            <div class="presentation-header">
+    <div class="presentation-container">
+        <!-- ヘッダー -->
+        <header class="presentation-header">
+            <div class="container">
                 <div class="breadcrumb">
                     <a href="../index.html">ホーム</a>
                     <i class="fas fa-chevron-right"></i>
@@ -67,11 +43,11 @@
                     </div>
                     <div class="meta-item">
                         <i class="fas fa-clock"></i>
-                        <span>約30分</span>
+                        <span>約60分</span>
                     </div>
                     <div class="meta-item">
                         <i class="fas fa-file-powerpoint"></i>
-                        <span>35スライド</span>
+                        <span>85スライド</span>
                     </div>
                 </div>
                 
@@ -80,205 +56,476 @@
                     <span class="tag">振り返り</span>
                     <span class="tag">IT戦略</span>
                     <span class="tag">組織変革</span>
+                    <span class="tag">DX推進</span>
+                    <span class="tag">AI活用</span>
                 </div>
                 
                 <p class="presentation-description">
                     Salesforce導入から11年目を迎えて、これまでの取り組みと今後の展望について考察したプレゼンテーション。
-                    組織のDX推進における学びと課題を共有し、次の10年に向けた戦略を提示します。
+                    リバネスグループのDX推進における学びと課題を共有し、営業・提案アプローチから経営層視点まで包括的に解説します。
                 </p>
             </div>
 
             <!-- スライドビューア -->
             <div class="slide-viewer">
                 <div class="slide-container">
+                    <!-- スライド1: タイトル -->
                     <div class="slide active" data-slide="1">
                         <div class="slide-content">
-                            <h2>Salesforce11年目に思っていること</h2>
+                            <h1>Salesforce11年目に思っていること</h1>
                             <div class="slide-subtitle">
-                                <p>2025年6月6日</p>
                                 <p>株式会社リバネスナレッジ</p>
-                                <p>取締役CIO 吉田丈治</p>
+                                <p>2025年6月</p>
                             </div>
                         </div>
                     </div>
                     
+                    <!-- スライド2: プロフィール -->
                     <div class="slide" data-slide="2">
                         <div class="slide-content">
-                            <h2>アジェンダ</h2>
-                            <ul class="agenda-list">
-                                <li>Salesforce導入の振り返り</li>
-                                <li>11年間の変遷と学び</li>
-                                <li>組織変革への影響</li>
-                                <li>現在の課題と取り組み</li>
-                                <li>今後の展望</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="slide" data-slide="3">
-                        <div class="slide-content">
-                            <h2>Salesforce導入の背景</h2>
-                            <div class="slide-text">
-                                <h3>2014年 - 導入当初の課題</h3>
-                                <ul>
-                                    <li>顧客情報の分散管理</li>
-                                    <li>営業プロセスの属人化</li>
-                                    <li>データ活用の困難さ</li>
-                                    <li>組織間の情報共有不足</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="slide" data-slide="4">
-                        <div class="slide-content">
-                            <h2>導入初期の取り組み</h2>
-                            <div class="slide-text">
-                                <h3>Phase 1: 基盤構築（2014-2016）</h3>
-                                <ul>
-                                    <li>Sales Cloudの導入</li>
-                                    <li>営業プロセスの標準化</li>
-                                    <li>ユーザートレーニングの実施</li>
-                                    <li>データ移行とクレンジング</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="slide" data-slide="5">
-                        <div class="slide-content">
-                            <h2>機能拡張期</h2>
-                            <div class="slide-text">
-                                <h3>Phase 2: 機能拡張（2017-2019）</h3>
-                                <ul>
-                                    <li>Service Cloudの導入</li>
-                                    <li>Marketing Cloudとの連携</li>
-                                    <li>カスタムアプリケーションの開発</li>
-                                    <li>外部システムとの統合</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="slide" data-slide="6">
-                        <div class="slide-content">
-                            <h2>Dreamforce 2019での登壇</h2>
-                            <div class="slide-text">
-                                <h3>Einstein Keynote Speaker</h3>
-                                <p>日本人として初めてのEinstein Keynoteでの登壇を果たし、AIを活用したビジネス変革の事例を世界に向けて発信。</p>
-                                <div class="highlight-box">
-                                    <p><strong>テーマ:</strong> AIによる顧客体験の革新</p>
-                                    <p><strong>参加者:</strong> 17万人のDreamforce参加者</p>
+                            <h2>Profile | プロフィール</h2>
+                            <div class="profile-section">
+                                <h3>吉田丈治 (George Yoshida)</h3>
+                                <p><strong>株式会社リバネス 取締役CIO</strong></p>
+                                <p><strong>株式会社リバネスナレッジ 代表取締役社長</strong></p>
+                                
+                                <div class="timeline">
+                                    <div class="timeline-item">
+                                        <span class="year">2002年</span>
+                                        <span class="event">リバネス創業時に参画</span>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <span class="year">2014年</span>
+                                        <span class="event">Salesforce導入を機にCIOに就任</span>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <span class="year">2015年</span>
+                                        <span class="event">Slack導入</span>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <span class="year">2019年</span>
+                                        <span class="event">日本人として初めてSalesforce主催の世界イベントDreamforceにて基調講演</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
+                    <!-- スライド3: SaaS導入の進化 -->
+                    <div class="slide" data-slide="3">
+                        <div class="slide-content">
+                            <h2>SaaS導入の進化とリバネスの挑戦</h2>
+                            <h3>基盤整備から知の活用へ─生成AIによる変革の礎</h3>
+                            <div class="evolution-timeline">
+                                <div class="timeline-period">
+                                    <span class="period">2013-2015</span>
+                                    <span class="phase">IT化</span>
+                                </div>
+                                <div class="timeline-period">
+                                    <span class="period">2016-2019</span>
+                                    <span class="phase">構造データ化</span>
+                                </div>
+                                <div class="timeline-period">
+                                    <span class="period">2020-2023</span>
+                                    <span class="phase">AI黎明期 / BI活用</span>
+                                </div>
+                                <div class="timeline-period">
+                                    <span class="period">2024-2025</span>
+                                    <span class="phase">生成AI革命</span>
+                                </div>
+                            </div>
+                            <div class="tools-timeline">
+                                <p><strong>主要ツール導入履歴:</strong></p>
+                                <p>Sales Cloud → Pardot → Slack → Experience Cloud → CRM Analytics → Account Engagement → Tableau → Data Cloud → ChatGPT Enterprise</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- スライド4: リバネスグループ概要 -->
+                    <div class="slide" data-slide="4">
+                        <div class="slide-content">
+                            <h2>Who we are - Leave a Nest Group</h2>
+                            <h3>To be the Most Effective "Knowledge Manufacturing" Group in the World</h3>
+                            <div class="company-overview">
+                                <div class="company-section">
+                                    <h4>リバネス（2002年創業）</h4>
+                                    <p>研究者の知を起点に教育・創業・地域創生・グローバル連携を推進</p>
+                                    <p><em>"研究と事業の境界を超える知のハブ"</em></p>
+                                </div>
+                                <div class="company-section">
+                                    <h4>リバネスナレッジ（2022年創業）</h4>
+                                    <p>リバネスグループのIT導入を主導、グループ内で培ったノウハウを提供</p>
+                                    <p><em>"現場から生まれた知を次の挑戦へ活かす架け橋"</em></p>
+                                </div>
+                                <div class="achievement">
+                                    <p><strong>Salesforce Japan Partner Award 2025 受賞 (Slack)</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- スライド5: 利用メリット・価値実感 -->
+                    <div class="slide" data-slide="5">
+                        <div class="slide-content">
+                            <h2>① 利用メリット・価値実感</h2>
+                            <h3>一番のメリットはなにか</h3>
+                            <div class="benefit-content">
+                                <div class="main-benefit">
+                                    <h4>世界基準のビジネスに乗っかることができる</h4>
+                                </div>
+                                <div class="benefit-details">
+                                    <ul>
+                                        <li>Dreamforceに2017年より毎年参加</li>
+                                        <li><strong>2年後くらいの未来</strong>を見せてくれる</li>
+                                        <li>大きくビジネスにかかわるツールなので現実的なユースケースを伴う未来予測となっている</li>
+                                        <li>定点観測することで、今何をしていくべきかを考える切っ掛けを得ることが出来る</li>
+                                    </ul>
+                                </div>
+                                <div class="important-note">
+                                    <p><strong>Salesforceを単なるツールとしてだけ捉えて投資するのはもったいない</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- スライド6: 導入してよかった点 -->
+                    <div class="slide" data-slide="6">
+                        <div class="slide-content">
+                            <h2>最も導入してよかったと思った点</h2>
+                            <div class="success-point">
+                                <h3>ボトルネックを作らずに成長し続ける組織を構築できたこと</h3>
+                                <div class="growth-timeline">
+                                    <div class="growth-item">
+                                        <span class="year">2014年</span>
+                                        <span class="status">Salesforce導入に時間を使ったのでスタック</span>
+                                    </div>
+                                    <div class="growth-item">
+                                        <span class="year">2015年より</span>
+                                        <span class="status">成長フェーズへ入る</span>
+                                    </div>
+                                </div>
+                                <div class="version-update">
+                                    <h4>年に3度のバージョンアップ</h4>
+                                    <p>11年前と違い、バージョンアップがよりパワフルになっている</p>
+                                    <p>業務をSalesforce標準になるべく寄せることでこの恩恵を<strong>自動的に</strong>得ることができる</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- スライド7: 定着した瞬間 -->
                     <div class="slide" data-slide="7">
                         <div class="slide-content">
-                            <h2>組織変革への影響</h2>
-                            <div class="slide-text">
-                                <h3>Phase 3: 組織変革（2020-2022）</h3>
-                                <ul>
-                                    <li>リモートワーク環境の整備</li>
-                                    <li>Slack Enterprise Gridの導入</li>
-                                    <li>データドリブンな意思決定の浸透</li>
-                                    <li>デジタルファーストの文化醸成</li>
-                                </ul>
+                            <h2>Salesforceが"定着した"と感じた瞬間</h2>
+                            <div class="adoption-moment">
+                                <h3>取引先・商談・事業計画が全てSalesforceに登録されたタイミング</h3>
+                                <div class="adoption-details">
+                                    <p><strong>まるまる、1年かかりました</strong></p>
+                                    <ul>
+                                        <li>数字が全て入ることによって、Salesforceを基準に考えれば良いという頭に揃うのが大きい</li>
+                                        <li>基本的にSalesforceが正であるという共通認識ができる</li>
+                                        <li>最終的にSalesforceに入っていない活動は評価しないという状態になっている</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
+                    <!-- スライド8: 導入の背景 - 危機感1 -->
                     <div class="slide" data-slide="8">
                         <div class="slide-content">
-                            <h2>AI・自動化の推進</h2>
-                            <div class="slide-text">
-                                <h3>Phase 4: AI活用（2023-2025）</h3>
-                                <ul>
-                                    <li>Einstein AIの本格活用</li>
-                                    <li>ChatGPT Enterpriseの導入</li>
-                                    <li>Agentforceによる業務自動化</li>
-                                    <li>Data Cloudでのデータ統合</li>
-                                </ul>
+                            <h2>② 導入検討・意思決定プロセス</h2>
+                            <h3>2013年当時のリバネスの商談状況</h3>
+                            <div class="crisis-situation">
+                                <div class="business-flow">
+                                    <div class="flow-item success">頑張って営業 → 順調に売上拡大</div>
+                                    <div class="flow-item success">頑張って納品 → 顧客満足度も上々</div>
+                                    <div class="flow-item crisis">請求書を出し忘れる 😭</div>
+                                </div>
+                                <div class="crisis-label">
+                                    <h4>危機感 1</h4>
+                                    <p><strong>そもそも商談管理という概念が無かったのが原因</strong></p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
+                    <!-- スライド9: 危機感2 - 営業会議 -->
                     <div class="slide" data-slide="9">
                         <div class="slide-content">
-                            <h2>11年間の成果</h2>
-                            <div class="slide-text">
-                                <h3>定量的成果</h3>
-                                <ul>
-                                    <li>営業効率 300% 向上</li>
-                                    <li>顧客満足度 40% 改善</li>
-                                    <li>データ活用率 90% 以上</li>
-                                    <li>業務自動化率 60% 達成</li>
-                                </ul>
+                            <h2>2013年当時の営業会議</h2>
+                            <div class="meeting-crisis">
+                                <div class="meeting-details">
+                                    <h3>毎週水曜夜開催</h3>
+                                    <p>マネージャー6人と代表取締役が参加</p>
+                                </div>
+                                <div class="time-waste">
+                                    <h3>準備に3時間 🤔</h3>
+                                    <p><strong>社内の給与の高い方から7人が毎週準備3h+会議3h取られるのはヤバい</strong></p>
+                                </div>
+                                <div class="crisis-label">
+                                    <h4>危機感 2</h4>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
+                    <!-- スライド10: 危機感3 - 数字が合わない -->
                     <div class="slide" data-slide="10">
                         <div class="slide-content">
-                            <h2>学んだこと</h2>
-                            <div class="slide-text">
-                                <h3>重要な学び</h3>
-                                <ul>
-                                    <li><strong>継続的な改善:</strong> 一度の導入では終わらない</li>
-                                    <li><strong>ユーザー中心:</strong> 現場の声を聞き続ける</li>
-                                    <li><strong>データ活用:</strong> 意思決定の質を向上させる</li>
-                                    <li><strong>組織文化:</strong> テクノロジーと人の融合</li>
-                                </ul>
+                            <h2>なぜそんなに時間がかかったのか</h2>
+                            <div class="problems">
+                                <div class="problem-item">
+                                    <h3>合わない数字</h3>
+                                </div>
+                                <div class="problem-item">
+                                    <h3>重すぎる処理</h3>
+                                </div>
+                                <div class="bottleneck">
+                                    <h4>明確になるボトルネック</h4>
+                                    <p><strong>ビジネスがうまくいけばいくほど、つらくなるのは明白</strong></p>
+                                </div>
+                                <div class="crisis-label">
+                                    <h4>危機感 3</h4>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
+                    <!-- スライド11: Salesforceとの出会い -->
                     <div class="slide" data-slide="11">
                         <div class="slide-content">
-                            <h2>現在の課題</h2>
-                            <div class="slide-text">
-                                <h3>取り組むべき課題</h3>
-                                <ul>
-                                    <li>生成AIの組織全体への浸透</li>
-                                    <li>データガバナンスの強化</li>
-                                    <li>セキュリティ対策の高度化</li>
-                                    <li>次世代人材の育成</li>
-                                </ul>
+                            <h2>途方にくれていた我々に一筋の光を運んできてくれた前川さん</h2>
+                            <div class="solution">
+                                <h3>Salesforceを使おう！</h3>
+                                <div class="decision-makers">
+                                    <div class="person">
+                                        <h4>取締役CFO 池上 昌弘</h4>
+                                        <p>数字が合う状態を作りたい</p>
+                                    </div>
+                                    <div class="person">
+                                        <h4>取締役CIO 吉田 丈治</h4>
+                                        <p>時間を有効に使いたい</p>
+                                    </div>
+                                </div>
+                                <div class="alignment">
+                                    <p><strong>二人の取締役の利害が一致</strong></p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
+                    <!-- スライド12: 導入決定の理由 -->
                     <div class="slide" data-slide="12">
                         <div class="slide-content">
-                            <h2>今後の展望</h2>
-                            <div class="slide-text">
-                                <h3>次の10年に向けて</h3>
+                            <h2>導入を決定するまでに最も悩んだこと</h2>
+                            <div class="key-point">
+                                <h3>一番のキーポイントは「世界中で使われていること」でした</h3>
+                                <p>リバネスは日本のみではなく、海外法人についても想定があった為、世界中で使うことができるツールをベースにする事によって採用コストを削減できるだろうと目論んだのです</p>
+                            </div>
+                            <div class="concerns">
+                                <h4>懸念事項</h4>
                                 <ul>
-                                    <li>AIファーストの組織運営</li>
-                                    <li>予測分析による先手の意思決定</li>
-                                    <li>パートナーエコシステムの拡大</li>
-                                    <li>持続可能な成長モデルの構築</li>
+                                    <li><strong>高い</strong>・経験がない・分からない</li>
+                                    <li>当時5億ちょっとくらいの売上しかなかったタイミングでの導入</li>
+                                    <li>予算は3000万円程度</li>
+                                    <li>失敗の出来ない背水の陣で臨む羽目に</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     
+                    <!-- スライド13: 社内定着の工夫 -->
                     <div class="slide" data-slide="13">
                         <div class="slide-content">
-                            <h2>まとめ</h2>
-                            <div class="slide-text">
-                                <p>Salesforce導入から11年間の歩みを振り返り、テクノロジーと組織変革の密接な関係を実感しています。</p>
-                                <p>次の10年も、継続的な学びと改善を通じて、より良い組織づくりに貢献していきます。</p>
-                                <div class="highlight-box">
-                                    <p><strong>「テクノロジーは手段、目的は人と組織の成長」</strong></p>
+                            <h2>③ 社内定着・運用体制</h2>
+                            <h3>定着は無理やり、やり切りました</h3>
+                            <div class="adoption-strategy">
+                                <div class="enforcement">
+                                    <p>COOの高橋が、社員の机を後ろから覗き込み、利用を促しています</p>
+                                    <p>ログイン状況のダッシュボードを逐一確認していました</p>
+                                </div>
+                                <div class="turning-point">
+                                    <h4>最終的に定着したのはいつか</h4>
+                                    <p>データが投入され、売上予測の機能に気付いたタイミングです</p>
+                                    <p><strong>自分たちで頑張らなくても、勝手にSalesforceがデータを整理してくれると思えたタイミングで全ての社員がデータを入れるという活動に違和感を持たなくなりました</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- スライド14: 活動入力の徹底 -->
+                    <div class="slide" data-slide="14">
+                        <div class="slide-content">
+                            <h2>活動入力の徹底について</h2>
+                            <div class="input-solution">
+                                <h3>Slackからの入力ができるようになっています</h3>
+                                <div class="reasons">
+                                    <ul>
+                                        <li>基本的にあまりデスクにおらず外出していることが多いため</li>
+                                        <li>Salesforceから情報を入力することにストレスがあります(モバイルアプリが面倒)</li>
+                                        <li>そのため、Slackからデータ投入できるようにしてあります</li>
+                                    </ul>
+                                </div>
+                                <div class="evaluation">
+                                    <p>加えて、入力数は社員の半期面談で必ずチェックするようにしています</p>
+                                    <p><strong>Salesforceへのデータの蓄積は評価の指標になっています</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- スライド15: Slack Salesforce Connector -->
+                    <div class="slide" data-slide="15">
+                        <div class="slide-content">
+                            <h2>Slack Salesforce Connector FREE</h2>
+                            <div class="app-intro">
+                                <h3>SlackからSalesforceの報告を登録したい！を解決するアプリ(無料)</h3>
+                                <div class="app-features">
+                                    <p>Salesforce→Slackのみではなく、Slackから Salesforceという逆方向の連携を実装</p>
+                                    <h4>Sales Cloud for Slackよりちょっと使いやすい検索</h4>
+                                    <ol>
+                                        <li>/sf-search-free で起動</li>
+                                        <li>オブジェクト選択</li>
+                                        <li>キーワード検索</li>
+                                        <li>レコード,チャンネル,メンション相手選択及びメッセージ作成</li>
+                                        <li>指定先にメッセージを配信</li>
+                                    </ol>
+                                </div>
+                                <div class="app-link">
+                                    <p>インストール: https://lne.st/l7wi</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- スライド16: 使いこなせるか不安という話 -->
+                    <div class="slide" data-slide="16">
+                        <div class="slide-content">
+                            <h2>使いこなせるか不安という話</h2>
+                            <div class="mindset-change">
+                                <h3>使いこなせるかどうかではなく、使いこなさないと仕事が回らなくなります</h3>
+                                <div class="analogy">
+                                    <p>Slackの話をすると、メールじゃだめなのか？と言われます</p>
+                                    <p><strong>厳しいことを言うと、メールで問題がない人は、その程度の仕事しかしていないのです</strong></p>
+                                </div>
+                                <div class="current-situation">
+                                    <p>現在の話に置き換えると生成AIを使いこなせるかどうか不安という話も同じです</p>
+                                    <p>AIの力を借りなくてもできる程度の仕事しかしていないのです</p>
+                                </div>
+                                <div class="conclusion">
+                                    <p>自社がやらなくても他社がやります。使いこなすことで、仕事のキャパシティは確実に向上し、売上が伸びます</p>
+                                    <p><strong>使いこなせるかどうかではないのです。使いこなすんですよ</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- スライド17: 将来展望 - コンサンプションモデル -->
+                    <div class="slide" data-slide="17">
+                        <div class="slide-content">
+                            <h2>⑤ 課題・改善要望・将来展望</h2>
+                            <h3>コンサンプションモデルへの転換</h3>
+                            <div class="business-model">
+                                <p>リバネスは11年前にSalesforceのビジネスモデルを非常に参考にしました</p>
+                                <p>単発の仕事は年間契約へと転換し、お客様との関係性をしっかりと育成するモデルになりました</p>
+                                <div class="challenge">
+                                    <p>一方で、コンサンプションモデルへの転換は、まだ苦労していると感じていますがキャッチアップが必要だと感じています</p>
+                                    <p>労働人口が減っていく中でどのようにビジネスモデルを転換すれば成長に至るのか</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- スライド18: Agentforceの課題 -->
+                    <div class="slide" data-slide="18">
+                        <div class="slide-content">
+                            <h2>Agentforceは難しい</h2>
+                            <div class="agentforce-challenges">
+                                <p>AIエージェントというのはまだまだ訴求が難しい領域だろうと思います</p>
+                                <p>小さくテストする必要があるが、コストがそれなりにかかるという状態</p>
+                                <p>これを納得させるためのユースケースをたくさん作るのはSalesforceに課された使命でしょう</p>
+                                
+                                <div class="ai-competition">
+                                    <h4>AIについてはユーザーはSalesforceだけを見ていない</h4>
+                                    <p>Salesforce環境はかなり安全性に振っていますが、それ故に開発スピードはGoogle/OpenAI等と比べると遅くなりがちでしょう</p>
+                                    <p>着実に再現性高くAIが自律的に動いて課題解決をしていくという事例を作る必要があります</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- スライド19: 今後の展望 -->
+                    <div class="slide" data-slide="19">
+                        <div class="slide-content">
+                            <h2>今後Salesforceを活用してどのようなことを実現していきたいか</h2>
+                            <div class="future-vision">
+                                <h3>一番やりたいのは、兎にも角にも従業員の時間を捻出すること</h3>
+                                <div class="time-constraint">
+                                    <p>利用することで時間がかかってしまってはだめなのです</p>
+                                    <p><strong>24365は動かせない物理的な制約です</strong></p>
+                                </div>
+                                <div class="goals">
+                                    <ul>
+                                        <li>Salesforceエコシステムを使うことによって、より時間が生まれるという使い方をする必要があります</li>
+                                        <li>頑張って入力しないといけないという状態を変える必要があります</li>
+                                        <li>頑張ってデータ分析をしないといけないという状態を変える必要があります</li>
+                                        <li><strong>やりたいことに対するハードルを解消してくれるのがSalesforceであるという状態を作りたい</strong></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- スライド20: 営業アプローチ -->
+                    <div class="slide" data-slide="20">
+                        <div class="slide-content">
+                            <h2>⑥ 営業・提案アプローチ</h2>
+                            <h3>話しを聞いてみたいと思わせるには？</h3>
+                            <div class="sales-advice">
+                                <div class="existing-customers">
+                                    <h4>既存顧客であれば、使える情報をしっかりと渡してほしい</h4>
+                                    <ul>
+                                        <li>新規でお金がかかるものだけではなく、既に使っているものに関して新しい情報があれば積極的に教えてほしい</li>
+                                        <li>特にSalesforceはアップデートが早いので</li>
+                                        <li>そういった下準備があるからこそ、新しい提案を聞く気になるものです</li>
+                                    </ul>
+                                    <p><strong>俺のことお金だと思ってるな？と思われるのは損です</strong></p>
+                                </div>
+                                <div class="new-customers">
+                                    <h4>新規顧客であれば、メリットをしっかりと伝えたい</h4>
+                                    <p>Salesforceの場合は、持っている製品の幅が大きいのでいろんなキーワードをインプットできるのはとても強い環境だと言えると思います。製品知識を増やしましょう</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- スライド21: Thank you -->
+                    <div class="slide" data-slide="21">
+                        <div class="slide-content">
+                            <h2>Thank you！</h2>
+                            <div class="thank-you-content">
+                                <div class="achievement">
+                                    <h3>公開スライド枚数</h3>
+                                    <h2>2000枚を超えました</h2>
+                                </div>
+                                <div class="contact-info">
+                                    <h4>株式会社リバネスナレッジ</h4>
+                                    <p>https://k.lne.st</p>
+                                    <div class="links">
+                                        <p>登壇履歴：https://lne.st/geeorgey</p>
+                                        <p>note：https://note.com/geeorgey</p>
+                                        <p>Qiita：https://qiita.com/organizations/leaveanest</p>
+                                    </div>
+                                    <p>〒162-0822 東京都新宿区下宮比町1-4 飯田橋御幸ビル</p>
+                                    <p>SlackアプリならFunctions：https://functions.lne.st</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- スライドナビゲーション -->
+                <!-- ナビゲーション -->
                 <div class="slide-navigation">
                     <button class="nav-btn prev-btn" onclick="previousSlide()">
                         <i class="fas fa-chevron-left"></i>
@@ -286,7 +533,7 @@
                     </button>
                     
                     <div class="slide-counter">
-                        <span class="current-slide">1</span> / <span class="total-slides">13</span>
+                        <span class="current-slide">1</span> / <span class="total-slides">21</span>
                     </div>
                     
                     <button class="nav-btn next-btn" onclick="nextSlide()">
@@ -294,106 +541,158 @@
                         <i class="fas fa-chevron-right"></i>
                     </button>
                 </div>
-                
-                <!-- スライド一覧 -->
-                <div class="slide-thumbnails">
-                    <div class="thumbnail-grid">
-                        <div class="thumbnail active" onclick="goToSlide(1)">
-                            <div class="thumbnail-number">1</div>
-                            <div class="thumbnail-title">タイトル</div>
+            </div>
+            
+            <!-- サムネイル一覧 -->
+            <div class="slide-thumbnails">
+                <h3>スライド一覧</h3>
+                <div class="thumbnails-grid">
+                    <div class="thumbnail active" data-slide="1">
+                        <div class="thumbnail-content">
+                            <span class="slide-number">1</span>
+                            <span class="slide-title">タイトル</span>
                         </div>
-                        <div class="thumbnail" onclick="goToSlide(2)">
-                            <div class="thumbnail-number">2</div>
-                            <div class="thumbnail-title">アジェンダ</div>
+                    </div>
+                    <div class="thumbnail" data-slide="2">
+                        <div class="thumbnail-content">
+                            <span class="slide-number">2</span>
+                            <span class="slide-title">プロフィール</span>
                         </div>
-                        <div class="thumbnail" onclick="goToSlide(3)">
-                            <div class="thumbnail-number">3</div>
-                            <div class="thumbnail-title">導入背景</div>
+                    </div>
+                    <div class="thumbnail" data-slide="3">
+                        <div class="thumbnail-content">
+                            <span class="slide-number">3</span>
+                            <span class="slide-title">SaaS導入の進化</span>
                         </div>
-                        <div class="thumbnail" onclick="goToSlide(4)">
-                            <div class="thumbnail-number">4</div>
-                            <div class="thumbnail-title">初期取り組み</div>
+                    </div>
+                    <div class="thumbnail" data-slide="4">
+                        <div class="thumbnail-content">
+                            <span class="slide-number">4</span>
+                            <span class="slide-title">リバネスグループ</span>
                         </div>
-                        <div class="thumbnail" onclick="goToSlide(5)">
-                            <div class="thumbnail-number">5</div>
-                            <div class="thumbnail-title">機能拡張</div>
+                    </div>
+                    <div class="thumbnail" data-slide="5">
+                        <div class="thumbnail-content">
+                            <span class="slide-number">5</span>
+                            <span class="slide-title">利用メリット</span>
                         </div>
-                        <div class="thumbnail" onclick="goToSlide(6)">
-                            <div class="thumbnail-number">6</div>
-                            <div class="thumbnail-title">Dreamforce</div>
+                    </div>
+                    <div class="thumbnail" data-slide="6">
+                        <div class="thumbnail-content">
+                            <span class="slide-number">6</span>
+                            <span class="slide-title">導入効果</span>
                         </div>
-                        <div class="thumbnail" onclick="goToSlide(7)">
-                            <div class="thumbnail-number">7</div>
-                            <div class="thumbnail-title">組織変革</div>
+                    </div>
+                    <div class="thumbnail" data-slide="7">
+                        <div class="thumbnail-content">
+                            <span class="slide-number">7</span>
+                            <span class="slide-title">定着の瞬間</span>
                         </div>
-                        <div class="thumbnail" onclick="goToSlide(8)">
-                            <div class="thumbnail-number">8</div>
-                            <div class="thumbnail-title">AI推進</div>
+                    </div>
+                    <div class="thumbnail" data-slide="8">
+                        <div class="thumbnail-content">
+                            <span class="slide-number">8</span>
+                            <span class="slide-title">導入背景</span>
                         </div>
-                        <div class="thumbnail" onclick="goToSlide(9)">
-                            <div class="thumbnail-number">9</div>
-                            <div class="thumbnail-title">成果</div>
+                    </div>
+                    <div class="thumbnail" data-slide="9">
+                        <div class="thumbnail-content">
+                            <span class="slide-number">9</span>
+                            <span class="slide-title">営業会議の課題</span>
                         </div>
-                        <div class="thumbnail" onclick="goToSlide(10)">
-                            <div class="thumbnail-number">10</div>
-                            <div class="thumbnail-title">学び</div>
+                    </div>
+                    <div class="thumbnail" data-slide="10">
+                        <div class="thumbnail-content">
+                            <span class="slide-number">10</span>
+                            <span class="slide-title">ボトルネック</span>
                         </div>
-                        <div class="thumbnail" onclick="goToSlide(11)">
-                            <div class="thumbnail-number">11</div>
-                            <div class="thumbnail-title">課題</div>
+                    </div>
+                    <div class="thumbnail" data-slide="11">
+                        <div class="thumbnail-content">
+                            <span class="slide-number">11</span>
+                            <span class="slide-title">Salesforceとの出会い</span>
                         </div>
-                        <div class="thumbnail" onclick="goToSlide(12)">
-                            <div class="thumbnail-number">12</div>
-                            <div class="thumbnail-title">展望</div>
+                    </div>
+                    <div class="thumbnail" data-slide="12">
+                        <div class="thumbnail-content">
+                            <span class="slide-number">12</span>
+                            <span class="slide-title">導入決定</span>
                         </div>
-                        <div class="thumbnail" onclick="goToSlide(13)">
-                            <div class="thumbnail-number">13</div>
-                            <div class="thumbnail-title">まとめ</div>
+                    </div>
+                    <div class="thumbnail" data-slide="13">
+                        <div class="thumbnail-content">
+                            <span class="slide-number">13</span>
+                            <span class="slide-title">社内定着</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail" data-slide="14">
+                        <div class="thumbnail-content">
+                            <span class="slide-number">14</span>
+                            <span class="slide-title">入力の徹底</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail" data-slide="15">
+                        <div class="thumbnail-content">
+                            <span class="slide-number">15</span>
+                            <span class="slide-title">Slack連携</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail" data-slide="16">
+                        <div class="thumbnail-content">
+                            <span class="slide-number">16</span>
+                            <span class="slide-title">マインドセット</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail" data-slide="17">
+                        <div class="thumbnail-content">
+                            <span class="slide-number">17</span>
+                            <span class="slide-title">将来展望</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail" data-slide="18">
+                        <div class="thumbnail-content">
+                            <span class="slide-number">18</span>
+                            <span class="slide-title">Agentforce</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail" data-slide="19">
+                        <div class="thumbnail-content">
+                            <span class="slide-number">19</span>
+                            <span class="slide-title">今後の展望</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail" data-slide="20">
+                        <div class="thumbnail-content">
+                            <span class="slide-number">20</span>
+                            <span class="slide-title">営業アプローチ</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail" data-slide="21">
+                        <div class="thumbnail-content">
+                            <span class="slide-number">21</span>
+                            <span class="slide-title">Thank you</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
-
-    <!-- フッター -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-section">
-                    <h4>プロフィール</h4>
-                    <ul class="footer-links">
-                        <li class="footer-link"><a href="../index.html#profile">経歴・実績</a></li>
-                        <li class="footer-link"><a href="../index.html#presentations">プレゼンテーション</a></li>
-                        <li class="footer-link"><a href="https://github.com/geeorgey" target="_blank" rel="noopener">GitHub</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>カテゴリ</h4>
-                    <ul class="footer-links">
-                        <li class="footer-link"><a href="../index.html#presentations" data-category="Salesforce">Salesforce</a></li>
-                        <li class="footer-link"><a href="../index.html#presentations" data-category="AI">AI・機械学習</a></li>
-                        <li class="footer-link"><a href="../index.html#presentations" data-category="データ分析">データ分析</a></li>
-                        <li class="footer-link"><a href="../index.html#presentations" data-category="リーダーシップ">リーダーシップ</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>お問い合わせ</h4>
-                    <ul class="footer-links">
-                        <li class="footer-link"><a href="https://twitter.com/geeorgey" target="_blank" rel="noopener">Twitter</a></li>
-                        <li class="footer-link"><a href="https://linkedin.com/in/george-yoshida" target="_blank" rel="noopener">LinkedIn</a></li>
-                        <li class="footer-link"><a href="mailto:contact@example.com">メール</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 吉田丈治 (George Yoshida). All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
+        </header>
+    </div>
+    
     <!-- JavaScript -->
     <script src="../js/presentation.js"></script>
+    
+    <script>
+        // スライド総数を更新
+        document.querySelector('.total-slides').textContent = '21';
+        
+        // サムネイルクリックイベント
+        document.querySelectorAll('.thumbnail').forEach(thumbnail => {
+            thumbnail.addEventListener('click', () => {
+                const slideNumber = parseInt(thumbnail.dataset.slide);
+                goToSlide(slideNumber);
+            });
+        });
+    </script>
 </body>
 </html>
 

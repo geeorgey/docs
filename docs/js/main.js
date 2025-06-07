@@ -37,11 +37,11 @@ class PresentationArchive {
           company: "株式会社リバネスナレッジ",
           categories: ["Salesforce", "リーダーシップ"],
           tags: ["Salesforce", "振り返り", "IT戦略", "組織変革"],
-          thumbnail: "https://via.placeholder.com/400x200/1B5E9F/FFFFFF?text=Salesforce+11年目",
+          thumbnail: "images/slides/salesforce-11years-thumbnail.png",
           url: "presentations/salesforce-11years.html",
           pdf: "#",
           description: "Salesforce導入から11年目を迎えて、これまでの取り組みと今後の展望について考察したプレゼンテーション。組織のDX推進における学びと課題を共有。",
-          slides_count: 13
+          slides_count: 21
         }
       ];
       
