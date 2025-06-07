@@ -1,0 +1,147 @@
+{
+  "profile": {
+    "name": "吉田丈治 (George Yoshida)",
+    "title": "株式会社リバネス 取締役CIO / 株式会社リバネスナレッジ 代表取締役社長",
+    "image": "images/profile.png",
+    "bio": "2002年リバネス創業。Dreamforce 2019 Einstein Keynote speaker（日本人初）。Salesforce Partner Award 2025 -Slack- 受賞。Salesforce導入から11年、組織のDX推進とイノベーション創出に取り組む。",
+    "social": [
+      {
+        "platform": "twitter",
+        "url": "https://twitter.com/geeorgey",
+        "username": "@geeorgey",
+        "icon": "twitter"
+      },
+      {
+        "platform": "facebook",
+        "url": "https://facebook.com/GeorgeYoshida",
+        "username": "GeorgeYoshida",
+        "icon": "facebook"
+      },
+      {
+        "platform": "linkedin",
+        "url": "https://linkedin.com/in/george-yoshida",
+        "username": "George (吉田丈治) Yoshida",
+        "icon": "linkedin"
+      },
+      {
+        "platform": "github",
+        "url": "https://github.com/geeorgey",
+        "username": "geeorgey",
+        "icon": "github"
+      }
+    ]
+  },
+  "statistics": [
+    {
+      "number": "3000+",
+      "label": "プレゼンテーション",
+      "description": "2019年以来作成したスライド枚数"
+    },
+    {
+      "number": "11",
+      "label": "年 Salesforce",
+      "description": "Salesforce活用歴"
+    },
+    {
+      "number": "25+",
+      "label": "技術導入",
+      "description": "組織に導入した技術・ツール数"
+    },
+    {
+      "number": "100+",
+      "label": "イベント登壇",
+      "description": "講演・登壇実績"
+    }
+  ],
+  "categories": [
+    "Salesforce",
+    "AI",
+    "データ分析",
+    "リーダーシップ",
+    "テクノロジー",
+    "マーケティング",
+    "イノベーション",
+    "組織変革"
+  ],
+  "presentations": [
+    {
+      "id": "salesforce-11th-year-2025",
+      "title": "Salesforce11年目に思っていること",
+      "date": "2025-06-06",
+      "company": "株式会社リバネスナレッジ",
+      "categories": ["Salesforce", "リーダーシップ"],
+      "tags": ["Salesforce", "振り返り", "IT戦略", "組織変革"],
+      "thumbnail": "images/slides/2025/salesforce-11th-year.jpg",
+      "url": "https://docs.google.com/presentation/d/1D1Y4Y8pL2e7HJRICEf39nST1gsm_2rL-XSv2m1_7Qv4/edit",
+      "pdf": "slides/2025/salesforce-11th-year.pdf",
+      "description": "Salesforce導入から11年目を迎えて、これまでの取り組みと今後の展望について考察したプレゼンテーション。組織のDX推進における学びと課題を共有。",
+      "slides_count": 35
+    },
+    {
+      "id": "dreamforce-2019-keynote",
+      "title": "Dreamforce 2019 Einstein Keynote",
+      "date": "2019-11-19",
+      "company": "株式会社リバネス",
+      "categories": ["Salesforce", "AI"],
+      "tags": ["Dreamforce", "Einstein", "AI", "Keynote", "機械学習"],
+      "thumbnail": "images/slides/2019/dreamforce-keynote.jpg",
+      "url": "#",
+      "pdf": "slides/2019/dreamforce-keynote.pdf",
+      "description": "Dreamforce 2019でのEinstein Keynoteスピーチ。日本人として初めての登壇。AIを活用したビジネス変革の事例を紹介。",
+      "slides_count": 42
+    },
+    {
+      "id": "slack-enterprise-grid-2020",
+      "title": "Slack Enterprise Grid導入による組織変革",
+      "date": "2020-12-15",
+      "company": "株式会社リバネス",
+      "categories": ["テクノロジー", "組織変革"],
+      "tags": ["Slack", "Enterprise Grid", "コミュニケーション", "リモートワーク"],
+      "thumbnail": "images/slides/2020/slack-enterprise-grid.jpg",
+      "url": "#",
+      "pdf": "slides/2020/slack-enterprise-grid.pdf",
+      "description": "Slack Enterprise Grid導入による組織コミュニケーションの変革事例。3000名超との外部連携を実現した取り組み。",
+      "slides_count": 28
+    },
+    {
+      "id": "data-cloud-strategy-2023",
+      "title": "Salesforce Data Cloudを活用したデータ戦略",
+      "date": "2023-12-10",
+      "company": "株式会社リバネス",
+      "categories": ["データ分析", "Salesforce"],
+      "tags": ["Data Cloud", "Snowflake", "データ基盤", "分析"],
+      "thumbnail": "images/slides/2023/data-cloud-strategy.jpg",
+      "url": "#",
+      "pdf": "slides/2023/data-cloud-strategy.pdf",
+      "description": "Salesforce Data CloudとSnowflakeを組み合わせたデータ基盤構築の戦略と実装事例。",
+      "slides_count": 38
+    },
+    {
+      "id": "chatgpt-enterprise-2025",
+      "title": "ChatGPT Enterprise導入による生成AI活用",
+      "date": "2025-05-20",
+      "company": "株式会社リバネス",
+      "categories": ["AI", "テクノロジー"],
+      "tags": ["ChatGPT", "生成AI", "Enterprise", "業務効率化"],
+      "thumbnail": "images/slides/2025/chatgpt-enterprise.jpg",
+      "url": "#",
+      "pdf": "slides/2025/chatgpt-enterprise.pdf",
+      "description": "ChatGPT Enterpriseプラン導入による組織全体での生成AI活用推進の取り組みと成果。",
+      "slides_count": 32
+    },
+    {
+      "id": "agentforce-future-2025",
+      "title": "Agentforceで描く未来の働き方",
+      "date": "2025-01-15",
+      "company": "株式会社リバネス",
+      "categories": ["AI", "Salesforce"],
+      "tags": ["Agentforce", "自動化", "未来", "働き方改革"],
+      "thumbnail": "images/slides/2025/agentforce-future.jpg",
+      "url": "#",
+      "pdf": "slides/2025/agentforce-future.pdf",
+      "description": "Salesforce Agentforceを活用した業務自動化と新しい働き方の提案。AIエージェントによる業務変革の可能性を探る。",
+      "slides_count": 45
+    }
+  ]
+}
+

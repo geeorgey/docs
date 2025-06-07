@@ -1,0 +1,46 @@
+{
+  "name": "presentations-archive",
+  "version": "1.0.0",
+  "description": "吉田丈治（George Yoshida）のプレゼンテーションアーカイブサイト",
+  "main": "docs/index.html",
+  "scripts": {
+    "build": "node src/scripts/build.js",
+    "dev": "npx http-server docs -p 8080 -o",
+    "deploy": "npm run build && echo 'GitHub Pagesにデプロイしてください'",
+    "test": "echo 'テストスクリプトはまだ実装されていません'"
+  },
+  "keywords": [
+    "presentations",
+    "salesforce",
+    "ai",
+    "data-analytics",
+    "leadership",
+    "technology",
+    "archive"
+  ],
+  "author": {
+    "name": "吉田丈治 (George Yoshida)",
+    "email": "contact@example.com",
+    "url": "https://github.com/geeorgey"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/geeorgey/presentations-archive.git"
+  },
+  "homepage": "https://geeorgey.github.io/presentations-archive/",
+  "devDependencies": {
+    "fs-extra": "^11.1.1",
+    "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
+
