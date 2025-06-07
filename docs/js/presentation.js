@@ -15,6 +15,16 @@ document.addEventListener('DOMContentLoaded', function() {
     updateSlideCounter();
     updateNavigationButtons();
     setupTouchNavigation();
+    
+    // URLパラメータからスライド番号を取得
+    const urlParams = new URLSearchParams(window.location.search);
+    const slideParam = urlParams.get('slide');
+    if (slideParam) {
+        const slideNumber = parseInt(slideParam, 10);
+        if (slideNumber >= 1 && slideNumber <= totalSlides) {
+            showSlide(slideNumber);
+        }
+    }
 });
 
 /**
@@ -33,6 +43,16 @@ function initializePresentation() {
     
     // フルスクリーンイベントリスナー設定
     setupFullscreenEvents();
+}
+
+/**
+ * URLパラメータを更新
+ * @param {number} slideNumber - 現在のスライド番号
+ */
+function updateURL(slideNumber) {
+    const url = new URL(window.location);
+    url.searchParams.set('slide', slideNumber);
+    window.history.replaceState({}, '', url);
 }
 
 /**
@@ -59,6 +79,9 @@ function showSlide(slideNumber) {
     
     // 現在のスライド番号を更新
     currentSlide = slideNumber;
+    
+    // URLパラメータを更新
+    updateURL(slideNumber);
     
     // UI更新
     updateSlideCounter();
