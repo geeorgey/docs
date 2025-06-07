@@ -133,6 +133,18 @@ function goToSlide(slideNumber) {
  * スライドカウンターの更新
  */
 function updateSlideCounter() {
+    const currentSlideElement = document.getElementById('currentSlide');
+    const totalSlidesElement = document.getElementById('totalSlides');
+    
+    if (currentSlideElement) {
+        currentSlideElement.textContent = currentSlide;
+    }
+    
+    if (totalSlidesElement) {
+        totalSlidesElement.textContent = totalSlides;
+    }
+    
+    // 古いIDも確認（互換性のため）
     const slideCounter = document.getElementById('slideCounter');
     if (slideCounter) {
         slideCounter.textContent = `${currentSlide} / ${totalSlides}`;
