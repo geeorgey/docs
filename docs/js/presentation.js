@@ -250,9 +250,15 @@ function setupKeyboardNavigation() {
  */
 function toggleFullscreen() {
     const presentationContainer = document.querySelector('.presentation-container');
+    const body = document.body;
     
     if (!document.fullscreenElement) {
-        enterFullscreen(presentationContainer);
+        // フルスクリーンモードに入る前にクラスを追加
+        body.classList.add('fullscreen-mode');
+        if (presentationContainer) {
+            presentationContainer.classList.add('fullscreen-mode');
+        }
+        enterFullscreen(presentationContainer || body);
     } else {
         exitFullscreen();
     }
@@ -310,19 +316,31 @@ function setupFullscreenEvents() {
 function handleFullscreenChange() {
     const fullscreenBtn = document.getElementById('fullscreenBtn');
     const presentationContainer = document.querySelector('.presentation-container');
+    const body = document.body;
     
     isFullscreen = !!document.fullscreenElement;
     
-    if (fullscreenBtn) {
-        const icon = fullscreenBtn.querySelector('i');
-        if (isFullscreen) {
-            icon.className = 'fas fa-compress';
-            fullscreenBtn.innerHTML = '<i class="fas fa-compress"></i> 全画面終了';
+    if (isFullscreen) {
+        // フルスクリーンモードに入った時
+        body.classList.add('fullscreen-mode');
+        if (presentationContainer) {
             presentationContainer.classList.add('fullscreen-mode');
-        } else {
-            icon.className = 'fas fa-expand';
-            fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i> 全画面表示';
+        }
+        if (fullscreenBtn) {
+            const icon = fullscreenBtn.querySelector('i');
+            if (icon) icon.className = 'fas fa-compress';
+            fullscreenBtn.innerHTML = '<i class="fas fa-compress"></i> 全画面終了';
+        }
+    } else {
+        // フルスクリーンモードを終了した時
+        body.classList.remove('fullscreen-mode');
+        if (presentationContainer) {
             presentationContainer.classList.remove('fullscreen-mode');
+        }
+        if (fullscreenBtn) {
+            const icon = fullscreenBtn.querySelector('i');
+            if (icon) icon.className = 'fas fa-expand';
+            fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i> 全画面表示';
         }
     }
 }
