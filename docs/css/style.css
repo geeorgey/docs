@@ -526,6 +526,15 @@ p {
   color: var(--gray);
 }
 
+/* ===== モバイルメニュー ===== */
+.mobile-menu {
+  display: none; /* デスクトップでは非表示 */
+}
+
+.close-menu {
+  display: none; /* デスクトップでは非表示 */
+}
+
 /* ===== レスポンシブデザイン ===== */
 @media (max-width: 1200px) {
   .presentations-grid {
