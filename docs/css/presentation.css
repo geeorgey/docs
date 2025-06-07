@@ -101,19 +101,21 @@
 .slide-container {
   position: relative;
   background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-  aspect-ratio: 16 / 9;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  min-height: 600px;
+  height: auto;
 }
 
 .slide {
   display: none;
   width: 100%;
-  height: 100%;
+  height: auto;
+  min-height: 100%;
   padding: 3rem 3rem 3rem 5rem;
   color: var(--white);
   text-align: left;
@@ -121,14 +123,18 @@
 
 .slide.active {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
+  flex-direction: column;
 }
 
 .slide-content {
   max-width: 800px;
   width: 100%;
   margin-left: 2rem;
+  padding: 2rem 0;
+  height: auto;
+  min-height: auto;
 }
 
 .slide-content h2 {
@@ -779,6 +785,28 @@
 
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
+    .slide-container {
+        min-height: 400px !important;
+        height: auto !important;
+    }
+    
+    .slide {
+        height: auto !important;
+        min-height: auto !important;
+        padding: 1rem 0.8rem !important;
+    }
+    
+    .slide.active {
+        align-items: flex-start !important;
+        flex-direction: column !important;
+    }
+    
+    .slide-content {
+        padding: 1rem 0 !important;
+        height: auto !important;
+        min-height: auto !important;
+    }
+    
     .presentation-title {
         font-size: 1.5rem !important;
     }
@@ -831,10 +859,6 @@
     .slide-subtitle {
         font-size: 0.9rem !important;
         margin-bottom: 0.8rem !important;
-    }
-    
-    .slide {
-        padding: 1rem 0.8rem !important;
     }
     
     .slide-content {
