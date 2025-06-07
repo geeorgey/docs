@@ -41,7 +41,7 @@ class PresentationArchive {
           url: "presentations/salesforce-11years.html",
           pdf: "#",
           description: "Salesforce導入から11年目を迎えて、これまでの取り組みと今後の展望について考察したプレゼンテーション。組織のDX推進における学びと課題を共有。",
-          slides_count: 21
+          slides_count: 33
         }
       ];
       

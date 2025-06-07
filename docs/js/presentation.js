@@ -5,7 +5,8 @@
 
 // グローバル変数
 let currentSlide = 1;
-const totalSlides = 13;
+const totalSlides = 31;
+let isFullscreen = false;
 
 // DOM読み込み完了時の初期化
 document.addEventListener('DOMContentLoaded', function() {
@@ -13,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupKeyboardNavigation();
     updateSlideCounter();
     updateNavigationButtons();
+    setupTouchNavigation();
 });
 
 /**
@@ -23,10 +25,14 @@ function initializePresentation() {
     showSlide(1);
     
     // サムネイルの初期化
+    generateThumbnails();
     updateThumbnails();
     
     // ナビゲーションボタンのイベントリスナー設定
     setupNavigationButtons();
+    
+    // フルスクリーンイベントリスナー設定
+    setupFullscreenEvents();
 }
 
 /**
@@ -64,6 +70,17 @@ function showSlide(slideNumber) {
 }
 
 /**
+ * スライド変更関数（ナビゲーションボタン用）
+ * @param {number} direction - 移動方向（1: 次, -1: 前）
+ */
+function changeSlide(direction) {
+    const newSlide = currentSlide + direction;
+    if (newSlide >= 1 && newSlide <= totalSlides) {
+        showSlide(newSlide);
+    }
+}
+
+/**
  * 次のスライドに移動
  */
 function nextSlide() {
@@ -93,8 +110,8 @@ function goToSlide(slideNumber) {
  * スライドカウンターの更新
  */
 function updateSlideCounter() {
-    const currentSlideElement = document.querySelector('.current-slide');
-    const totalSlidesElement = document.querySelector('.total-slides');
+    const currentSlideElement = document.getElementById('currentSlide');
+    const totalSlidesElement = document.getElementById('totalSlides');
     
     if (currentSlideElement) {
         currentSlideElement.textContent = currentSlide;
@@ -109,15 +126,42 @@ function updateSlideCounter() {
  * ナビゲーションボタンの状態更新
  */
 function updateNavigationButtons() {
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
     
     if (prevBtn) {
         prevBtn.disabled = currentSlide === 1;
+        prevBtn.style.opacity = currentSlide === 1 ? '0.5' : '1';
     }
     
     if (nextBtn) {
         nextBtn.disabled = currentSlide === totalSlides;
+        nextBtn.style.opacity = currentSlide === totalSlides ? '0.5' : '1';
+    }
+}
+
+/**
+ * サムネイルの生成
+ */
+function generateThumbnails() {
+    const thumbnailGrid = document.getElementById('thumbnailGrid');
+    if (!thumbnailGrid) return;
+    
+    thumbnailGrid.innerHTML = '';
+    
+    for (let i = 1; i <= totalSlides; i++) {
+        const thumbnail = document.createElement('div');
+        thumbnail.className = 'thumbnail';
+        thumbnail.setAttribute('data-slide', i);
+        thumbnail.innerHTML = `
+            <div class="thumbnail-content">
+                <div class="thumbnail-number">${i}</div>
+                <div class="thumbnail-title">${getSlideTitleByNumber(i)}</div>
+            </div>
+        `;
+        
+        thumbnail.addEventListener('click', () => goToSlide(i));
+        thumbnailGrid.appendChild(thumbnail);
     }
 }
 
@@ -132,7 +176,7 @@ function updateThumbnails() {
     });
     
     // 現在のスライドのサムネイルにactiveクラスを追加
-    const currentThumbnail = document.querySelector(`.thumbnail:nth-child(${currentSlide})`);
+    const currentThumbnail = document.querySelector(`[data-slide="${currentSlide}"]`);
     if (currentThumbnail) {
         currentThumbnail.classList.add('active');
     }
@@ -142,8 +186,9 @@ function updateThumbnails() {
  * ナビゲーションボタンのイベントリスナー設定
  */
 function setupNavigationButtons() {
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const fullscreenBtn = document.getElementById('fullscreenBtn');
     
     if (prevBtn) {
         prevBtn.addEventListener('click', previousSlide);
@@ -151,6 +196,10 @@ function setupNavigationButtons() {
     
     if (nextBtn) {
         nextBtn.addEventListener('click', nextSlide);
+    }
+    
+    if (fullscreenBtn) {
+        fullscreenBtn.addEventListener('click', toggleFullscreen);
     }
 }
 
@@ -162,10 +211,12 @@ function setupKeyboardNavigation() {
         switch(event.key) {
             case 'ArrowRight':
             case ' ': // スペースキー
+            case 'PageDown':
                 event.preventDefault();
                 nextSlide();
                 break;
             case 'ArrowLeft':
+            case 'PageUp':
                 event.preventDefault();
                 previousSlide();
                 break;
@@ -179,10 +230,101 @@ function setupKeyboardNavigation() {
                 break;
             case 'Escape':
                 event.preventDefault();
-                // フルスクリーンモードの切り替え（将来の機能）
+                if (isFullscreen) {
+                    exitFullscreen();
+                }
+                break;
+            case 'f':
+            case 'F':
+                if (event.ctrlKey || event.metaKey) {
+                    event.preventDefault();
+                    toggleFullscreen();
+                }
                 break;
         }
     });
+}
+
+/**
+ * フルスクリーンモードの切り替え
+ */
+function toggleFullscreen() {
+    const presentationContainer = document.querySelector('.presentation-container');
+    
+    if (!document.fullscreenElement) {
+        enterFullscreen(presentationContainer);
+    } else {
+        exitFullscreen();
+    }
+}
+
+/**
+ * フルスクリーンモードに入る
+ */
+function enterFullscreen(element) {
+    if (element.requestFullscreen) {
+        element.requestFullscreen();
+    } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+    } else if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+    } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+    }
+}
+
+/**
+ * フルスクリーンモードを終了
+ */
+function exitFullscreen() {
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+    }
+}
+
+/**
+ * フルスクリーンイベントの設定
+ */
+function setupFullscreenEvents() {
+    const fullscreenEvents = [
+        'fullscreenchange',
+        'mozfullscreenchange',
+        'webkitfullscreenchange',
+        'msfullscreenchange'
+    ];
+    
+    fullscreenEvents.forEach(event => {
+        document.addEventListener(event, handleFullscreenChange);
+    });
+}
+
+/**
+ * フルスクリーン状態変更の処理
+ */
+function handleFullscreenChange() {
+    const fullscreenBtn = document.getElementById('fullscreenBtn');
+    const presentationContainer = document.querySelector('.presentation-container');
+    
+    isFullscreen = !!document.fullscreenElement;
+    
+    if (fullscreenBtn) {
+        const icon = fullscreenBtn.querySelector('i');
+        if (isFullscreen) {
+            icon.className = 'fas fa-compress';
+            fullscreenBtn.innerHTML = '<i class="fas fa-compress"></i> 全画面終了';
+            presentationContainer.classList.add('fullscreen-mode');
+        } else {
+            icon.className = 'fas fa-expand';
+            fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i> 全画面表示';
+            presentationContainer.classList.remove('fullscreen-mode');
+        }
+    }
 }
 
 /**
@@ -190,7 +332,7 @@ function setupKeyboardNavigation() {
  * @param {number} slideNumber - 現在のスライド番号
  */
 function announceSlideChange(slideNumber) {
-    const announcement = `スライド ${slideNumber} / ${totalSlides}`;
+    const announcement = `スライド ${slideNumber} / ${totalSlides}: ${getSlideTitleByNumber(slideNumber)}`;
     
     // スクリーンリーダー用の要素を作成または更新
     let announcer = document.getElementById('slide-announcer');
@@ -211,83 +353,6 @@ function announceSlideChange(slideNumber) {
 }
 
 /**
- * フルスクリーンモードの切り替え（将来の機能）
- */
-function toggleFullscreen() {
-    const slideContainer = document.querySelector('.slide-container');
-    
-    if (!document.fullscreenElement) {
-        slideContainer.requestFullscreen().catch(err => {
-            console.log(`フルスクリーンモードに入れませんでした: ${err.message}`);
-        });
-    } else {
-        document.exitFullscreen();
-    }
-}
-
-/**
- * スライドの自動再生（将来の機能）
- */
-let autoplayInterval;
-let isAutoplay = false;
-
-function startAutoplay(interval = 5000) {
-    if (isAutoplay) return;
-    
-    isAutoplay = true;
-    autoplayInterval = setInterval(() => {
-        if (currentSlide < totalSlides) {
-            nextSlide();
-        } else {
-            stopAutoplay();
-        }
-    }, interval);
-}
-
-function stopAutoplay() {
-    if (autoplayInterval) {
-        clearInterval(autoplayInterval);
-        autoplayInterval = null;
-    }
-    isAutoplay = false;
-}
-
-function toggleAutoplay() {
-    if (isAutoplay) {
-        stopAutoplay();
-    } else {
-        startAutoplay();
-    }
-}
-
-/**
- * スライドの印刷（将来の機能）
- */
-function printSlides() {
-    window.print();
-}
-
-/**
- * スライドの共有（将来の機能）
- */
-function shareSlide() {
-    const url = `${window.location.href}#slide-${currentSlide}`;
-    
-    if (navigator.share) {
-        navigator.share({
-            title: 'Salesforce11年目に思っていること',
-            text: `スライド ${currentSlide}: ${getSlideTitleByNumber(currentSlide)}`,
-            url: url
-        });
-    } else {
-        // フォールバック: URLをクリップボードにコピー
-        navigator.clipboard.writeText(url).then(() => {
-            alert('スライドのURLがクリップボードにコピーされました');
-        });
-    }
-}
-
-/**
  * スライド番号からタイトルを取得
  * @param {number} slideNumber - スライド番号
  * @returns {string} スライドタイトル
@@ -295,47 +360,54 @@ function shareSlide() {
 function getSlideTitleByNumber(slideNumber) {
     const titles = [
         'タイトル',
-        'アジェンダ',
-        '導入背景',
-        '初期取り組み',
-        '機能拡張',
-        'Dreamforce 2019',
-        '組織変革',
-        'AI推進',
-        '成果',
-        '学び',
-        '課題',
-        '展望',
-        'まとめ'
+        'プロフィール',
+        'SaaS導入の進化',
+        'リバネスグループ概要',
+        '利用メリット・価値実感',
+        '導入してよかった点',
+        '定着した瞬間',
+        '導入の背景 - 危機感1',
+        '危機感2 - 営業会議',
+        '危機感3 - 数字が合わない',
+        'Salesforceとの出会い',
+        '導入決定の理由',
+        '懸念事項',
+        '導入後の社内の反対',
+        '社内定着・運用体制',
+        '活動入力の徹底',
+        'Slack Salesforce Connector',
+        '使いこなせるか不安という話',
+        '利用シーン・機能デモ',
+        '課題・改善要望・将来展望',
+        'Agentforceの課題',
+        '今後の展望',
+        '営業アプローチ',
+        '営業電話について',
+        '3つの壁を乗り越える',
+        '中小企業への価値提案',
+        '印象に残ったAE',
+        '過去の自分への営業',
+        '経営層が話を聞く会社',
+        '情報収集方法',
+        'Thank you'
     ];
     
-    return titles[slideNumber - 1] || '';
+    return titles[slideNumber - 1] || `スライド ${slideNumber}`;
 }
-
-/**
- * URLハッシュからスライド番号を取得して移動
- */
-function handleHashChange() {
-    const hash = window.location.hash;
-    const match = hash.match(/^#slide-(\d+)$/);
-    
-    if (match) {
-        const slideNumber = parseInt(match[1], 10);
-        if (slideNumber >= 1 && slideNumber <= totalSlides) {
-            goToSlide(slideNumber);
-        }
-    }
-}
-
-// ページ読み込み時とハッシュ変更時にスライド移動を処理
-window.addEventListener('hashchange', handleHashChange);
-window.addEventListener('load', handleHashChange);
 
 /**
  * タッチ操作対応（モバイル）
  */
 let touchStartX = 0;
 let touchEndX = 0;
+
+function setupTouchNavigation() {
+    const slideContainer = document.querySelector('.slide-container');
+    if (slideContainer) {
+        slideContainer.addEventListener('touchstart', handleTouchStart, { passive: true });
+        slideContainer.addEventListener('touchend', handleTouchEnd, { passive: true });
+    }
+}
 
 function handleTouchStart(event) {
     touchStartX = event.changedTouches[0].screenX;
@@ -361,24 +433,46 @@ function handleSwipe() {
     }
 }
 
-// タッチイベントリスナーの設定
-document.addEventListener('DOMContentLoaded', function() {
-    const slideContainer = document.querySelector('.slide-container');
-    if (slideContainer) {
-        slideContainer.addEventListener('touchstart', handleTouchStart, { passive: true });
-        slideContainer.addEventListener('touchend', handleTouchEnd, { passive: true });
+/**
+ * URLハッシュからスライド番号を取得して移動
+ */
+function handleHashChange() {
+    const hash = window.location.hash;
+    const match = hash.match(/^#slide-(\d+)$/);
+    
+    if (match) {
+        const slideNumber = parseInt(match[1], 10);
+        if (slideNumber >= 1 && slideNumber <= totalSlides) {
+            goToSlide(slideNumber);
+        }
     }
-});
+}
+
+// ページ読み込み時とハッシュ変更時にスライド移動を処理
+window.addEventListener('hashchange', handleHashChange);
+window.addEventListener('load', handleHashChange);
 
 /**
- * パフォーマンス最適化
+ * スライドの共有
  */
-function preloadSlides() {
-    // 次のスライドと前のスライドを事前読み込み（将来の機能）
-    const nextSlideNumber = currentSlide + 1;
-    const prevSlideNumber = currentSlide - 1;
+function shareSlide() {
+    const url = `${window.location.href}#slide-${currentSlide}`;
     
-    // 実装は必要に応じて追加
+    if (navigator.share) {
+        navigator.share({
+            title: 'Salesforce11年目に思っていること',
+            text: `スライド ${currentSlide}: ${getSlideTitleByNumber(currentSlide)}`,
+            url: url
+        });
+    } else {
+        // フォールバック: URLをクリップボードにコピー
+        navigator.clipboard.writeText(url).then(() => {
+            alert('スライドのURLがクリップボードにコピーされました');
+        }).catch(() => {
+            // クリップボードAPIが使えない場合
+            prompt('以下のURLをコピーしてください:', url);
+        });
+    }
 }
 
 /**
@@ -395,7 +489,8 @@ if (window.location.hostname === 'localhost' || window.location.hostname === '12
         totalSlides: () => totalSlides,
         goToSlide: goToSlide,
         nextSlide: nextSlide,
-        previousSlide: previousSlide
+        previousSlide: previousSlide,
+        toggleFullscreen: toggleFullscreen
     };
 }
 
