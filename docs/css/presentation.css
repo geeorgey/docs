@@ -1,0 +1,463 @@
+/* 
+ * プレゼンテーション詳細ページ専用スタイルシート
+ * Salesforce11年目に思っていること
+ */
+
+/* ===== プレゼンテーション基本レイアウト ===== */
+.presentation-main {
+  padding: 2rem 0;
+  min-height: calc(100vh - 200px);
+}
+
+/* ===== ブレッドクラム ===== */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--gray);
+}
+
+.breadcrumb a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.breadcrumb a:hover {
+  color: var(--secondary);
+}
+
+.breadcrumb i {
+  font-size: 0.8rem;
+}
+
+/* ===== プレゼンテーションヘッダー ===== */
+.presentation-header {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.presentation-title {
+  font-size: 2.5rem;
+  color: var(--dark);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.presentation-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--gray);
+  font-size: 0.9rem;
+}
+
+.meta-item i {
+  color: var(--primary);
+  width: 16px;
+}
+
+.presentation-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tag {
+  background-color: var(--primary);
+  color: var(--white);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.presentation-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--dark);
+  max-width: 800px;
+}
+
+/* ===== スライドビューア ===== */
+.slide-viewer {
+  background-color: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.slide-container {
+  position: relative;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide {
+  display: none;
+  width: 100%;
+  height: 100%;
+  padding: 3rem;
+  color: var(--white);
+  text-align: center;
+}
+
+.slide.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-content {
+  max-width: 800px;
+  width: 100%;
+}
+
+.slide-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+.slide-content h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--accent);
+}
+
+.slide-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  line-height: 1.8;
+}
+
+.slide-subtitle p {
+  margin-bottom: 0.5rem;
+}
+
+.agenda-list {
+  text-align: left;
+  font-size: 1.3rem;
+  line-height: 2;
+  list-style: none;
+  padding: 0;
+}
+
+.agenda-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.agenda-list li:before {
+  content: "▶";
+  color: var(--accent);
+  margin-right: 1rem;
+}
+
+.slide-text {
+  text-align: left;
+}
+
+.slide-text ul {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  list-style: none;
+  padding: 0;
+}
+
+.slide-text li {
+  padding: 0.5rem 0;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.slide-text li:before {
+  content: "•";
+  color: var(--accent);
+  position: absolute;
+  left: 0;
+  font-size: 1.5rem;
+}
+
+.highlight-box {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.highlight-box p {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* ===== スライドナビゲーション ===== */
+.slide-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background-color: #f8f9fa;
+  border-top: 1px solid #e0e0e0;
+}
+
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.nav-btn:hover {
+  background-color: var(--secondary);
+  transform: translateY(-2px);
+}
+
+.nav-btn:disabled {
+  background-color: var(--gray);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.slide-counter {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.current-slide {
+  color: var(--primary);
+  font-size: 1.3rem;
+}
+
+/* ===== スライドサムネイル ===== */
+.slide-thumbnails {
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-top: 1px solid #e0e0e0;
+}
+
+.thumbnail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.thumbnail {
+  background-color: var(--white);
+  border: 2px solid #e0e0e0;
+  border-radius: var(--radius);
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.thumbnail:hover {
+  border-color: var(--primary);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+.thumbnail.active {
+  border-color: var(--primary);
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+.thumbnail-number {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.thumbnail-title {
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* ===== レスポンシブデザイン ===== */
+@media (max-width: 768px) {
+  .presentation-title {
+    font-size: 2rem;
+  }
+  
+  .presentation-meta {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  
+  .slide {
+    padding: 2rem 1.5rem;
+  }
+  
+  .slide-content h2 {
+    font-size: 2rem;
+  }
+  
+  .slide-content h3 {
+    font-size: 1.5rem;
+  }
+  
+  .agenda-list,
+  .slide-text ul {
+    font-size: 1.1rem;
+  }
+  
+  .slide-navigation {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .nav-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .thumbnail-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 0.8rem;
+  }
+  
+  .thumbnail {
+    padding: 0.8rem;
+    min-height: 70px;
+  }
+  
+  .thumbnail-number {
+    font-size: 1rem;
+  }
+  
+  .thumbnail-title {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .presentation-main {
+    padding: 1rem 0;
+  }
+  
+  .presentation-title {
+    font-size: 1.8rem;
+  }
+  
+  .slide {
+    padding: 1.5rem 1rem;
+  }
+  
+  .slide-content h2 {
+    font-size: 1.8rem;
+  }
+  
+  .slide-content h3 {
+    font-size: 1.3rem;
+  }
+  
+  .agenda-list,
+  .slide-text ul {
+    font-size: 1rem;
+  }
+  
+  .slide-thumbnails {
+    padding: 1rem;
+  }
+  
+  .thumbnail-grid {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  }
+}
+
+/* ===== アニメーション ===== */
+.slide {
+  animation: slideIn 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.thumbnail {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== アクセシビリティ ===== */
+.nav-btn:focus,
+.thumbnail:focus {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ===== プリント対応 ===== */
+@media print {
+  .slide-navigation,
+  .slide-thumbnails,
+  .header,
+  .footer {
+    display: none;
+  }
+  
+  .slide {
+    display: block !important;
+    page-break-after: always;
+    padding: 2rem;
+    color: black;
+    background: white;
+  }
+  
+  .slide-container {
+    background: white;
+    box-shadow: none;
+  }
+}
+

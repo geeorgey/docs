@@ -38,7 +38,7 @@ class PresentationArchive {
           categories: ["Salesforce", "リーダーシップ"],
           tags: ["Salesforce", "振り返り", "IT戦略", "組織変革"],
           thumbnail: "https://via.placeholder.com/400x200/1B5E9F/FFFFFF?text=Salesforce+11年目",
-          url: "https://docs.google.com/presentation/d/1D1Y4Y8pL2e7HJRICEf39nST1gsm_2rL-XSv2m1_7Qv4/edit",
+          url: "presentations/salesforce-11years.html",
           pdf: "#",
           description: "Salesforce導入から11年目を迎えて、これまでの取り組みと今後の展望について考察したプレゼンテーション。組織のDX推進における学びと課題を共有。",
           slides_count: 35
@@ -248,10 +248,6 @@ class PresentationArchive {
             <a href="${presentation.url}" class="btn btn-primary" target="_blank" rel="noopener">
               <i class="icon-eye"></i>
               閲覧
-            </a>
-            <a href="${presentation.pdf}" class="btn btn-outline" download>
-              <i class="icon-download"></i>
-              ダウンロード
             </a>
           </div>
         </div>
