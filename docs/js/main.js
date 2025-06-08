@@ -85,12 +85,25 @@ class PresentationArchive {
     if (hamburger && mobileMenu) {
       hamburger.addEventListener('click', () => {
         mobileMenu.classList.add('active');
+        document.body.style.overflow = 'hidden'; // スクロールを無効化
       });
     }
 
     if (closeMenu && mobileMenu) {
       closeMenu.addEventListener('click', () => {
         mobileMenu.classList.remove('active');
+        document.body.style.overflow = ''; // スクロールを復元
+      });
+    }
+
+    // モバイルメニューのリンククリック時にメニューを閉じる
+    if (mobileMenu) {
+      const mobileNavLinks = mobileMenu.querySelectorAll('.nav-link');
+      mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('active');
+          document.body.style.overflow = ''; // スクロールを復元
+        });
       });
     }
 
