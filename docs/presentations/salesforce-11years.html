@@ -818,20 +818,41 @@
                 if (slideDescription.length >= 150) slideDescription += '...';
             }
             
-            // タイトル更新
-            document.title = `${slideTitle} (${slideNumber}/${slides.length}) - Salesforce11年目に思っていること`;
+            // スライド専用OGP画像のパスを決定
+            const ogpImagePath = getOGPImagePath(slideNumber);
+            
+            // タイトル更新（スライドタイトル | メインタイトル形式）
+            const fullTitle = slideTitle === 'Salesforce11年目に思っていること' 
+                ? `${slideTitle} (${slideNumber}/${slides.length})`
+                : `${slideTitle} | Salesforce11年目に思っていること (${slideNumber}/${slides.length})`;
+            document.title = fullTitle;
             
             // OGPメタタグ更新
-            updateMetaTag('og:title', `${slideTitle} (${slideNumber}/${slides.length})`);
+            updateMetaTag('og:title', fullTitle);
             updateMetaTag('og:description', slideDescription);
             updateMetaTag('og:url', window.location.href);
-            updateMetaTag('og:image', 'https://geeorgey.github.io/docs/images/ogp-salesforce-default.png');
-            updateMetaTag('twitter:title', `${slideTitle} (${slideNumber}/${slides.length})`);
+            updateMetaTag('og:image', ogpImagePath);
+            updateMetaTag('twitter:title', fullTitle);
             updateMetaTag('twitter:description', slideDescription);
-            updateMetaTag('twitter:image', 'https://geeorgey.github.io/docs/images/ogp-salesforce-default.png');
+            updateMetaTag('twitter:image', ogpImagePath);
             
             // 構造化データの更新
             updateStructuredData(slideTitle, slideDescription, slideNumber);
+        }
+        
+        // スライド専用OGP画像パスを取得
+        function getOGPImagePath(slideNumber) {
+            // 特定のスライドに専用画像がある場合
+            const specialSlides = {
+                1: 'https://geeorgey.github.io/docs/images/ogp-slide-01.png',
+                2: 'https://geeorgey.github.io/docs/images/ogp-slide-02.png',
+                5: 'https://geeorgey.github.io/docs/images/ogp-slide-05.png',
+                21: 'https://geeorgey.github.io/docs/images/ogp-slide-21.png',
+                25: 'https://geeorgey.github.io/docs/images/ogp-slide-25.png'
+            };
+            
+            // 専用画像があればそれを使用、なければデフォルト画像
+            return specialSlides[slideNumber] || 'https://geeorgey.github.io/docs/images/ogp-salesforce-default.png';
         }
         
         function updateMetaTag(property, content) {
@@ -850,25 +871,34 @@
                 existingScript.remove();
             }
             
+            // タイトル形式を統一
+            const fullTitle = slideTitle === 'Salesforce11年目に思っていること' 
+                ? `${slideTitle} (${slideNumber}/${slides.length})`
+                : `${slideTitle} | Salesforce11年目に思っていること (${slideNumber}/${slides.length})`;
+            
             // 新しい構造化データを作成
             const structuredData = {
                 "@context": "https://schema.org",
                 "@type": "PresentationDigitalDocument",
-                "name": `${slideTitle} (${slideNumber}/${slides.length})`,
+                "name": fullTitle,
                 "description": slideDescription,
                 "url": window.location.href,
+                "image": getOGPImagePath(slideNumber),
                 "author": {
                     "@type": "Person",
                     "name": "吉田丈治",
-                    "jobTitle": "取締役CIO",
+                    "alternateName": "George Yoshida",
+                    "jobTitle": "取締役CIO / 代表取締役社長",
                     "worksFor": {
                         "@type": "Organization",
-                        "name": "株式会社リバネス"
+                        "name": "株式会社リバネス",
+                        "alternateName": "Leave a Nest"
                     }
                 },
                 "publisher": {
                     "@type": "Organization",
-                    "name": "株式会社リバネス"
+                    "name": "株式会社リバネスナレッジ",
+                    "alternateName": "Leave a Nest Knowledge"
                 },
                 "datePublished": "2025-06-08",
                 "inLanguage": "ja",
@@ -877,8 +907,13 @@
                     "DX推進",
                     "組織変革",
                     "CRM",
-                    "営業効率化"
-                ]
+                    "営業効率化",
+                    "生成AI",
+                    "Agentforce"
+                ],
+                "keywords": `Salesforce, ${slideTitle}, DX, CRM, 営業効率化, リバネス`,
+                "slideNumber": slideNumber,
+                "totalSlides": slides.length
             };
             
             // 構造化データをheadに追加
