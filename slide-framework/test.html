@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スライドフレームワーク - テスト</title>
+    
+    <!-- Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .slide {
+            background: white;
+            padding: 40px;
+            margin: 20px auto;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            min-height: 400px;
+        }
+        
+        .slide h1 {
+            color: #1e40af;
+            border-bottom: 2px solid #1e40af;
+            padding-bottom: 10px;
+        }
+        
+        .slide h2 {
+            color: #64748b;
+        }
+        
+        .navigation {
+            text-align: center;
+            margin: 20px;
+        }
+        
+        button {
+            background: #1e40af;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background: #1d4ed8;
+        }
+        
+        button:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+        }
+        
+        .counter {
+            margin: 20px;
+            text-align: center;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+    <div class="counter">
+        <span id="current">1</span> / <span id="total">1</span>
+    </div>
+    
+    <div id="slide-container" class="slide">
+        <h1>読み込み中...</h1>
+    </div>
+    
+    <div class="navigation">
+        <button id="prev" onclick="prevSlide()">前へ</button>
+        <button id="next" onclick="nextSlide()">次へ</button>
+    </div>
+
+    <script>
+        let slides = [];
+        let currentSlide = 0;
+        
+        // スライドデータの読み込み
+        async function loadSlides() {
+            try {
+                console.log('Loading slides...');
+                const response = await fetch('slides.md');
+                if (!response.ok) {
+                    throw new Error('slides.md not found');
+                }
+                const content = await response.text();
+                console.log('Content loaded:', content.length, 'characters');
+                
+                // スライドを分割
+                const slideTexts = content.split(/\n---\n/).filter(s => s.trim());
+                console.log('Slides found:', slideTexts.length);
+                
+                slides = slideTexts.map((text, index) => ({
+                    id: index + 1,
+                    markdown: text.trim(),
+                    html: marked.parse(text.trim())
+                }));
+                
+                console.log('Slides processed:', slides);
+                
+                // 最初のスライドを表示
+                showSlide(0);
+                updateNavigation();
+                
+            } catch (error) {
+                console.error('Error loading slides:', error);
+                document.getElementById('slide-container').innerHTML = 
+                    '<h1>エラー</h1><p>スライドの読み込みに失敗しました: ' + error.message + '</p>';
+            }
+        }
+        
+        // スライド表示
+        function showSlide(index) {
+            if (index < 0 || index >= slides.length) return;
+            
+            currentSlide = index;
+            const slide = slides[index];
+            
+            document.getElementById('slide-container').innerHTML = slide.html;
+            document.getElementById('current').textContent = index + 1;
+            document.getElementById('total').textContent = slides.length;
+            
+            console.log('Showing slide:', index + 1, slide);
+        }
+        
+        // ナビゲーション更新
+        function updateNavigation() {
+            document.getElementById('prev').disabled = currentSlide === 0;
+            document.getElementById('next').disabled = currentSlide === slides.length - 1;
+        }
+        
+        // 前のスライド
+        function prevSlide() {
+            if (currentSlide > 0) {
+                showSlide(currentSlide - 1);
+                updateNavigation();
+            }
+        }
+        
+        // 次のスライド
+        function nextSlide() {
+            if (currentSlide < slides.length - 1) {
+                showSlide(currentSlide + 1);
+                updateNavigation();
+            }
+        }
+        
+        // キーボードナビゲーション
+        document.addEventListener('keydown', (e) => {
+            switch(e.key) {
+                case 'ArrowLeft':
+                    prevSlide();
+                    break;
+                case 'ArrowRight':
+                case ' ':
+                    nextSlide();
+                    break;
+            }
+        });
+        
+        // 初期化
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded, initializing...');
+            loadSlides();
+        });
+    </script>
+</body>
+</html>
+

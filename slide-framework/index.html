@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="presentation-title">スライドフレームワーク</title>
+    
+    <!-- Framework CSS -->
+    <link rel="stylesheet" href="framework.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading" class="loading-screen">
+        <div class="loading-content">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>スライドを読み込み中...</p>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div id="app" class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <nav class="breadcrumb">
+                <a href="../index.html"><i class="fas fa-home"></i> ホーム</a>
+                <span class="separator">></span>
+                <a href="../index.html">プレゼンテーション</a>
+                <span class="separator">></span>
+                <span id="current-title">スライド</span>
+            </nav>
+        </header>
+
+        <!-- Presentation Info -->
+        <div class="presentation-info">
+            <h1 id="presentation-main-title">プレゼンテーションタイトル</h1>
+            <div class="presentation-meta">
+                <span id="presentation-date"><i class="fas fa-calendar"></i> 日付</span>
+                <span id="presentation-author"><i class="fas fa-user"></i> 発表者</span>
+                <span id="presentation-duration"><i class="fas fa-clock"></i> 時間</span>
+                <span id="presentation-slide-count"><i class="fas fa-file-powerpoint"></i> スライド数</span>
+            </div>
+            <div id="presentation-tags" class="presentation-tags"></div>
+            <p id="presentation-description" class="presentation-description"></p>
+        </div>
+
+        <!-- Slide Container -->
+        <div class="slide-container">
+            <div id="current-slide" class="slide active">
+                <div class="slide-content">
+                    <h2>スライドを読み込み中...</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="slide-navigation">
+            <button id="prev-btn" class="nav-btn" title="前のスライド">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <div class="slide-counter">
+                <span id="current-slide-num">1</span> / <span id="total-slides">1</span>
+            </div>
+            
+            <button id="next-btn" class="nav-btn" title="次のスライド">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <button id="fullscreen-btn" class="nav-btn fullscreen-btn" title="全画面表示">
+                <i class="fas fa-expand"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Fullscreen Button -->
+        <div class="mobile-fullscreen-btn">
+            <button id="mobile-fullscreen" title="全画面表示">
+                <i class="fas fa-expand"></i>
+                全画面
+            </button>
+        </div>
+
+        <!-- Slide Thumbnails -->
+        <div class="slide-thumbnails">
+            <h3>スライド一覧</h3>
+            <div id="thumbnail-grid" class="thumbnail-grid">
+                <!-- Thumbnails will be generated here -->
+            </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+            <div id="progress" class="progress-fill"></div>
+        </div>
+    </div>
+
+    <!-- Framework JavaScript -->
+    <script src="framework.js"></script>
+</body>
+</html>
+

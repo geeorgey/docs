@@ -1,0 +1,97 @@
+/**
+ * Minimal Template - ミニマルデザイン
+ */
+
+:root {
+    --primary-color: #374151;
+    --secondary-color: #9ca3af;
+    --accent-color: #10b981;
+    --background-color: #ffffff;
+    --text-color: #111827;
+    --border-color: #f3f4f6;
+    --shadow-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Minimal slide styling */
+.slide {
+    background: var(--background-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.slide-content h1 {
+    font-weight: 300 !important;
+    color: var(--primary-color) !important;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 1rem;
+}
+
+.slide-content h2 {
+    font-weight: 400 !important;
+    color: var(--primary-color) !important;
+}
+
+.slide-content h3 {
+    font-weight: 500 !important;
+    color: var(--accent-color) !important;
+    font-size: 2rem !important;
+}
+
+.slide-content p {
+    color: var(--text-color) !important;
+    font-weight: 300 !important;
+}
+
+.slide-content ul,
+.slide-content ol {
+    color: var(--text-color) !important;
+}
+
+.slide-content li {
+    color: var(--text-color) !important;
+    margin-bottom: 0.75rem !important;
+}
+
+.slide-content li::marker {
+    color: var(--accent-color);
+}
+
+.slide-content blockquote {
+    border-left-color: var(--accent-color);
+    background: var(--border-color);
+    font-weight: 300;
+}
+
+.slide-content code {
+    background: var(--border-color);
+    color: var(--primary-color);
+    font-weight: 400;
+}
+
+.slide-content pre {
+    background: var(--primary-color);
+    color: var(--background-color);
+}
+
+/* Minimal design elements */
+.slide::before {
+    content: '';
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    width: 60px;
+    height: 2px;
+    background: var(--accent-color);
+}
+
+.slide::after {
+    content: '';
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    width: 8px;
+    height: 8px;
+    background: var(--accent-color);
+    border-radius: 50%;
+}
+

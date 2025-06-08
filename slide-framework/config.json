@@ -1,0 +1,98 @@
+{
+  "presentation": {
+    "title": "Salesforce11年目に思っていること",
+    "author": "吉田丈治 (George Yoshida)",
+    "date": "2025年6月7日",
+    "company": "株式会社リバネスナレッジ",
+    "duration": "約60分",
+    "slides": 31
+  },
+  "template": {
+    "name": "corporate",
+    "theme": "blue",
+    "aspectRatio": "16:9",
+    "customColors": {
+      "primary": "#1e40af",
+      "secondary": "#64748b",
+      "accent": "#f59e0b",
+      "background": "#ffffff",
+      "text": "#1e293b"
+    }
+  },
+  "settings": {
+    "autoHeight": true,
+    "showSlideNumbers": true,
+    "showProgress": true,
+    "enableFullscreen": true,
+    "enableKeyboardNavigation": true,
+    "enableTouchNavigation": true,
+    "enableAnimations": true,
+    "animationDuration": 300,
+    "transitionType": "slide",
+    "autoAdvance": false,
+    "autoAdvanceInterval": 5000
+  },
+  "typography": {
+    "fontFamily": "system-ui, -apple-system, sans-serif",
+    "baseFontSize": "1rem",
+    "lineHeight": 1.6,
+    "headingScale": {
+      "h1": "3.5rem",
+      "h2": "3rem",
+      "h3": "2.5rem",
+      "h4": "2rem",
+      "h5": "1.8rem",
+      "h6": "1.6rem"
+    },
+    "mobileScale": 0.8
+  },
+  "layout": {
+    "padding": "3rem",
+    "mobilePadding": "1.5rem",
+    "maxWidth": "100%",
+    "textAlign": "left",
+    "verticalAlign": "top"
+  },
+  "animations": {
+    "slideTransition": {
+      "type": "slide",
+      "duration": 300,
+      "easing": "ease-in-out"
+    },
+    "elementAnimations": {
+      "fadeIn": {
+        "duration": 500,
+        "delay": 0,
+        "easing": "ease-out"
+      },
+      "slideUp": {
+        "duration": 600,
+        "delay": 100,
+        "easing": "ease-out"
+      }
+    }
+  },
+  "export": {
+    "pdf": {
+      "enabled": true,
+      "pageSize": "A4",
+      "orientation": "landscape"
+    },
+    "images": {
+      "enabled": true,
+      "format": "png",
+      "quality": 90,
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "metadata": {
+    "tags": ["Salesforce", "振り返り", "IT戦略", "組織変革", "DX推進", "AI活用"],
+    "description": "Salesforce導入から11年目を迎えて、これまでの取り組みと今後の展望について考察したプレゼンテーション。",
+    "language": "ja",
+    "version": "2.0",
+    "created": "2025-06-07",
+    "modified": "2025-06-08"
+  }
+}
+

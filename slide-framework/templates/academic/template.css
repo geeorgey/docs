@@ -1,0 +1,155 @@
+/**
+ * Academic Template - 学術発表向けデザイン
+ */
+
+:root {
+    --primary-color: #0f172a;
+    --secondary-color: #475569;
+    --accent-color: #dc2626;
+    --background-color: #ffffff;
+    --text-color: #1e293b;
+    --border-color: #e2e8f0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    
+    --slide-bg-color: #ffffff;
+    --slide-text-color: #1e293b;
+    --slide-border-color: #e2e8f0;
+}
+
+/* Academic slide styling */
+.slide {
+    background: var(--slide-bg-color);
+    color: var(--slide-text-color);
+    border: 2px solid var(--slide-border-color);
+    box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.slide-content h1 {
+    color: var(--primary-color) !important;
+    border-bottom: 3px solid var(--accent-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.slide-content h2 {
+    color: var(--primary-color) !important;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 0.3rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.slide-content h3 {
+    color: var(--accent-color) !important;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+}
+
+.slide-content h4,
+.slide-content h5,
+.slide-content h6 {
+    color: var(--secondary-color) !important;
+    font-weight: 500;
+}
+
+.slide-content p,
+.slide-content li {
+    color: var(--slide-text-color) !important;
+    line-height: 1.7;
+}
+
+.slide-content ul,
+.slide-content ol {
+    margin-left: 1.5rem;
+}
+
+.slide-content li {
+    margin-bottom: 0.5rem;
+}
+
+.slide-content blockquote {
+    border-left: 4px solid var(--accent-color);
+    background: #f8fafc;
+    padding: 1rem 1.5rem;
+    margin: 1rem 0;
+    border-radius: 4px;
+    font-style: italic;
+}
+
+.slide-content code {
+    background: #f1f5f9;
+    color: var(--accent-color);
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+}
+
+.slide-content pre {
+    background: #f8fafc;
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    border-radius: 6px;
+    overflow-x: auto;
+}
+
+.slide-content table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.slide-content th,
+.slide-content td {
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    text-align: left;
+}
+
+.slide-content th {
+    background: #f8fafc;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* Academic specific elements */
+.slide::before {
+    content: '';
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 60px;
+    height: 4px;
+    background: var(--accent-color);
+    border-radius: 2px;
+}
+
+.slide::after {
+    content: '';
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-color) 0%, transparent 100%);
+}
+
+/* Citation style */
+.slide-content .citation {
+    font-size: 0.8em;
+    color: var(--secondary-color);
+    font-style: italic;
+    margin-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 0.5rem;
+}
+
+/* Figure caption style */
+.slide-content .figure-caption {
+    font-size: 0.9em;
+    color: var(--secondary-color);
+    text-align: center;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+

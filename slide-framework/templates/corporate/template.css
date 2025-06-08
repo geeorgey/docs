@@ -1,0 +1,83 @@
+/**
+ * Corporate Template - ビジネス向けデザイン
+ */
+
+:root {
+    --primary-color: #1e40af;
+    --secondary-color: #64748b;
+    --accent-color: #f59e0b;
+    --background-color: #ffffff;
+    --text-color: #1e293b;
+    --border-color: #e2e8f0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    
+    --slide-bg-gradient: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+    --slide-text-color: #ffffff;
+}
+
+/* Corporate slide styling */
+.slide {
+    background: var(--slide-bg-gradient);
+    color: var(--slide-text-color);
+}
+
+.slide-content h1,
+.slide-content h2,
+.slide-content h3,
+.slide-content h4,
+.slide-content h5,
+.slide-content h6 {
+    color: var(--slide-text-color) !important;
+}
+
+.slide-content h3 {
+    color: var(--accent-color) !important;
+}
+
+.slide-content p,
+.slide-content li {
+    color: var(--slide-text-color) !important;
+}
+
+.slide-content blockquote {
+    border-left-color: var(--accent-color);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+}
+
+.slide-content code {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--slide-text-color);
+}
+
+.slide-content pre {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Corporate branding elements */
+.slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    transform: translate(50%, -50%);
+    pointer-events: none;
+}
+
+.slide::after {
+    content: '';
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    width: 4px;
+    height: 60px;
+    background: var(--accent-color);
+    border-radius: 2px;
+}
+

@@ -1,0 +1,44 @@
+{
+  "presentation": {
+    "title": "Salesforce11年目に思っていること",
+    "author": "吉田丈治 (George Yoshida)",
+    "company": "株式会社リバネスナレッジ",
+    "date": "2025年6月6日",
+    "duration": "約60分",
+    "description": "Salesforce導入から11年目を迎えて、これまでの取り組みと今後の展望について考察したプレゼンテーション。リバネスグループのDX推進における学びと課題を共有し、営業・提案アプローチから経営層視点まで包括的に解説します。",
+    "tags": ["Salesforce", "振り返り", "IT戦略", "組織変革", "DX推進", "AI活用"]
+  },
+  "template": {
+    "name": "leaveanest",
+    "primaryColor": "#1e40af",
+    "secondaryColor": "#3b82f6",
+    "accentColor": "#f97316",
+    "backgroundColor": "#ffffff",
+    "textColor": "#1f2937"
+  },
+  "settings": {
+    "showSlideNumbers": true,
+    "showProgress": true,
+    "showThumbnails": true,
+    "enableFullscreen": true,
+    "enableKeyboardNavigation": true,
+    "transitionEffect": "fade",
+    "transitionDuration": 300,
+    "autoAdvance": false,
+    "fontSize": {
+      "base": "100%",
+      "h1": "2.5rem",
+      "h2": "2rem",
+      "h3": "1.5rem",
+      "body": "1.1rem"
+    },
+    "aspectRatio": "16:9"
+  },
+  "branding": {
+    "logo": "",
+    "companyName": "株式会社リバネスナレッジ",
+    "website": "",
+    "showBranding": true
+  }
+}
+
