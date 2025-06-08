@@ -31,6 +31,19 @@ class PresentationArchive {
       // 本来はJSONファイルから読み込むが、デモ用にハードコード
       this.presentations = [
         {
+          id: "ai-agent-real-2025",
+          title: "AIエージェント実運用のリアル",
+          date: "2025-06-02",
+          company: "株式会社リバネスナレッジ",
+          categories: ["AI", "テクノロジー"],
+          tags: ["AI", "エージェント", "生成AI", "Agentforce", "Slack", "実運用"],
+          thumbnail: "images/thumbnail-ai-agent.png",
+          url: "presentations/ai-agent-real.html",
+          pdf: "#",
+          description: "リバネスグループにおけるAI・エージェント利用の実践的な取り組みと知見を共有するプレゼンテーション。生成AIからエージェントAIまでの活用事例と現場での実感を詳しく解説。",
+          slides_count: 15
+        },
+        {
           id: "salesforce-11th-year-2025",
           title: "Salesforce11年目に思っていること",
           date: "2025-06-06",
