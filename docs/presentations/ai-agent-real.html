@@ -685,11 +685,17 @@
         // 全画面表示の切り替え
         function toggleFullscreen() {
             const container = document.querySelector('.slide-container');
+            const navigation = document.querySelector('.navigation');
+            const slideOverview = document.querySelector('.slide-overview');
             
             if (!isFullscreen) {
                 container.classList.add('fullscreen');
                 document.getElementById('fullscreen-btn').innerHTML = '❌ 終了';
                 isFullscreen = true;
+                
+                // ナビゲーションとスライド一覧を直接非表示
+                navigation.style.display = 'none';
+                slideOverview.style.display = 'none';
                 
                 // 全画面終了ボタンを追加
                 const exitBtn = document.createElement('button');
@@ -702,6 +708,10 @@
                 container.classList.remove('fullscreen');
                 document.getElementById('fullscreen-btn').innerHTML = '🔍 全画面';
                 isFullscreen = false;
+                
+                // ナビゲーションとスライド一覧を再表示
+                navigation.style.display = '';
+                slideOverview.style.display = '';
                 
                 // 全画面終了ボタンを削除
                 const exitBtn = document.querySelector('.fullscreen-exit');
