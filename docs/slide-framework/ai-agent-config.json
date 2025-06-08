@@ -1,0 +1,92 @@
+{
+  "title": "AIエージェント実運用のリアル",
+  "author": "株式会社リバネスナレッジ",
+  "date": "2025年6月2日",
+  "template": "corporate",
+  "theme": {
+    "primary_color": "#1e40af",
+    "secondary_color": "#f97316",
+    "background": "linear-gradient(135deg, #1e40af 0%, #f97316 100%)",
+    "text_color": "#1f2937",
+    "accent_color": "#3b82f6"
+  },
+  "slides": [
+    {
+      "id": 1,
+      "title": "AIエージェント実運用のリアル",
+      "type": "title",
+      "ogp_image": "ogp-ai-agent-01.png"
+    },
+    {
+      "id": 2,
+      "title": "Profile | プロフィール",
+      "type": "profile",
+      "ogp_image": "ogp-ai-agent-02.png"
+    },
+    {
+      "id": 3,
+      "title": "Who we are - Leave a Nest Group",
+      "type": "content"
+    },
+    {
+      "id": 4,
+      "title": "SaaS導入の進化とリバネスの挑戦",
+      "type": "timeline"
+    },
+    {
+      "id": 5,
+      "title": "生成AIの「使いこなし」術",
+      "type": "content"
+    },
+    {
+      "id": 6,
+      "title": "生成AI活用の軌跡とエージェントAIへの展開",
+      "type": "timeline"
+    },
+    {
+      "id": 7,
+      "title": "ユースケースに応じて進化するAIエージェント",
+      "type": "comparison"
+    },
+    {
+      "id": 8,
+      "title": "Slack AI",
+      "type": "before_after"
+    },
+    {
+      "id": 9,
+      "title": "Party on Slack & Gemini",
+      "type": "before_after"
+    },
+    {
+      "id": 10,
+      "title": "Devin",
+      "type": "before_after"
+    },
+    {
+      "id": 11,
+      "title": "Agentforce in Slack",
+      "type": "comparison"
+    },
+    {
+      "id": 12,
+      "title": "触れて、試して、ようやく見えてきた本当の「進化」と「実用性」",
+      "type": "insights"
+    },
+    {
+      "id": 13,
+      "title": "Thank you",
+      "type": "closing"
+    }
+  ],
+  "metadata": {
+    "total_slides": 13,
+    "presentation_date": "2025-06-02",
+    "company": "株式会社リバネスナレッジ",
+    "presenter": "吉田丈治",
+    "categories": ["AI", "テクノロジー"],
+    "tags": ["AI", "エージェント", "生成AI", "Agentforce", "Slack", "実運用"],
+    "description": "リバネスグループにおけるAI・エージェント利用の実践的な取り組みと知見を共有するプレゼンテーション。生成AIからエージェントAIまでの活用事例と現場での実感を詳しく解説。"
+  }
+}
+
