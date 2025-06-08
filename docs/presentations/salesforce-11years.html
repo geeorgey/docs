@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salesforce11年目に思っていること</title>
     
+    <!-- OGP Meta Tags -->
+    <meta property="og:title" content="Salesforce11年目に思っていること">
+    <meta property="og:description" content="Salesforce導入から11年目を迎えて、これまでの取り組みと今後の展望について考察したプレゼンテーション。組織のDX推進における学びと課題を共有。">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://geeorgey.github.io/docs/presentations/salesforce-11years.html">
+    <meta property="og:image" content="https://geeorgey.github.io/docs/images/ogp-salesforce-default.png">
+    <meta property="og:site_name" content="吉田丈治 プレゼンテーションアーカイブ">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Salesforce11年目に思っていること">
+    <meta name="twitter:description" content="Salesforce導入から11年目を迎えて、これまでの取り組みと今後の展望について考察したプレゼンテーション。組織のDX推進における学びと課題を共有。">
+    <meta name="twitter:image" content="https://geeorgey.github.io/docs/images/ogp-salesforce-default.png">
+    
     <!-- Marked.js for Markdown parsing -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     
@@ -410,6 +422,12 @@
         .tap-feedback.active {
             transform: scale(1);
         }
+        
+        /* 通常表示時のタップフィードバック（控えめ） */
+        .tap-feedback.subtle {
+            background: rgba(30, 64, 175, 0.1);
+            border: 2px solid rgba(30, 64, 175, 0.2);
+        }
     </style>
 </head>
 <body>
@@ -476,8 +494,11 @@
                 
                 console.log('Slides processed:', slides);
                 
-                // 最初のスライドを表示
-                showSlide(0);
+                // URLパラメーターから初期スライドを取得
+                const initialSlide = getSlideFromURL();
+                
+                // 初期スライドを表示
+                showSlide(initialSlide);
                 updateNavigation();
                 
                 // サムネイル生成
@@ -506,6 +527,12 @@
             
             // サムネイル更新
             updateThumbnails();
+            
+            // URL更新
+            updateURL(index);
+            
+            // OGP更新
+            updateOGP(index);
             
             console.log('Showing slide:', index + 1, slide);
         }
@@ -588,6 +615,39 @@
             slideContainer.removeEventListener('click', handleFullscreenTap);
         }
         
+        // 通常表示時のタップナビゲーション
+        function addNormalTapListeners() {
+            const slideContainer = document.getElementById('slide-container');
+            
+            slideContainer.addEventListener('click', handleNormalTap);
+        }
+        
+        function handleNormalTap(e) {
+            // ナビゲーションボタンのクリックは無視
+            if (e.target.closest('.navigation')) {
+                return;
+            }
+            
+            // リンクやボタンのクリックは無視
+            if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') {
+                return;
+            }
+            
+            const rect = e.currentTarget.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const width = rect.width;
+            
+            // タップフィードバック表示（控えめに）
+            showTapFeedback(e.clientX, e.clientY, false);
+            
+            // 左半分タップで前へ、右半分タップで次へ
+            if (x < width / 2) {
+                prevSlide();
+            } else {
+                nextSlide();
+            }
+        }
+        
         function handleFullscreenTap(e) {
             // 終了ボタンのクリックは無視
             if (e.target.classList.contains('fullscreen-exit')) {
@@ -599,7 +659,7 @@
             const width = rect.width;
             
             // タップフィードバック表示
-            showTapFeedback(e.clientX, e.clientY);
+            showTapFeedback(e.clientX, e.clientY, true);
             
             // 左半分タップで前へ、右半分タップで次へ
             if (x < width / 2) {
@@ -610,9 +670,12 @@
         }
         
         // タップフィードバック表示
-        function showTapFeedback(x, y) {
+        function showTapFeedback(x, y, isFullscreen = false) {
             const feedback = document.createElement('div');
             feedback.className = 'tap-feedback';
+            if (!isFullscreen) {
+                feedback.classList.add('subtle');
+            }
             feedback.style.left = (x - 25) + 'px';
             feedback.style.top = (y - 25) + 'px';
             feedback.style.width = '50px';
@@ -686,12 +749,153 @@
             }
         });
         
+        // URLパラメーター処理
+        function getSlideFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const slideParam = urlParams.get('slide');
+            return slideParam ? parseInt(slideParam) - 1 : 0; // 1-based to 0-based
+        }
+        
+        function updateURL(slideIndex) {
+            const slideNumber = slideIndex + 1; // 0-based to 1-based
+            const newURL = new URL(window.location);
+            newURL.searchParams.set('slide', slideNumber);
+            
+            // ブラウザ履歴を更新（戻るボタン対応）
+            window.history.pushState({ slide: slideIndex }, '', newURL);
+        }
+        
+        // ブラウザの戻る/進むボタン対応
+        window.addEventListener('popstate', (event) => {
+            if (event.state && typeof event.state.slide === 'number') {
+                showSlide(event.state.slide);
+                updateNavigation();
+                updateThumbnails();
+            } else {
+                // URLパラメーターから取得
+                const slideIndex = getSlideFromURL();
+                showSlide(slideIndex);
+                updateNavigation();
+                updateThumbnails();
+            }
+        });
+        
+        // 動的OGP更新
+        function updateOGP(slideIndex) {
+            if (!slides || !slides[slideIndex]) return;
+            
+            const slide = slides[slideIndex];
+            const slideNumber = slideIndex + 1;
+            
+            // スライドからタイトルを抽出
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = slide.html;
+            const h1 = tempDiv.querySelector('h1');
+            const h2 = tempDiv.querySelector('h2');
+            const h3 = tempDiv.querySelector('h3');
+            const h4 = tempDiv.querySelector('h4');
+            
+            let slideTitle = 'Salesforce11年目に思っていること';
+            if (h1) slideTitle = h1.textContent.trim();
+            else if (h2) slideTitle = h2.textContent.trim();
+            else if (h3) slideTitle = h3.textContent.trim();
+            else if (h4) slideTitle = h4.textContent.trim();
+            
+            // スライドから説明文を抽出
+            const p = tempDiv.querySelector('p');
+            const li = tempDiv.querySelector('li');
+            const blockquote = tempDiv.querySelector('blockquote');
+            let slideDescription = 'Salesforce導入から11年目を迎えて、これまでの取り組みと今後の展望について考察したプレゼンテーション。組織のDX推進における学びと課題を共有。';
+            
+            if (p && p.textContent.trim()) {
+                slideDescription = p.textContent.trim().substring(0, 150);
+                if (slideDescription.length >= 150) slideDescription += '...';
+            } else if (li && li.textContent.trim()) {
+                slideDescription = li.textContent.trim().substring(0, 150);
+                if (slideDescription.length >= 150) slideDescription += '...';
+            } else if (blockquote && blockquote.textContent.trim()) {
+                slideDescription = blockquote.textContent.trim().substring(0, 150);
+                if (slideDescription.length >= 150) slideDescription += '...';
+            }
+            
+            // タイトル更新
+            document.title = `${slideTitle} (${slideNumber}/${slides.length}) - Salesforce11年目に思っていること`;
+            
+            // OGPメタタグ更新
+            updateMetaTag('og:title', `${slideTitle} (${slideNumber}/${slides.length})`);
+            updateMetaTag('og:description', slideDescription);
+            updateMetaTag('og:url', window.location.href);
+            updateMetaTag('og:image', 'https://geeorgey.github.io/docs/images/ogp-salesforce-default.png');
+            updateMetaTag('twitter:title', `${slideTitle} (${slideNumber}/${slides.length})`);
+            updateMetaTag('twitter:description', slideDescription);
+            updateMetaTag('twitter:image', 'https://geeorgey.github.io/docs/images/ogp-salesforce-default.png');
+            
+            // 構造化データの更新
+            updateStructuredData(slideTitle, slideDescription, slideNumber);
+        }
+        
+        function updateMetaTag(property, content) {
+            let meta = document.querySelector(`meta[property="${property}"]`) || 
+                      document.querySelector(`meta[name="${property}"]`);
+            if (meta) {
+                meta.setAttribute('content', content);
+            }
+        }
+        
+        // 構造化データの更新
+        function updateStructuredData(slideTitle, slideDescription, slideNumber) {
+            // 既存の構造化データを削除
+            const existingScript = document.querySelector('script[type="application/ld+json"]');
+            if (existingScript) {
+                existingScript.remove();
+            }
+            
+            // 新しい構造化データを作成
+            const structuredData = {
+                "@context": "https://schema.org",
+                "@type": "PresentationDigitalDocument",
+                "name": `${slideTitle} (${slideNumber}/${slides.length})`,
+                "description": slideDescription,
+                "url": window.location.href,
+                "author": {
+                    "@type": "Person",
+                    "name": "吉田丈治",
+                    "jobTitle": "取締役CIO",
+                    "worksFor": {
+                        "@type": "Organization",
+                        "name": "株式会社リバネス"
+                    }
+                },
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "株式会社リバネス"
+                },
+                "datePublished": "2025-06-08",
+                "inLanguage": "ja",
+                "about": [
+                    "Salesforce",
+                    "DX推進",
+                    "組織変革",
+                    "CRM",
+                    "営業効率化"
+                ]
+            };
+            
+            // 構造化データをheadに追加
+            const script = document.createElement('script');
+            script.type = 'application/ld+json';
+            script.textContent = JSON.stringify(structuredData);
+            document.head.appendChild(script);
+        }
+        
         // 初期化
         document.addEventListener('DOMContentLoaded', () => {
             console.log('DOM loaded, initializing...');
             loadSlides();
+            
+            // 通常表示時のタップナビゲーションを有効化
+            addNormalTapListeners();
         });
     </script>
 </body>
 </html>
-
