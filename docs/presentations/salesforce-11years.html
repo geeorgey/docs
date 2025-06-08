@@ -333,6 +333,7 @@
             height: 100vh;
             z-index: 1000;
             background: #000;
+            cursor: pointer;
         }
         
         .fullscreen .slide {
@@ -342,14 +343,40 @@
             height: 100vh;
             border-radius: 0;
             box-shadow: none;
+            cursor: pointer;
         }
         
+        /* 全画面時のナビゲーションボタンを非表示 */
         .fullscreen .navigation {
+            display: none;
+        }
+        
+        /* 全画面時の終了ボタン */
+        .fullscreen-exit {
             position: fixed;
             bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1001;
+            right: 2rem;
+            background: rgba(128, 128, 128, 0.3);
+            color: rgba(255, 255, 255, 0.6);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 1002;
+            display: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .fullscreen-exit:hover {
+            background: rgba(128, 128, 128, 0.5);
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .fullscreen .fullscreen-exit {
+            display: block;
         }
         
         .fullscreen .counter {
@@ -367,6 +394,21 @@
         .fullscreen .progress-bar,
         .fullscreen .thumbnails {
             display: none;
+        }
+        
+        /* タップエリアの視覚的フィードバック */
+        .tap-feedback {
+            position: fixed;
+            pointer-events: none;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: scale(0);
+            z-index: 1003;
+            transition: transform 0.3s ease;
+        }
+        
+        .tap-feedback.active {
+            transform: scale(1);
         }
     </style>
 </head>
@@ -389,6 +431,9 @@
         <button id="fullscreen" onclick="toggleFullscreen()">🔍 全画面</button>
         <button id="next" onclick="nextSlide()">次へ →</button>
     </div>
+    
+    <!-- 全画面時の終了ボタン -->
+    <button class="fullscreen-exit" onclick="exitFullscreen()">×</button>
     
     <div class="progress-bar">
         <div id="progress" class="progress-fill"></div>
@@ -514,13 +559,74 @@
         // 全画面表示切り替え
         function toggleFullscreen() {
             const body = document.body;
-            if (body.classList.contains('fullscreen')) {
-                body.classList.remove('fullscreen');
-                document.getElementById('fullscreen').textContent = '🔍 全画面';
-            } else {
-                body.classList.add('fullscreen');
-                document.getElementById('fullscreen').textContent = '❌ 終了';
+            body.classList.add('fullscreen');
+            document.getElementById('fullscreen').textContent = '🔍 全画面';
+            
+            // 全画面時のタップイベントリスナーを追加
+            addFullscreenTapListeners();
+        }
+        
+        // 全画面終了
+        function exitFullscreen() {
+            const body = document.body;
+            body.classList.remove('fullscreen');
+            
+            // 全画面時のタップイベントリスナーを削除
+            removeFullscreenTapListeners();
+        }
+        
+        // 全画面時のタップナビゲーション
+        function addFullscreenTapListeners() {
+            const slideContainer = document.getElementById('slide-container');
+            
+            slideContainer.addEventListener('click', handleFullscreenTap);
+        }
+        
+        function removeFullscreenTapListeners() {
+            const slideContainer = document.getElementById('slide-container');
+            
+            slideContainer.removeEventListener('click', handleFullscreenTap);
+        }
+        
+        function handleFullscreenTap(e) {
+            // 終了ボタンのクリックは無視
+            if (e.target.classList.contains('fullscreen-exit')) {
+                return;
             }
+            
+            const rect = e.currentTarget.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const width = rect.width;
+            
+            // タップフィードバック表示
+            showTapFeedback(e.clientX, e.clientY);
+            
+            // 左半分タップで前へ、右半分タップで次へ
+            if (x < width / 2) {
+                prevSlide();
+            } else {
+                nextSlide();
+            }
+        }
+        
+        // タップフィードバック表示
+        function showTapFeedback(x, y) {
+            const feedback = document.createElement('div');
+            feedback.className = 'tap-feedback';
+            feedback.style.left = (x - 25) + 'px';
+            feedback.style.top = (y - 25) + 'px';
+            feedback.style.width = '50px';
+            feedback.style.height = '50px';
+            
+            document.body.appendChild(feedback);
+            
+            // アニメーション開始
+            setTimeout(() => feedback.classList.add('active'), 10);
+            
+            // フィードバック削除
+            setTimeout(() => {
+                feedback.remove();
+            }, 300);
         }
         
         // ナビゲーション更新
