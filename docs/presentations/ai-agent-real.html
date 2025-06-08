@@ -584,8 +584,17 @@
                 const response = await fetch('../slide-framework/ai-agent-slides.md');
                 const markdown = await response.text();
                 
+                // YAMLフロントマターを除去
+                let content = markdown;
+                if (content.startsWith('---')) {
+                    const parts = content.split('---');
+                    if (parts.length >= 3) {
+                        content = parts.slice(2).join('---');
+                    }
+                }
+                
                 // マークダウンをスライドに分割
-                const slideTexts = markdown.split('---').filter(slide => slide.trim());
+                const slideTexts = content.split('---').filter(slide => slide.trim());
                 
                 slides = slideTexts.map((slideText, index) => {
                     const html = marked.parse(slideText.trim());
