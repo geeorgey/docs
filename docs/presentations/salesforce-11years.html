@@ -670,6 +670,19 @@
                     showSlide(slides.length - 1);
                     updateNavigation();
                     break;
+                case 'Escape':
+                    // 全画面表示中の場合は終了
+                    if (document.body.classList.contains('fullscreen')) {
+                        exitFullscreen();
+                    }
+                    break;
+                case 'f':
+                case 'F':
+                    // Fキーで全画面表示切り替え
+                    if (!document.body.classList.contains('fullscreen')) {
+                        toggleFullscreen();
+                    }
+                    break;
             }
         });
         
