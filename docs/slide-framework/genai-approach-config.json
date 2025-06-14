@@ -1,0 +1,16 @@
+{
+  "title": "リバネスグループにおける生成AIへのアプローチ",
+  "author": "吉田丈治",
+  "date": "2025年4月4日",
+  "event": "生成AIとSlackの活用",
+  "description": "リバネスグループの生成AI活用事例とSlack連携による組織変革の実践",
+  "tags": ["生成AI", "Slack", "AI", "DX", "組織変革", "Agentforce"],
+  "category": "AI",
+  "slideCount": 65,
+  "ogpImages": {
+    "default": "/images/ogp-genai-approach-default.png",
+    "slide1": "/images/ogp-genai-approach-01.png"
+  },
+  "thumbnail": "/images/thumbnail-genai-approach.png"
+}
+

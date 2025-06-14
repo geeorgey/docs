@@ -37,50 +37,70 @@
             background: linear-gradient(135deg, #0176D3 0%, #1e40af 50%, #f97316 100%);
             color: white;
             padding: 40px;
+            margin: 20        /* 基本スライドスタイル */
+        .slide {
+            background: linear-gradient(135deg, #1e40af 0%, #f97316 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             margin: 20px 0;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            border: 1px solid #e5e7eb;
             min-height: 500px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
             position: relative;
             overflow: hidden;
         }
         
+        /* 統一タイトルスタイル - 全レイアウト共通 */
+        .slide h1,
+        .slide h2 {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            right: 40px;
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: bold;
+            line-height: 1.2;
+            text-align: left;
+            z-index: 10;
+        }
+        
+        /* コンテンツエリア - タイトル下に配置 */
+        .slide-content {
+            margin-top: 120px; /* タイトル分の余白 */
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
         /* レイアウトパターン1: 中央寄せ（デフォルト） */
-        .slide.layout-center {
+        .slide.layout-center .slide-content {
             text-align: center;
             align-items: center;
             justify-content: center;
         }
         
         /* レイアウトパターン2: 左寄せ */
-        .slide.layout-left {
+        .slide.layout-left .slide-content {
             text-align: left;
             align-items: flex-start;
             justify-content: center;
-            padding-left: 60px;
-            padding-right: 60px;
+            padding-left: 20px;
+            padding-right: 20px;
         }
         
         /* レイアウトパターン3: 左寄せ + 右側画像 */
-        .slide.layout-left-image-right {
+        .slide.layout-left-image-right .slide-content {
             display: grid;
             grid-template-columns: 2fr 1fr;
             gap: 40px;
             align-items: center;
             text-align: left;
-            padding: 40px 60px;
         }
         
-        .slide.layout-left-image-right .slide-content {
+        .slide.layout-left-image-right .slide-text {
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -103,13 +123,12 @@
         }
         
         /* レイアウトパターン4: 左側画像 + 右寄せテキスト */
-        .slide.layout-image-left-right {
+        .slide.layout-image-left-right .slide-content {
             display: grid;
             grid-template-columns: 1fr 2fr;
             gap: 40px;
             align-items: center;
             text-align: left;
-            padding: 40px 60px;
         }
         
         .slide.layout-image-left-right .slide-image {
@@ -128,7 +147,7 @@
             border-radius: 6px;
         }
         
-        .slide.layout-image-left-right .slide-content {
+        .slide.layout-image-left-right .slide-text {
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -137,17 +156,19 @@
         /* レイアウトパターン5: 中表紙 */
         .slide.layout-section {
             background: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%);
-            text-align: center;
-            align-items: center;
-            justify-content: center;
             border: 3px solid rgba(255, 255, 255, 0.2);
         }
         
         .slide.layout-section h1,
         .slide.layout-section h2 {
             font-size: 3.5rem;
-            margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .slide.layout-section .slide-content {
+            text-align: center;
+            align-items: center;
+            justify-content: center;
         }
         
         .slide.layout-section p {

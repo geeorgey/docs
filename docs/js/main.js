@@ -31,6 +31,19 @@ class PresentationArchive {
       // 本来はJSONファイルから読み込むが、デモ用にハードコード
       this.presentations = [
         {
+          id: "genai-approach-2025",
+          title: "リバネスグループにおける生成AIへのアプローチ",
+          date: "2025-04-04",
+          company: "株式会社リバネスナレッジ",
+          categories: ["AI", "Slack"],
+          tags: ["生成AI", "Slack", "AI", "DX", "組織変革", "Agentforce", "ChatGPT", "Party on Slack"],
+          thumbnail: "images/thumbnail-genai-approach.png",
+          url: "presentations/genai-approach.html",
+          pdf: "#",
+          description: "リバネスグループの生成AI活用事例とSlack連携による組織変革の実践。Party on SlackからSlack AI、Agentforceまでの取り組みを詳しく解説。",
+          slides_count: 65
+        },
+        {
           id: "growth-mindset-2025",
           title: "勝手に成長するということの重要性について",
           date: "2025-06-12",
