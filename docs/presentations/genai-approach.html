@@ -4,712 +4,506 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>リバネスグループにおける生成AIへのアプローチ</title>
-    
-    <!-- OGP Meta Tags -->
-    <meta property="og:title" content="リバネスグループにおける生成AIへのアプローチ">
-    <meta property="og:description" content="2025年4月4日のプレゼンテーション。リバネスグループの生成AI活用事例とSlack連携による組織変革の実践を詳しく解説。">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://geeorgey.github.io/docs/presentations/genai-approach.html">
-    <meta property="og:image" content="https://geeorgey.github.io/docs/images/ogp-genai-approach-default.png">
-    <meta property="og:site_name" content="吉田丈治 プレゼンテーションアーカイブ">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="リバネスグループにおける生成AIへのアプローチ">
-    <meta name="twitter:description" content="2025年4月4日のプレゼンテーション。リバネスグループの生成AI活用事例とSlack連携による組織変革の実践を詳しく解説。">
-    <meta name="twitter:image" content="https://geeorgey.github.io/docs/images/ogp-genai-approach-default.png">
-    
-    <!-- Marked.js for Markdown parsing -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            font-family: 'Noto Sans JP', system-ui, -apple-system, sans-serif;
+            font-family: 'Noto Sans JP', sans-serif;
             margin: 0;
-            padding: 20px;
-            background: #f8fafc;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        
-        .slide-container {
-            position: relative;
-            background: #f8fafc;
-            width: 100%;
-            max-width: 1100px; /* 11:9の比率を考慮した最大幅 */
-        }
-        
-        /* 基本スライドスタイル - 11:9の縦横比 */
-        .slide {
-            background: linear-gradient(135deg, #1e40af 0%, #f97316 100%);
-            color: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            margin: 20px 0;
-            aspect-ratio: 11 / 9; /* 11:9の縦横比を設定 */
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        /* 統一タイトルスタイル - 全レイアウト共通 */
-        .slide h1,
-        .slide h2 {
-            position: absolute;
-            top: 40px;
-            left: 40px;
-            right: 40px;
-            margin: 0;
-            font-size: 2.2rem;
-            font-weight: bold;
-            line-height: 1.2;
-            text-align: left;
-            z-index: 10;
-            height: auto;
-            max-height: 20%; /* タイトルエリアの最大高さを制限 */
-        }
-        
-        /* コンテンツエリア - タイトル下に適切に配置 */
-        .slide-content {
-            margin-top: 140px; /* タイトル分の余白を増加 */
-            padding-top: 20px; /* 追加の余白 */
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            overflow-y: auto; /* 必要に応じてスクロール */
-        }
-        
-        /* レイアウトパターン1: 中央寄せ（デフォルト） */
-        .slide.layout-center .slide-content {
-            text-align: center;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        /* レイアウトパターン2: 左寄せ */
-        .slide.layout-left .slide-content {
-            text-align: left;
-            align-items: flex-start;
-            justify-content: center;
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-        
-        /* レイアウトパターン3: 左寄せ + 右側画像 */
-        .slide.layout-left-image-right .slide-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 40px;
-            align-items: center;
-            text-align: left;
-        }
-        
-        /* レイアウトパターン4: 左側画像 + 右寄せテキスト */
-        .slide.layout-image-left-text-right .slide-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 40px;
-            align-items: center;
-            text-align: left;
-        }
-        
-        /* 中表紙レイアウト */
-        .slide.layout-section {
-            background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
-        }
-        
-        .slide.layout-section .slide-content {
-            text-align: center;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        
-        /* 画像スタイル */
-        .slide-image {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-        }
-        
-        /* テキストスタイル */
-        .slide p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin: 15px 0;
-        }
-        
-        .slide ul {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            text-align: left;
-        }
-        
-        .slide li {
-            margin: 10px 0;
-        }
-        
-        .slide strong {
-            font-weight: bold;
-            color: #fbbf24;
-        }
-        
-        /* ローディング状態 */
-        .loading {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 400px;
-        }
-        
-        .spinner {
-            border: 4px solid #f3f4f6;
-            border-top: 4px solid #3b82f6;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        /* ナビゲーション */
-        .navigation {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-        
-        .nav-button {
-            background: #3b82f6;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-        
-        .nav-button:hover {
-            background: #2563eb;
-        }
-        
-        .nav-button:disabled {
-            background: #9ca3af;
-            cursor: not-allowed;
-        }
-        
-        .slide-counter {
-            font-size: 18px;
-            font-weight: bold;
-            color: #374151;
-        }
-        
-        .fullscreen-button {
-            background: #10b981;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        
-        .fullscreen-button:hover {
-            background: #059669;
-        }
-        
-        /* スライド一覧 */
-        .slide-overview {
-            margin: 40px 0;
-            padding: 20px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-        }
-        
-        .slide-overview h3 {
-            margin: 0 0 20px 0;
-            color: #374151;
-            font-size: 1.5rem;
-        }
-        
-        .slide-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-        }
-        
-        .slide-thumbnail {
-            background: linear-gradient(135deg, #1e40af 0%, #f97316 100%);
-            color: white;
-            padding: 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            min-height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
-        
-        .slide-thumbnail:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-        }
-        
-        .slide-thumbnail.current {
-            border: 3px solid #fbbf24;
-            box-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
-        }
-        
-        /* 全画面表示 */
-        .fullscreen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: black;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             padding: 0;
+            overflow: hidden;
+            background: linear-gradient(135deg, #4A90E2 0%, #FF7F50 100%);
         }
-        
-        .fullscreen .slide {
-            width: 90vw;
-            height: 90vh;
-            margin: 0;
+        .slide-viewer {
             display: flex;
-            flex-direction: column;
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+        }
+        .slide-frame-container {
+            flex-grow: 1;
+            display: flex;
             justify-content: center;
-            font-size: 1.5rem;
+            align-items: center;
+            position: relative;
         }
-        
-        .fullscreen .slide h1,
-        .fullscreen .slide h2 {
-            font-size: 3.5rem;
+        .slide-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
         }
-        
-        .fullscreen .slide p {
-            font-size: 1.8rem;
-        }
-        
-        .fullscreen .slide ul {
-            font-size: 1.6rem;
-        }
-        
-        /* 全画面表示時はナビゲーションとスライド一覧を非表示 */
-        .fullscreen .navigation {
-            display: none !important;
-        }
-        
-        .fullscreen .slide-overview {
-            display: none !important;
-        }
-        
-        .exit-fullscreen {
-            position: fixed;
+        .slide-controls {
+            position: absolute;
             bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 10px 20px;
+            border-radius: 25px;
+            color: white;
+            align-items: center;
+            z-index: 1000;
+        }
+        .slide-controls button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .slide-controls button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .slide-number {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .slide-list-toggle {
+            position: absolute;
+            top: 20px;
             right: 20px;
-            background: rgba(107, 114, 128, 0.8);
+            background-color: rgba(0, 0, 0, 0.6);
             color: white;
             border: none;
-            padding: 10px;
-            border-radius: 50%;
+            padding: 10px 15px;
+            border-radius: 25px;
             cursor: pointer;
-            font-size: 18px;
-            width: 50px;
-            height: 50px;
-            z-index: 1001;
+            font-size: 1rem;
+            z-index: 1000;
         }
-        
-        .exit-fullscreen:hover {
-            background: rgba(75, 85, 99, 0.9);
-        }
-        
-        /* タップエリア（全画面時のみ） */
-        .tap-area {
-            position: fixed;
+        .slide-list {
+            width: 300px;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow-y: auto;
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(100%);
+            position: absolute;
+            right: 0;
             top: 0;
             bottom: 0;
-            width: 50%;
             z-index: 999;
-            cursor: pointer;
-            display: none;
         }
-        
-        .tap-area.left {
-            left: 0;
+        .slide-list.open {
+            transform: translateX(0%);
         }
-        
-        .tap-area.right {
-            right: 0;
+        .slide-list h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
         }
-        
-        .fullscreen .tap-area {
+        .slide-list ul {
+            list-style: none;
+            padding: 0;
+        }
+        .slide-list li {
+            margin-bottom: 10px;
+        }
+        .slide-list a {
             display: block;
+            padding: 8px 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #555;
+            transition: background-color 0.2s ease;
         }
-        
-        /* レスポンシブ対応 */
+        .slide-list a:hover,
+        .slide-list a.active {
+            background-color: #e0e0e0;
+            color: #333;
+        }
         @media (max-width: 768px) {
-            body {
-                padding: 10px;
-                align-items: flex-start; /* モバイルでは上寄せ */
-            }
-            
-            .slide-container {
-                max-width: 100%; /* モバイルではフルサイズ */
-            }
-            
-            .slide {
-                padding: 20px;
-                aspect-ratio: 11 / 9; /* モバイルでも11:9を維持 */
-                margin: 10px 0;
-            }
-            
-            .slide h1,
-            .slide h2 {
-                font-size: 1.8rem;
-                top: 20px;
-                left: 20px;
-                right: 20px;
-                max-height: 25%; /* モバイルでタイトルエリアを少し拡大 */
-            }
-            
-            .slide-content {
-                margin-top: 100px; /* モバイル用に調整 */
-                padding-top: 15px;
-            }
-            
-            .slide p {
-                font-size: 1rem;
-                line-height: 1.5;
-            }
-            
-            .slide ul {
-                font-size: 0.9rem;
-                line-height: 1.6;
-            }
-            
-            .navigation {
-                gap: 10px;
-                margin: 15px 0;
-            }
-            
-            .nav-button {
-                padding: 10px 16px;
-                font-size: 14px;
-            }
-        }
-        
-        /* PC版での横幅制限 */
-        @media (min-width: 769px) {
-            .slide-container {
-                max-width: 1100px; /* PC版では適度に制限 */
+            .slide-list {
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <div class="slide-container" id="slideContainer">
-        <!-- ローディング表示 -->
-        <div class="slide loading" id="loadingSlide">
-            <div class="spinner"></div>
-            <p style="margin-top: 20px;">スライドを読み込み中...</p>
+    <div class="slide-viewer">
+        <div class="slide-frame-container">
+            <iframe id="slide-content" class="slide-frame" src="https://geeorgey.github.io/docs/slide-framework/genai-approach/title.html"></iframe>
+            <div class="slide-controls">
+                <button id="prev-slide"><i class="fas fa-chevron-left"></i></button>
+                <span class="slide-number"><span id="current-slide-num">1</span> / <span id="total-slides"></span></span>
+                <button id="next-slide"><i class="fas fa-chevron-right"></i></button>
+            </div>
         </div>
-        
-        <!-- スライド表示エリア -->
-        <div id="slideContent" style="display: none;"></div>
-        
-        <!-- ナビゲーション -->
-        <div class="navigation" id="navigation" style="display: none;">
-            <button class="nav-button" id="prevButton" onclick="previousSlide()">← 前へ</button>
-            <button class="fullscreen-button" onclick="toggleFullscreen()">全画面</button>
-            <span class="slide-counter" id="slideCounter">1 / 1</span>
-            <button class="nav-button" id="nextButton" onclick="nextSlide()">次へ →</button>
+        <button class="slide-list-toggle" id="slide-list-toggle">スライド一覧</button>
+        <div class="slide-list" id="slide-list">
+            <h2>スライド一覧</h2>
+            <ul id="slide-list-ul"></ul>
         </div>
-        
-        <!-- スライド一覧 -->
-        <div class="slide-overview" id="slideOverview" style="display: none;">
-            <h3>スライド一覧</h3>
-            <div class="slide-grid" id="slideGrid"></div>
-        </div>
-        
-        <!-- 全画面終了ボタン -->
-        <button class="exit-fullscreen" id="exitFullscreen" onclick="exitFullscreen()" style="display: none;">❌</button>
-        
-        <!-- タップエリア（全画面時のナビゲーション） -->
-        <div class="tap-area left" onclick="previousSlide()"></div>
-        <div class="tap-area right" onclick="nextSlide()"></div>
     </div>
 
     <script>
-        let slides = [];
-        let currentSlide = 0;
-        let isFullscreen = false;
-
-        // マークダウンファイルを読み込み
-        async function loadSlides() {
-            try {
-                const response = await fetch('../slide-framework/genai-approach-slides.md');
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+        const slideData = {
+            "title": "リバネスグループにおける生成AIへのアプローチ",
+            "description": "リバネスグループにおける生成AIへのアプローチに関するプレゼンテーションです。",
+            "slides": [
+                {
+                    "id": "title",
+                    "title": "リバネスグループにおける生成AIへのアプローチ",
+                    "file": "title.html"
+                },
+                {
+                    "id": "slack_ai_minutes",
+                    "title": "Slack AI議事録の起動について",
+                    "file": "slack_ai_minutes.html"
+                },
+                {
+                    "id": "profile",
+                    "title": "はじめまして、吉田丈治(George YOSHIDA)です",
+                    "file": "profile.html"
+                },
+                {
+                    "id": "with_vip",
+                    "title": "with VIP",
+                    "file": "with_vip.html"
+                },
+                {
+                    "id": "slack_relationship",
+                    "title": "Slackとの関わり方",
+                    "file": "slack_relationship.html"
+                },
+                {
+                    "id": "lne_knowledge",
+                    "title": "リバネスナレッジの紹介",
+                    "file": "lne_knowledge.html"
+                },
+                {
+                    "id": "lne_knowledge_features",
+                    "title": "リバネスナレッジの特徴は、リバネスの存在にあります",
+                    "file": "lne_knowledge_features.html"
+                },
+                {
+                    "id": "slack_apps",
+                    "title": "提供中のSlackアプリケーション",
+                    "file": "slack_apps.html"
+                },
+                {
+                    "id": "agent_support",
+                    "title": "Agent対応",
+                    "file": "agent_support.html"
+                },
+                {
+                    "id": "genai_approach_title",
+                    "title": "生成AIの取り組みについて",
+                    "file": "genai_approach_title.html"
+                },
+                {
+                    "id": "party_on_slack_2023",
+                    "title": "2023年3月にParty on Slackをリリース",
+                    "file": "party_on_slack_2023.html"
+                },
+                {
+                    "id": "party_on_slack_2024",
+                    "title": "2024年にParty on Slackで実現してきたこと",
+                    "file": "party_on_slack_2024.html"
+                },
+                {
+                    "id": "pompon_application",
+                    "title": "自社プロダクトへの応用",
+                    "file": "pompon_application.html"
+                },
+                {
+                    "id": "pompon_application_2",
+                    "title": "自社プロダクトへの応用",
+                    "file": "pompon_application_2.html"
+                },
+                {
+                    "id": "epoch_making_2024",
+                    "title": "2024年のエポックメイキングな出来事",
+                    "file": "epoch_making_2024.html"
+                },
+                {
+                    "id": "innovation_2025",
+                    "title": "そして大幅な革新が続いている2025年へ突入",
+                    "file": "innovation_2025.html"
+                },
+                {
+                    "id": "chatgpt_claude_notebooklm",
+                    "title": "ChatGPT,ClaudeのプロジェクトおよびNotebookLM",
+                    "file": "chatgpt_claude_notebooklm.html"
+                },
+                {
+                    "id": "voice_dialogue",
+                    "title": "音声対話はもはや見分けがつかない。ただしまだ英語のみ",
+                    "file": "voice_dialogue.html"
+                },
+                {
+                    "id": "operator",
+                    "title": "オペレーター",
+                    "file": "operator.html"
+                },
+                {
+                    "id": "ai_engineer_devin",
+                    "title": "AIエンジニア Devinの採用",
+                    "file": "ai_engineer_devin.html"
+                },
+                {
+                    "id": "mobile_app_rork",
+                    "title": "モバイルアプリ開発 Rork",
+                    "file": "mobile_app_rork.html"
+                },
+                {
+                    "id": "openai_4o_image",
+                    "title": "OpenAIから4o-imageのリリース",
+                    "file": "openai_4o_image.html"
+                },
+                {
+                    "id": "second_me",
+                    "title": "ローカルに自分の分身を Second Me",
+                    "file": "second_me.html"
+                },
+                {
+                    "id": "slack_ai_title",
+                    "title": "Slack AI",
+                    "file": "slack_ai_title.html"
+                },
+                {
+                    "id": "slack_integration_ai",
+                    "title": "Slack連携　＋　Slack AI",
+                    "file": "slack_integration_ai.html"
+                },
+                {
+                    "id": "my_view_on_slack_summary",
+                    "title": "Slackのまとめに対する\"私の\"考え方",
+                    "file": "my_view_on_slack_summary.html"
+                },
+                {
+                    "id": "no_raw_info_thread_summary",
+                    "title": "生の情報を接種しないパターン：スレッドの要約",
+                    "file": "no_raw_info_thread_summary.html"
+                },
+                {
+                    "id": "no_raw_info_channel_summary",
+                    "title": "生の情報を接種しないパターン：チャンネルの要約",
+                    "file": "no_raw_info_channel_summary.html"
+                },
+                {
+                    "id": "language_barrier_broken",
+                    "title": "言語の壁が壊れはじめている",
+                    "file": "language_barrier_broken.html"
+                },
+                {
+                    "id": "why_automate_info_gathering",
+                    "title": "情報収集も自動化したほうがよい理由",
+                    "file": "why_automate_info_gathering.html"
+                },
+                {
+                    "id": "slack_auto_info_gathering",
+                    "title": "Slackには情報収集自動化機能がある",
+                    "file": "slack_auto_info_gathering.html"
+                },
+                {
+                    "id": "summary_before_after",
+                    "title": "まとめBefore/After",
+                    "file": "summary_before_after.html"
+                },
+                {
+                    "id": "first_step_heavy",
+                    "title": "人間は一歩目が一番重い",
+                    "file": "first_step_heavy.html"
+                },
+                {
+                    "id": "abolish_minutes",
+                    "title": "議事録を廃止できないか",
+                    "file": "abolish_minutes.html"
+                },
+                {
+                    "id": "importance_of_draft",
+                    "title": "たたき台がまず作られることの重要性",
+                    "file": "importance_of_draft.html"
+                },
+                {
+                    "id": "ai_minutes_useful",
+                    "title": "AI議事録は使い物になるか？",
+                    "file": "ai_minutes_useful.html"
+                },
+                {
+                    "id": "search_experience_change",
+                    "title": "検索体験が変わっていく",
+                    "file": "search_experience_change.html"
+                },
+                {
+                    "id": "info_extraction_purpose",
+                    "title": "特定の目的を持った情報抽出へ",
+                    "file": "info_extraction_purpose.html"
+                },
+                {
+                    "id": "auto_file_summary",
+                    "title": "ファイルの自動要約",
+                    "file": "auto_file_summary.html"
+                },
+                {
+                    "id": "slack_enterprise_search",
+                    "title": "Slack のエンタープライズサーチが良い",
+                    "file": "slack_enterprise_search.html"
+                },
+                {
+                    "id": "slack_sales_elevate",
+                    "title": "Slack Sales Elevateについて",
+                    "file": "slack_sales_elevate.html"
+                },
+                {
+                    "id": "notify_deal_changes",
+                    "title": "商談の変化をSlackに通知する",
+                    "file": "notify_deal_changes.html"
+                },
+                {
+                    "id": "sales_elevate_good_points",
+                    "title": "Sales Elevateの良いところ",
+                    "file": "sales_elevate_good_points.html"
+                },
+                {
+                    "id": "stop_ai_minutes",
+                    "title": "AI議事録を止めてみましょう",
+                    "file": "stop_ai_minutes.html"
+                },
+                {
+                    "id": "agent_builder_title",
+                    "title": "Agent Builder",
+                    "file": "agent_builder_title.html"
+                },
+                {
+                    "id": "agentforce_two_types",
+                    "title": "Agentforceは2種類存在している",
+                    "file": "agentforce_two_types.html"
+                },
+                {
+                    "id": "japanese_available",
+                    "title": "日本語が選べるようになってました(ついに)",
+                    "file": "japanese_available.html"
+                },
+                {
+                    "id": "new_agentforce_in_slack",
+                    "title": "[New]Agentforce in Slackの活用をスタート",
+                    "file": "new_agentforce_in_slack.html"
+                },
+                {
+                    "id": "internal_case_email",
+                    "title": "社内事例: メール作成に特化したエージェントを設定して呼び出す",
+                    "file": "internal_case_email.html"
+                },
+                {
+                    "id": "agent_actions_slack",
+                    "title": "Slackに関するエージェントアクションが増えていた！",
+                    "file": "agent_actions_slack.html"
+                },
+                {
+                    "id": "ai_minutes_result",
+                    "title": "AI議事録の結果は？",
+                    "file": "ai_minutes_result.html"
+                },
+                {
+                    "id": "thank_you",
+                    "title": "Thank you ！",
+                    "file": "thank_you.html"
                 }
-                const markdown = await response.text();
-                
-                // マークダウンをスライドに分割（---で区切る）
-                const slideTexts = markdown.split('---').filter(slide => slide.trim());
-                
-                // 各スライドをHTMLに変換
-                slides = slideTexts.map(slideText => {
-                    const html = marked.parse(slideText.trim());
-                    return html;
-                });
-                
-                // URLパラメータから開始スライドを取得
-                const urlParams = new URLSearchParams(window.location.search);
-                const slideParam = urlParams.get('slide');
-                if (slideParam) {
-                    const slideNumber = parseInt(slideParam) - 1;
-                    if (slideNumber >= 0 && slideNumber < slides.length) {
-                        currentSlide = slideNumber;
-                    }
+            ]
+        };
+
+        const slideFrame = document.getElementById('slide-content');
+        const currentSlideNumSpan = document.getElementById('current-slide-num');
+        const totalSlidesSpan = document.getElementById('total-slides');
+        const prevSlideBtn = document.getElementById('prev-slide');
+        const nextSlideBtn = document.getElementById('next-slide');
+        const slideListToggle = document.getElementById('slide-list-toggle');
+        const slideList = document.getElementById('slide-list');
+        const slideListUl = document.getElementById('slide-list-ul');
+
+        let currentSlideIndex = 0;
+
+        function updateSlide() {
+            const slide = slideData.slides[currentSlideIndex];
+            slideFrame.src = `https://geeorgey.github.io/docs/slide-framework/genai-approach/${slide.file}`;
+            currentSlideNumSpan.textContent = currentSlideIndex + 1;
+            updateSlideListActiveState();
+            updateUrlParameter();
+        }
+
+        function updateSlideListActiveState() {
+            const listItems = slideListUl.querySelectorAll('li a');
+            listItems.forEach((item, index) => {
+                if (index === currentSlideIndex) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
                 }
-                
-                // スライド表示
-                showSlide(currentSlide);
-                createSlideOverview();
-                
-                // ローディングを非表示にしてコンテンツを表示
-                document.getElementById('loadingSlide').style.display = 'none';
-                document.getElementById('slideContent').style.display = 'block';
-                document.getElementById('navigation').style.display = 'flex';
-                document.getElementById('slideOverview').style.display = 'block';
-                
-            } catch (error) {
-                console.error('スライドの読み込みに失敗しました:', error);
-                document.getElementById('loadingSlide').innerHTML = `
-                    <p style="color: #ef4444;">スライドの読み込みに失敗しました</p>
-                    <p style="font-size: 0.9rem; color: #6b7280;">エラー: ${error.message}</p>
-                `;
-            }
-        }
-
-        // 指定されたスライドを表示
-        function showSlide(index) {
-            if (index < 0 || index >= slides.length) return;
-            
-            currentSlide = index;
-            const slideContentElement = document.getElementById('slideContent');
-            
-            // ローディングクラスを削除
-            slideContentElement.classList.remove('loading');
-            
-            // スライドのHTMLを設定
-            slideContentElement.innerHTML = `<div class="slide" id="currentSlideDiv">${slides[index]}</div>`;
-            
-            // レイアウトを自動判定して適用
-            applyLayout();
-            
-            // ナビゲーションボタンの状態を更新
-            document.getElementById('prevButton').disabled = (index === 0);
-            document.getElementById('nextButton').disabled = (index === slides.length - 1);
-            document.getElementById('slideCounter').textContent = `${index + 1} / ${slides.length}`;
-            
-            // スライド一覧の現在位置を更新
-            updateSlideOverview();
-            
-            // URLを更新
-            const newUrl = new URL(window.location);
-            newUrl.searchParams.set('slide', index + 1);
-            window.history.replaceState({}, '', newUrl);
-            
-            // OGPメタタグを更新
-            updateOGP(index);
-        }
-
-        // レイアウトを自動判定して適用
-        function applyLayout() {
-            const slideDiv = document.getElementById('currentSlideDiv');
-            const slideText = slideDiv.textContent || slideDiv.innerText;
-            const wordCount = slideText.length;
-            
-            // 文字数とキーワードでレイアウトを判定
-            if (wordCount < 100 || slideText.includes('# ')) {
-                // 中表紙レイアウト
-                slideDiv.className = 'slide layout-section';
-            } else if (wordCount > 500) {
-                // 左寄せレイアウト（長文）
-                slideDiv.className = 'slide layout-left';
-            } else {
-                // 中央寄せレイアウト（デフォルト）
-                slideDiv.className = 'slide layout-center';
-            }
-        }
-
-        // スライド一覧を作成
-        function createSlideOverview() {
-            const slideGrid = document.getElementById('slideGrid');
-            slideGrid.innerHTML = '';
-            
-            slides.forEach((slide, index) => {
-                const thumbnail = document.createElement('div');
-                thumbnail.className = 'slide-thumbnail';
-                thumbnail.onclick = () => showSlide(index);
-                
-                // スライドのタイトルを抽出
-                const tempDiv = document.createElement('div');
-                tempDiv.innerHTML = slide;
-                const title = tempDiv.querySelector('h1, h2, h3');
-                thumbnail.textContent = title ? title.textContent : `スライド ${index + 1}`;
-                
-                slideGrid.appendChild(thumbnail);
             });
         }
 
-        // スライド一覧の現在位置を更新
-        function updateSlideOverview() {
-            const thumbnails = document.querySelectorAll('.slide-thumbnail');
-            thumbnails.forEach((thumbnail, index) => {
-                thumbnail.classList.toggle('current', index === currentSlide);
-            });
-        }
-
-        // OGPメタタグを更新
-        function updateOGP(slideIndex) {
-            const slideDiv = document.getElementById('currentSlideDiv');
-            const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = slides[slideIndex];
-            
-            const title = tempDiv.querySelector('h1, h2, h3');
-            const slideTitle = title ? title.textContent : 'スライド';
-            
-            const fullTitle = `${slideTitle} | リバネスグループにおける生成AIへのアプローチ (${slideIndex + 1}/${slides.length})`;
-            const description = `2025年4月4日のプレゼンテーション「リバネスグループにおける生成AIへのアプローチ」のスライド${slideIndex + 1}`;
-            
-            // OGP画像を選択
-            let ogpImage = 'https://geeorgey.github.io/docs/images/ogp-genai-approach-default.png';
-            if (slideIndex === 0) {
-                ogpImage = 'https://geeorgey.github.io/docs/images/ogp-genai-approach-01.png';
-            }
-            
-            // メタタグを更新
-            document.title = fullTitle;
-            document.querySelector('meta[property="og:title"]').content = fullTitle;
-            document.querySelector('meta[property="og:description"]').content = description;
-            document.querySelector('meta[property="og:image"]').content = ogpImage;
-            document.querySelector('meta[name="twitter:title"]').content = fullTitle;
-            document.querySelector('meta[name="twitter:description"]').content = description;
-            document.querySelector('meta[name="twitter:image"]').content = ogpImage;
-        }
-
-        // 前のスライドへ
-        function previousSlide() {
-            if (currentSlide > 0) {
-                showSlide(currentSlide - 1);
-            }
-        }
-
-        // 次のスライドへ
-        function nextSlide() {
-            if (currentSlide < slides.length - 1) {
-                showSlide(currentSlide + 1);
-            }
-        }
-
-        // 全画面表示の切り替え
-        function toggleFullscreen() {
-            if (!isFullscreen) {
-                enterFullscreen();
-            } else {
-                exitFullscreen();
-            }
-        }
-
-        // 全画面表示開始
-        function enterFullscreen() {
-            const container = document.getElementById('slideContainer');
-            container.classList.add('fullscreen');
-            document.getElementById('exitFullscreen').style.display = 'block';
-            
-            // ナビゲーションとスライド一覧を非表示
-            const navigation = document.getElementById('navigation');
-            const slideOverview = document.getElementById('slideOverview');
-            navigation.style.display = 'none';
-            slideOverview.style.display = 'none';
-            
-            isFullscreen = true;
-        }
-
-        // 全画面表示終了
-        function exitFullscreen() {
-            const container = document.getElementById('slideContainer');
-            container.classList.remove('fullscreen');
-            document.getElementById('exitFullscreen').style.display = 'none';
-            
-            // ナビゲーションとスライド一覧を表示
-            const navigation = document.getElementById('navigation');
-            const slideOverview = document.getElementById('slideOverview');
-            navigation.style.display = 'flex';
-            slideOverview.style.display = 'block';
-            
-            isFullscreen = false;
-        }
-
-        // キーボードショートカット
-        document.addEventListener('keydown', function(event) {
-            switch(event.key) {
-                case 'ArrowLeft':
-                    previousSlide();
-                    break;
-                case 'ArrowRight':
-                case ' ':
-                    event.preventDefault();
-                    nextSlide();
-                    break;
-                case 'f':
-                case 'F':
-                    toggleFullscreen();
-                    break;
-                case 'Escape':
-                    if (isFullscreen) {
-                        exitFullscreen();
-                    }
-                    break;
-            }
-        });
-
-        // ブラウザの戻る/進むボタン対応
-        window.addEventListener('popstate', function(event) {
+        function updateUrlParameter() {
             const urlParams = new URLSearchParams(window.location.search);
-            const slideParam = urlParams.get('slide');
-            if (slideParam) {
-                const slideNumber = parseInt(slideParam) - 1;
-                if (slideNumber >= 0 && slideNumber < slides.length) {
-                    showSlide(slideNumber);
-                }
+            urlParams.set('slide', currentSlideIndex + 1);
+            window.history.replaceState({}, '', `${window.location.pathname}?${urlParams}`);
+        }
+
+        prevSlideBtn.addEventListener('click', () => {
+            if (currentSlideIndex > 0) {
+                currentSlideIndex--;
+                updateSlide();
             }
         });
 
-        // ページ読み込み時にスライドを読み込み
-        window.addEventListener('load', loadSlides);
+        nextSlideBtn.addEventListener('click', () => {
+            if (currentSlideIndex < slideData.slides.length - 1) {
+                currentSlideIndex++;
+                updateSlide();
+            }
+        });
+
+        slideListToggle.addEventListener('click', () => {
+            slideList.classList.toggle('open');
+        });
+
+        // Initialize slide list
+        slideData.slides.forEach((slide, index) => {
+            const listItem = document.createElement('li');
+            const link = document.createElement('a');
+            link.href = `#${slide.id}`;
+            link.textContent = `${index + 1}. ${slide.title}`;
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                currentSlideIndex = index;
+                updateSlide();
+                slideList.classList.remove('open');
+            });
+            listItem.appendChild(link);
+            slideListUl.appendChild(listItem);
+        });
+
+        totalSlidesSpan.textContent = slideData.slides.length;
+
+        // Check URL parameter for initial slide
+        const urlParams = new URLSearchParams(window.location.search);
+        const initialSlide = parseInt(urlParams.get('slide'));
+        if (!isNaN(initialSlide) && initialSlide >= 1 && initialSlide <= slideData.slides.length) {
+            currentSlideIndex = initialSlide - 1;
+        }
+
+        updateSlide();
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+                nextSlideBtn.click();
+            } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+                prevSlideBtn.click();
+            } else if (e.key === 'Escape') {
+                slideList.classList.remove('open');
+            }
+        });
     </script>
 </body>
 </html>

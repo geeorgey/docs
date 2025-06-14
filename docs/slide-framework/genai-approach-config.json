@@ -1,16 +1,267 @@
 {
   "title": "リバネスグループにおける生成AIへのアプローチ",
-  "author": "吉田丈治",
-  "date": "2025年4月4日",
-  "event": "生成AIとSlackの活用",
-  "description": "リバネスグループの生成AI活用事例とSlack連携による組織変革の実践",
-  "tags": ["生成AI", "Slack", "AI", "DX", "組織変革", "Agentforce"],
-  "category": "AI",
-  "slideCount": 65,
-  "ogpImages": {
-    "default": "/images/ogp-genai-approach-default.png",
-    "slide1": "/images/ogp-genai-approach-01.png"
-  },
-  "thumbnail": "/images/thumbnail-genai-approach.png"
+  "description": "リバネスグループにおける生成AIへのアプローチに関するプレゼンテーションです。",
+  "slides": [
+    {
+      "id": "title",
+      "title": "リバネスグループにおける生成AIへのアプローチ",
+      "file": "title.html"
+    },
+    {
+      "id": "slack_ai_minutes",
+      "title": "Slack AI議事録の起動について",
+      "file": "slack_ai_minutes.html"
+    },
+    {
+      "id": "profile",
+      "title": "はじめまして、吉田丈治(George YOSHIDA)です",
+      "file": "profile.html"
+    },
+    {
+      "id": "with_vip",
+      "title": "with VIP",
+      "file": "with_vip.html"
+    },
+    {
+      "id": "slack_relationship",
+      "title": "Slackとの関わり方",
+      "file": "slack_relationship.html"
+    },
+    {
+      "id": "lne_knowledge",
+      "title": "リバネスナレッジの紹介",
+      "file": "lne_knowledge.html"
+    },
+    {
+      "id": "lne_knowledge_features",
+      "title": "リバネスナレッジの特徴は、リバネスの存在にあります",
+      "file": "lne_knowledge_features.html"
+    },
+    {
+      "id": "slack_apps",
+      "title": "提供中のSlackアプリケーション",
+      "file": "slack_apps.html"
+    },
+    {
+      "id": "agent_support",
+      "title": "Agent対応",
+      "file": "agent_support.html"
+    },
+    {
+      "id": "genai_approach_title",
+      "title": "生成AIの取り組みについて",
+      "file": "genai_approach_title.html"
+    },
+    {
+      "id": "party_on_slack_2023",
+      "title": "2023年3月にParty on Slackをリリース",
+      "file": "party_on_slack_2023.html"
+    },
+    {
+      "id": "party_on_slack_2024",
+      "title": "2024年にParty on Slackで実現してきたこと",
+      "file": "party_on_slack_2024.html"
+    },
+    {
+      "id": "pompon_application",
+      "title": "自社プロダクトへの応用",
+      "file": "pompon_application.html"
+    },
+    {
+      "id": "pompon_application_2",
+      "title": "自社プロダクトへの応用",
+      "file": "pompon_application_2.html"
+    },
+    {
+      "id": "epoch_making_2024",
+      "title": "2024年のエポックメイキングな出来事",
+      "file": "epoch_making_2024.html"
+    },
+    {
+      "id": "innovation_2025",
+      "title": "そして大幅な革新が続いている2025年へ突入",
+      "file": "innovation_2025.html"
+    },
+    {
+      "id": "chatgpt_claude_notebooklm",
+      "title": "ChatGPT,ClaudeのプロジェクトおよびNotebookLM",
+      "file": "chatgpt_claude_notebooklm.html"
+    },
+    {
+      "id": "voice_dialogue",
+      "title": "音声対話はもはや見分けがつかない。ただしまだ英語のみ",
+      "file": "voice_dialogue.html"
+    },
+    {
+      "id": "operator",
+      "title": "オペレーター",
+      "file": "operator.html"
+    },
+    {
+      "id": "ai_engineer_devin",
+      "title": "AIエンジニア Devinの採用",
+      "file": "ai_engineer_devin.html"
+    },
+    {
+      "id": "mobile_app_rork",
+      "title": "モバイルアプリ開発 Rork",
+      "file": "mobile_app_rork.html"
+    },
+    {
+      "id": "openai_4o_image",
+      "title": "OpenAIから4o-imageのリリース",
+      "file": "openai_4o_image.html"
+    },
+    {
+      "id": "second_me",
+      "title": "ローカルに自分の分身を Second Me",
+      "file": "second_me.html"
+    },
+    {
+      "id": "slack_ai_title",
+      "title": "Slack AI",
+      "file": "slack_ai_title.html"
+    },
+    {
+      "id": "slack_integration_ai",
+      "title": "Slack連携　＋　Slack AI",
+      "file": "slack_integration_ai.html"
+    },
+    {
+      "id": "my_view_on_slack_summary",
+      "title": "Slackのまとめに対する\"私の\"考え方",
+      "file": "my_view_on_slack_summary.html"
+    },
+    {
+      "id": "no_raw_info_thread_summary",
+      "title": "生の情報を接種しないパターン：スレッドの要約",
+      "file": "no_raw_info_thread_summary.html"
+    },
+    {
+      "id": "no_raw_info_channel_summary",
+      "title": "生の情報を接種しないパターン：チャンネルの要約",
+      "file": "no_raw_info_channel_summary.html"
+    },
+    {
+      "id": "language_barrier_broken",
+      "title": "言語の壁が壊れはじめている",
+      "file": "language_barrier_broken.html"
+    },
+    {
+      "id": "why_automate_info_gathering",
+      "title": "情報収集も自動化したほうがよい理由",
+      "file": "why_automate_info_gathering.html"
+    },
+    {
+      "id": "slack_auto_info_gathering",
+      "title": "Slackには情報収集自動化機能がある",
+      "file": "slack_auto_info_gathering.html"
+    },
+    {
+      "id": "summary_before_after",
+      "title": "まとめBefore/After",
+      "file": "summary_before_after.html"
+    },
+    {
+      "id": "first_step_heavy",
+      "title": "人間は一歩目が一番重い",
+      "file": "first_step_heavy.html"
+    },
+    {
+      "id": "abolish_minutes",
+      "title": "議事録を廃止できないか",
+      "file": "abolish_minutes.html"
+    },
+    {
+      "id": "importance_of_draft",
+      "title": "たたき台がまず作られることの重要性",
+      "file": "importance_of_draft.html"
+    },
+    {
+      "id": "ai_minutes_useful",
+      "title": "AI議事録は使い物になるか？",
+      "file": "ai_minutes_useful.html"
+    },
+    {
+      "id": "search_experience_change",
+      "title": "検索体験が変わっていく",
+      "file": "search_experience_change.html"
+    },
+    {
+      "id": "info_extraction_purpose",
+      "title": "特定の目的を持った情報抽出へ",
+      "file": "info_extraction_purpose.html"
+    },
+    {
+      "id": "auto_file_summary",
+      "title": "ファイルの自動要約",
+      "file": "auto_file_summary.html"
+    },
+    {
+      "id": "slack_enterprise_search",
+      "title": "Slack のエンタープライズサーチが良い",
+      "file": "slack_enterprise_search.html"
+    },
+    {
+      "id": "slack_sales_elevate",
+      "title": "Slack Sales Elevateについて",
+      "file": "slack_sales_elevate.html"
+    },
+    {
+      "id": "notify_deal_changes",
+      "title": "商談の変化をSlackに通知する",
+      "file": "notify_deal_changes.html"
+    },
+    {
+      "id": "sales_elevate_good_points",
+      "title": "Sales Elevateの良いところ",
+      "file": "sales_elevate_good_points.html"
+    },
+    {
+      "id": "stop_ai_minutes",
+      "title": "AI議事録を止めてみましょう",
+      "file": "stop_ai_minutes.html"
+    },
+    {
+      "id": "agent_builder_title",
+      "title": "Agent Builder",
+      "file": "agent_builder_title.html"
+    },
+    {
+      "id": "agentforce_two_types",
+      "title": "Agentforceは2種類存在している",
+      "file": "agentforce_two_types.html"
+    },
+    {
+      "id": "japanese_available",
+      "title": "日本語が選べるようになってました(ついに)",
+      "file": "japanese_available.html"
+    },
+    {
+      "id": "new_agentforce_in_slack",
+      "title": "[New]Agentforce in Slackの活用をスタート",
+      "file": "new_agentforce_in_slack.html"
+    },
+    {
+      "id": "internal_case_email",
+      "title": "社内事例: メール作成に特化したエージェントを設定して呼び出す",
+      "file": "internal_case_email.html"
+    },
+    {
+      "id": "agent_actions_slack",
+      "title": "Slackに関するエージェントアクションが増えていた！",
+      "file": "agent_actions_slack.html"
+    },
+    {
+      "id": "ai_minutes_result",
+      "title": "AI議事録の結果は？",
+      "file": "ai_minutes_result.html"
+    },
+    {
+      "id": "thank_you",
+      "title": "Thank you ！",
+      "file": "thank_you.html"
+    }
+  ]
 }
 
