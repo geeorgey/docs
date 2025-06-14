@@ -1,0 +1,39 @@
+{
+  "title": "Salesforceとともに歩んできたDXの具体事例",
+  "author": "吉田丈治",
+  "date": "2025年5月22日",
+  "event": "Salesforce Innovation Day 大阪 DX推進企業の集い",
+  "slideMetadata": [
+    {
+      "id": 1,
+      "title": "Salesforceとともに歩んできたDXの具体事例",
+      "description": "2025年5月22日 Salesforce Innovation Day 大阪でのプレゼンテーション。リバネスグループのDX事例を紹介。",
+      "ogpImage": "ogp-salesforce-dx-default.png"
+    },
+    {
+      "id": 2,
+      "title": "はじめまして、吉田丈治です | Salesforceとともに歩んできたDXの具体事例",
+      "description": "株式会社リバネス取締役CIO、リバネスナレッジ代表取締役社長の吉田丈治による自己紹介。",
+      "ogpImage": "ogp-salesforce-dx-01.png"
+    },
+    {
+      "id": 3,
+      "title": "リバネスについて | Salesforceとともに歩んできたDXの具体事例",
+      "description": "科学技術の発展と地球貢献を実現する研究者集団リバネスの紹介。グローバル展開と多様な専門分野。",
+      "ogpImage": "ogp-salesforce-dx-02.png"
+    },
+    {
+      "id": 4,
+      "title": "with VIP | Salesforceとともに歩んできたDXの具体事例",
+      "description": "Marc Benioff CEOやSlack CEO Deniseとの交流。Salesforceエコシステムでの活動。",
+      "ogpImage": "ogp-salesforce-dx-default.png"
+    },
+    {
+      "id": 5,
+      "title": "Slackアプリ開発・提供 | Salesforceとともに歩んできたDXの具体事例",
+      "description": "Party on Slack、Slack DeepL Translator等、多数のSlackアプリを開発・提供。",
+      "ogpImage": "ogp-salesforce-dx-default.png"
+    }
+  ]
+}
+

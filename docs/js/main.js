@@ -31,6 +31,19 @@ class PresentationArchive {
       // 本来はJSONファイルから読み込むが、デモ用にハードコード
       this.presentations = [
         {
+          id: "salesforce-dx-2025",
+          title: "Salesforceとともに歩んできたDXの具体事例",
+          date: "2025-05-22",
+          company: "株式会社リバネスナレッジ",
+          categories: ["Salesforce", "DX"],
+          tags: ["Salesforce", "DX", "CRM", "Slack", "Innovation", "事例"],
+          thumbnail: "images/thumbnail-salesforce-dx.png",
+          url: "presentations/salesforce-dx.html",
+          pdf: "#",
+          description: "2025年5月22日 Salesforce Innovation Day 大阪でのプレゼンテーション。リバネスグループのSalesforce活用によるDX推進の具体事例と知見を詳しく解説。",
+          slides_count: 50
+        },
+        {
           id: "ai-agent-real-2025",
           title: "AIエージェント実運用のリアル",
           date: "2025-06-02",
