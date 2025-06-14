@@ -31,6 +31,19 @@ class PresentationArchive {
       // 本来はJSONファイルから読み込むが、デモ用にハードコード
       this.presentations = [
         {
+          id: "tdx25-2025",
+          title: "TDX25'と生成AI活用とAIエージェント",
+          date: "2025-03-21",
+          company: "株式会社リバネスナレッジ",
+          categories: ["AI", "Salesforce"],
+          tags: ["TDX", "生成AI", "Agentforce", "Slack", "ChatGPT", "Advanced Voice Mode"],
+          thumbnail: "images/thumbnail-tdx25.png",
+          url: "presentations/tdx25.html",
+          pdf: "#",
+          description: "TDXGG 2025での発表資料。TDX初参加の体験談と生成AI活用、Agentforce in Slackの実践的な活用方法について詳しく解説。",
+          slides_count: 22
+        },
+        {
           id: "genai-approach-2025",
           title: "リバネスグループにおける生成AIへのアプローチ",
           date: "2025-04-04",

@@ -1,0 +1,119 @@
+{
+  "title": "TDX25'と生成AI活用とAIエージェント",
+  "author": "吉田丈治",
+  "date": "2025年3月21日/28日",
+  "event": "TDXGG 2025",
+  "slides": [
+    {
+      "id": 1,
+      "title": "TDX25'と生成AI活用とAIエージェント",
+      "description": "TDXGG 2025でのプレゼンテーション"
+    },
+    {
+      "id": 2,
+      "title": "はじめまして、吉田丈治(George YOSHIDA)です",
+      "description": "プロフィール紹介"
+    },
+    {
+      "id": 3,
+      "title": "Dreamforce 2019 Einstein Keynote",
+      "description": "Dreamforce 2019での基調講演について"
+    },
+    {
+      "id": 4,
+      "title": "宣伝：Salesblazer Community Japan キックオフしました",
+      "description": "Salesblazer Community Japanの紹介"
+    },
+    {
+      "id": 5,
+      "title": "Salesforceとの関わり方",
+      "description": "リバネスグループのSalesforce活用の歴史"
+    },
+    {
+      "id": 6,
+      "title": "日本版のコンサルテーション受けて来た!",
+      "description": "Agentforce Innovation Day Serviceについて"
+    },
+    {
+      "id": 7,
+      "title": "TDXに初参加",
+      "description": "TDX初参加の感想"
+    },
+    {
+      "id": 8,
+      "title": "一番の衝撃は",
+      "description": "Moscone Centerの印象"
+    },
+    {
+      "id": 9,
+      "title": "TDXは良いぞという話",
+      "description": "TDXの魅力について"
+    },
+    {
+      "id": 10,
+      "title": "ハンズオン・ミニハックは自分のPCで",
+      "description": "ハンズオンセッションの参加方法"
+    },
+    {
+      "id": 11,
+      "title": "英語のセッションを深く理解する",
+      "description": "生成AIを活用した英語セッションの理解方法"
+    },
+    {
+      "id": 12,
+      "title": "英語のセッションを深く理解する２",
+      "description": "ChatGPT Advanced Voiceモードの活用"
+    },
+    {
+      "id": 13,
+      "title": "こんな風にセッションを見てました",
+      "description": "セッション参加の実際の様子"
+    },
+    {
+      "id": 14,
+      "title": "ChatGPTにコンテンツにしてもらってしまう",
+      "description": "セッション内容のコンテンツ化"
+    },
+    {
+      "id": 15,
+      "title": "Top 10 Best Practices for Building with Agentforce",
+      "description": "Agentforce構築のベストプラクティス"
+    },
+    {
+      "id": 16,
+      "title": "Top 10 Best Practices for Building with Agentforce",
+      "description": "ベストプラクティスの詳細解説"
+    },
+    {
+      "id": 17,
+      "title": "Agentforceをどうするか",
+      "description": "Agentforce活用の方向性"
+    },
+    {
+      "id": 18,
+      "title": "[New]Agentforce in Slackの活用をスタート",
+      "description": "Slack内でのAgentforce活用"
+    },
+    {
+      "id": 19,
+      "title": "社内事例: メール作成に特化したエージェントを設定して呼び出す",
+      "description": "メール作成エージェントの活用事例"
+    },
+    {
+      "id": 20,
+      "title": "Slackに関するエージェントアクションが増えていた！",
+      "description": "Slackエージェントアクションの拡充"
+    },
+    {
+      "id": 21,
+      "title": "エージェントアクションまとめてみた",
+      "description": "エージェントアクションの整理"
+    },
+    {
+      "id": 22,
+      "title": "Thank you ！",
+      "description": "まとめと連絡先"
+    }
+  ]
+}
+

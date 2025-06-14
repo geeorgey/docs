@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDX25'と生成AI活用とAIエージェント</title>
+    <meta name="description" content="TDXGG 2025での発表資料：TDX25'と生成AI活用とAIエージェント">
+    <meta property="og:title" content="TDX25'と生成AI活用とAIエージェント">
+    <meta property="og:description" content="TDXGG 2025での発表資料：TDX25'と生成AI活用とAIエージェント">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://geeorgey.github.io/docs/presentations/tdx25.html">
+    <meta property="og:image" content="https://geeorgey.github.io/docs/images/ogp/tdx25-default.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TDX25'と生成AI活用とAIエージェント">
+    <meta name="twitter:description" content="TDXGG 2025での発表資料：TDX25'と生成AI活用とAIエージェント">
+    <meta name="twitter:image" content="https://geeorgey.github.io/docs/images/ogp/tdx25-default.png">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .presentation-container {
+            width: 90vw;
+            max-width: 1280px;
+            aspect-ratio: 11/9;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .presentation-container {
+                width: 100vw;
+                border-radius: 0;
+                box-shadow: none;
+            }
+        }
+
+        .slide-content {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .navigation {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px 25px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .slide-counter {
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+        }
+
+        .fullscreen-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border: none;
+            color: white;
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .fullscreen-btn:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: scale(1.1);
+        }
+
+        .slide-overview {
+            position: absolute;
+            top: 20px;
+            right: 80px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .slide-overview:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: translateY(-2px);
+        }
+
+        .overview-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: none;
+            overflow-y: auto;
+            padding: 40px 20px;
+        }
+
+        .overview-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .overview-slide {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            aspect-ratio: 11/9;
+        }
+
+        .overview-slide:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .overview-slide iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            pointer-events: none;
+        }
+
+        .overview-close {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            z-index: 2001;
+            backdrop-filter: blur(10px);
+        }
+
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            font-size: 18px;
+            color: #666;
+        }
+
+        .loading::after {
+            content: '';
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Fullscreen styles */
+        .fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1500;
+            background: black;
+        }
+
+        .fullscreen .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            max-width: none;
+            border-radius: 0;
+            box-shadow: none;
+            aspect-ratio: auto;
+        }
+
+        .fullscreen .navigation {
+            display: none;
+        }
+
+        .fullscreen .slide-overview {
+            display: none;
+        }
+
+        .exit-fullscreen {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border: none;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 1600;
+            backdrop-filter: blur(10px);
+        }
+
+        .tap-area {
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            z-index: 500;
+            cursor: pointer;
+            display: none;
+        }
+
+        .tap-area.left {
+            left: 0;
+        }
+
+        .tap-area.right {
+            right: 0;
+        }
+
+        .fullscreen .tap-area {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container" id="presentationContainer">
+        <div class="slide-content">
+            <div class="loading" id="loadingIndicator">スライドを読み込み中...</div>
+            <iframe class="slide-frame" id="slideFrame" style="display: none;"></iframe>
+        </div>
+        
+        <div class="tap-area left" id="tapLeft"></div>
+        <div class="tap-area right" id="tapRight"></div>
+        
+        <button class="fullscreen-btn" id="fullscreenBtn" title="全画面表示">⛶</button>
+        <button class="slide-overview" id="overviewBtn">スライド一覧</button>
+        
+        <div class="navigation" id="navigation">
+            <button class="nav-btn" id="prevBtn">前へ</button>
+            <div class="slide-counter">
+                <span id="currentSlide">1</span> / <span id="totalSlides">22</span>
+            </div>
+            <button class="nav-btn" id="nextBtn">次へ</button>
+        </div>
+    </div>
+
+    <div class="overview-panel" id="overviewPanel">
+        <button class="overview-close" id="overviewClose">×</button>
+        <div class="overview-content" id="overviewContent"></div>
+    </div>
+
+    <script>
+        const slides = [
+            "title", "profile", "salesblazer_community_japan", "salesforce_relationship",
+            "agentforce_innovation_day", "japan_consultation", "tdx_first_participation",
+            "biggest_impact", "tdx_is_good", "hands_on_pc", "english_session_understanding",
+            "english_session_understanding_2", "how_i_watched_session", "chatgpt_content_creation",
+            "agentforce_best_practices", "agentforce_best_practices_2", "what_about_agentforce",
+            "new_agentforce_in_slack", "internal_case_email", "agent_actions_slack",
+            "agent_actions_summary", "thank_you"
+        ];
+
+        const slideData = {
+            "title": { title: "TDX25'と生成AI活用とAIエージェント", description: "TDXGG 2025での発表資料" },
+            "profile": { title: "はじめまして、吉田丈治(George YOSHIDA)です", description: "自己紹介と経歴" },
+            "salesblazer_community_japan": { title: "宣伝：Salesblazer Community Japan キックオフしました 🎉", description: "Salesblazer Community Japanのキックオフについて" },
+            "salesforce_relationship": { title: "Salesforceとの関わり方", description: "Salesforceとの関わり方と導入製品の変遷" },
+            "agentforce_innovation_day": { title: "@Agentforce Innovation Day Service", description: "Agentforce Innovation Day Serviceについて" },
+            "japan_consultation": { title: "日本版のコンサルテーション受けて来た!", description: "日本版のコンサルテーションについて" },
+            "tdx_first_participation": { title: "TDXに初参加", description: "TDXへの初参加について" },
+            "biggest_impact": { title: "一番の衝撃は", description: "TDXで一番の衝撃" },
+            "tdx_is_good": { title: "TDXは良いぞという話", description: "TDXの利点と注意点" },
+            "hands_on_pc": { title: "ハンズオン・ミニハックは自分のPCで", description: "ハンズオンでのPC利用について" },
+            "english_session_understanding": { title: "英語のセッションを深く理解する", description: "英語セッションの深い理解方法（生成AI活用）" },
+            "english_session_understanding_2": { title: "英語のセッションを深く理解する２", description: "英語セッションの深い理解方法（Advanced Voice Mode）" },
+            "how_i_watched_session": { title: "こんな風にセッションを見てました", description: "セッションの視聴方法" },
+            "chatgpt_content_creation": { title: "ChatGPTにコンテンツにしてもらってしまう", description: "ChatGPTによるコンテンツ作成" },
+            "agentforce_best_practices": { title: "Top 10 Best Practices for Building with Agentforce", description: "Agentforce構築のベストプラクティスTop 10" },
+            "agentforce_best_practices_2": { title: "Top 10 Best Practices for Building with Agentforce", description: "Agentforce構築のベストプラクティスTop 10（続き）" },
+            "what_about_agentforce": { title: "Agentforceをどうするか", description: "Agentforceの今後の展開" },
+            "new_agentforce_in_slack": { title: "[New]Agentforce in Slackの活用をスタート", description: "Agentforce in Slackの活用開始" },
+            "internal_case_email": { title: "社内事例: メール作成に特化したエージェントを設定して呼び出す", description: "社内事例：メール作成に特化したエージェント" },
+            "agent_actions_slack": { title: "Slackに関するエージェントアクションが増えていた！", description: "Slackに関するエージェントアクションの増加" },
+            "agent_actions_summary": { title: "エージェントアクションまとめてみた", description: "エージェントアクションのまとめ" },
+            "thank_you": { title: "Thank you ！", description: "感謝と連絡先情報" }
+        };
+
+        let currentSlideIndex = 0;
+        let isFullscreen = false;
+
+        // URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const slideParam = urlParams.get('slide');
+        if (slideParam) {
+            const slideIndex = parseInt(slideParam) - 1;
+            if (slideIndex >= 0 && slideIndex < slides.length) {
+                currentSlideIndex = slideIndex;
+            }
+        }
+
+        // DOM elements
+        const slideFrame = document.getElementById('slideFrame');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const currentSlideSpan = document.getElementById('currentSlide');
+        const totalSlidesSpan = document.getElementById('totalSlides');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const fullscreenBtn = document.getElementById('fullscreenBtn');
+        const overviewBtn = document.getElementById('overviewBtn');
+        const overviewPanel = document.getElementById('overviewPanel');
+        const overviewClose = document.getElementById('overviewClose');
+        const overviewContent = document.getElementById('overviewContent');
+        const presentationContainer = document.getElementById('presentationContainer');
+        const navigation = document.getElementById('navigation');
+        const tapLeft = document.getElementById('tapLeft');
+        const tapRight = document.getElementById('tapRight');
+
+        // Initialize
+        totalSlidesSpan.textContent = slides.length;
+        showSlide(currentSlideIndex);
+        createOverview();
+
+        // Event listeners
+        prevBtn.addEventListener('click', () => previousSlide());
+        nextBtn.addEventListener('click', () => nextSlide());
+        fullscreenBtn.addEventListener('click', () => toggleFullscreen());
+        overviewBtn.addEventListener('click', () => showOverview());
+        overviewClose.addEventListener('click', () => hideOverview());
+        tapLeft.addEventListener('click', () => previousSlide());
+        tapRight.addEventListener('click', () => nextSlide());
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            switch(e.key) {
+                case 'ArrowLeft':
+                case 'ArrowUp':
+                    e.preventDefault();
+                    previousSlide();
+                    break;
+                case 'ArrowRight':
+                case 'ArrowDown':
+                case ' ':
+                    e.preventDefault();
+                    nextSlide();
+                    break;
+                case 'f':
+                case 'F':
+                    e.preventDefault();
+                    toggleFullscreen();
+                    break;
+                case 'Escape':
+                    if (isFullscreen) {
+                        toggleFullscreen();
+                    } else {
+                        hideOverview();
+                    }
+                    break;
+            }
+        });
+
+        function showSlide(index) {
+            if (index < 0 || index >= slides.length) return;
+            
+            currentSlideIndex = index;
+            const slideId = slides[index];
+            
+            // Show loading
+            loadingIndicator.style.display = 'flex';
+            slideFrame.style.display = 'none';
+            
+            // Update URL
+            const newUrl = new URL(window.location);
+            newUrl.searchParams.set('slide', index + 1);
+            window.history.replaceState({}, '', newUrl);
+            
+            // Update meta tags for OGP
+            updateMetaTags(slideId, index + 1);
+            
+            // Load slide
+            slideFrame.src = `/home/ubuntu/github-docs/docs/slide-framework/tdx25/${slideId}.html`;
+            
+            slideFrame.onload = () => {
+                loadingIndicator.style.display = 'none';
+                slideFrame.style.display = 'block';
+            };
+            
+            slideFrame.onerror = () => {
+                loadingIndicator.innerHTML = 'スライドの読み込みに失敗しました';
+            };
+            
+            // Update UI
+            currentSlideSpan.textContent = index + 1;
+            prevBtn.disabled = index === 0;
+            nextBtn.disabled = index === slides.length - 1;
+        }
+
+        function updateMetaTags(slideId, slideNumber) {
+            const slide = slideData[slideId];
+            if (!slide) return;
+            
+            const title = `${slide.title} | TDX25'と生成AI活用とAIエージェント (${slideNumber}/${slides.length})`;
+            const description = slide.description;
+            const ogImage = `https://geeorgey.github.io/docs/images/ogp/tdx25-${slideId}.png`;
+            
+            document.title = title;
+            document.querySelector('meta[name="description"]').content = description;
+            document.querySelector('meta[property="og:title"]').content = title;
+            document.querySelector('meta[property="og:description"]').content = description;
+            document.querySelector('meta[property="og:image"]').content = ogImage;
+            document.querySelector('meta[name="twitter:title"]').content = title;
+            document.querySelector('meta[name="twitter:description"]').content = description;
+            document.querySelector('meta[name="twitter:image"]').content = ogImage;
+        }
+
+        function previousSlide() {
+            if (currentSlideIndex > 0) {
+                showSlide(currentSlideIndex - 1);
+            }
+        }
+
+        function nextSlide() {
+            if (currentSlideIndex < slides.length - 1) {
+                showSlide(currentSlideIndex + 1);
+            }
+        }
+
+        function toggleFullscreen() {
+            isFullscreen = !isFullscreen;
+            
+            if (isFullscreen) {
+                presentationContainer.classList.add('fullscreen');
+                
+                // Add exit button
+                const exitBtn = document.createElement('button');
+                exitBtn.className = 'exit-fullscreen';
+                exitBtn.textContent = '全画面終了 (ESC)';
+                exitBtn.id = 'exitFullscreenBtn';
+                exitBtn.addEventListener('click', () => toggleFullscreen());
+                document.body.appendChild(exitBtn);
+                
+                // Hide navigation and overview button
+                navigation.style.display = 'none';
+                overviewBtn.style.display = 'none';
+            } else {
+                presentationContainer.classList.remove('fullscreen');
+                
+                // Remove exit button
+                const exitBtn = document.getElementById('exitFullscreenBtn');
+                if (exitBtn) {
+                    exitBtn.remove();
+                }
+                
+                // Show navigation and overview button
+                navigation.style.display = 'flex';
+                overviewBtn.style.display = 'block';
+            }
+        }
+
+        function showOverview() {
+            overviewPanel.style.display = 'block';
+        }
+
+        function hideOverview() {
+            overviewPanel.style.display = 'none';
+        }
+
+        function createOverview() {
+            slides.forEach((slideId, index) => {
+                const slideDiv = document.createElement('div');
+                slideDiv.className = 'overview-slide';
+                slideDiv.addEventListener('click', () => {
+                    hideOverview();
+                    showSlide(index);
+                });
+                
+                const iframe = document.createElement('iframe');
+                iframe.src = `/home/ubuntu/github-docs/docs/slide-framework/tdx25/${slideId}.html`;
+                slideDiv.appendChild(iframe);
+                
+                overviewContent.appendChild(slideDiv);
+            });
+        }
+    </script>
+</body>
+</html>
+

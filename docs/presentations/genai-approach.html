@@ -26,14 +26,20 @@
             margin: 0;
             padding: 20px;
             background: #f8fafc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
         
         .slide-container {
             position: relative;
             background: #f8fafc;
+            width: 100%;
+            max-width: 1100px; /* 11:9の比率を考慮した最大幅 */
         }
         
-        /* 基本スライドスタイル */
+        /* 基本スライドスタイル - 11:9の縦横比 */
         .slide {
             background: linear-gradient(135deg, #1e40af 0%, #f97316 100%);
             color: white;
@@ -41,7 +47,7 @@
             border-radius: 12px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             margin: 20px 0;
-            min-height: 500px;
+            aspect-ratio: 11 / 9; /* 11:9の縦横比を設定 */
             display: flex;
             flex-direction: column;
             position: relative;
@@ -56,19 +62,23 @@
             left: 40px;
             right: 40px;
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: bold;
             line-height: 1.2;
             text-align: left;
             z-index: 10;
+            height: auto;
+            max-height: 20%; /* タイトルエリアの最大高さを制限 */
         }
         
-        /* コンテンツエリア - タイトル下に配置 */
+        /* コンテンツエリア - タイトル下に適切に配置 */
         .slide-content {
-            margin-top: 120px; /* タイトル分の余白 */
+            margin-top: 140px; /* タイトル分の余白を増加 */
+            padding-top: 20px; /* 追加の余白 */
             flex: 1;
             display: flex;
             flex-direction: column;
+            overflow-y: auto; /* 必要に応じてスクロール */
         }
         
         /* レイアウトパターン1: 中央寄せ（デフォルト） */
@@ -357,15 +367,21 @@
             display: block;
         }
         
-        /* レスポンシブ */
+        /* レスポンシブ対応 */
         @media (max-width: 768px) {
             body {
                 padding: 10px;
+                align-items: flex-start; /* モバイルでは上寄せ */
+            }
+            
+            .slide-container {
+                max-width: 100%; /* モバイルではフルサイズ */
             }
             
             .slide {
                 padding: 20px;
-                min-height: 400px;
+                aspect-ratio: 11 / 9; /* モバイルでも11:9を維持 */
+                margin: 10px 0;
             }
             
             .slide h1,
@@ -374,51 +390,39 @@
                 top: 20px;
                 left: 20px;
                 right: 20px;
+                max-height: 25%; /* モバイルでタイトルエリアを少し拡大 */
             }
             
             .slide-content {
-                margin-top: 80px;
+                margin-top: 100px; /* モバイル用に調整 */
+                padding-top: 15px;
             }
             
             .slide p {
                 font-size: 1rem;
+                line-height: 1.5;
             }
             
             .slide ul {
                 font-size: 0.9rem;
+                line-height: 1.6;
             }
             
             .navigation {
                 gap: 10px;
+                margin: 15px 0;
             }
             
             .nav-button {
-                padding: 8px 16px;
+                padding: 10px 16px;
                 font-size: 14px;
             }
-            
-            .slide-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-                gap: 10px;
-            }
-            
-            .fullscreen .slide {
-                width: 95vw;
-                height: 95vh;
-                font-size: 1.2rem;
-            }
-            
-            .fullscreen .slide h1,
-            .fullscreen .slide h2 {
-                font-size: 2.5rem;
-            }
-            
-            .fullscreen .slide p {
-                font-size: 1.4rem;
-            }
-            
-            .fullscreen .slide ul {
-                font-size: 1.2rem;
+        }
+        
+        /* PC版での横幅制限 */
+        @media (min-width: 769px) {
+            .slide-container {
+                max-width: 1100px; /* PC版では適度に制限 */
             }
         }
     </style>
