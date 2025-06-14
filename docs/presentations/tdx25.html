@@ -260,7 +260,7 @@
     <div class="presentation-container" id="presentation-container">
         <div class="slide-viewer">
             <div class="slide-frame">
-                <iframe id="slide-content" class="slide-content" src="../slide-framework/tdx25/title.html"></iframe>
+                <iframe id="slide-content" class="slide-content" src="https://geeorgey.github.io/docs/slide-framework/tdx25/title.html"></iframe>
             </div>
             <div class="controls">
                 <button class="control-btn" id="prev-btn" onclick="previousSlide()">
@@ -357,7 +357,7 @@
             const slide = slides[index];
             
             // スライドを表示
-            document.getElementById('slide-content').src = `slide-framework/tdx25/${slide.file}`;
+            document.getElementById("slide-content").src = `https://geeorgey.github.io/docs/slide-framework/tdx25/${slide.file}`;
             
             // カウンターを更新
             document.getElementById('current-slide').textContent = index + 1;
