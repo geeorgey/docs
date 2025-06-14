@@ -1,0 +1,38 @@
+{
+  "title": "TDX25’と生成AI活用とAIエージェント",
+  "event": "TDXGG 2025",
+  "date": "2025-03-21",
+  "company": "株式会社リバネスナレッジ",
+  "categories": ["AI", "Salesforce"],
+  "tags": ["TDX", "生成AI", "Agentforce", "Slack", "ChatGPT", "Advanced Voice Mode"],
+  "thumbnail": "images/thumbnail-tdx25.png",
+  "url": "presentations/tdx25.html",
+  "pdf": "#",
+  "description": "TDXGG 2025での発表資料。TDX初参加の体験談と生成AI活用、Agentforce in Slackの実践的な活用方法について詳しく解説。",
+  "slides_count": 22,
+  "slides": [
+    "title",
+    "profile",
+    "salesblazer_community_japan",
+    "salesforce_relationship",
+    "agentforce_innovation_day",
+    "japan_consultation",
+    "tdx_first_participation",
+    "biggest_impact",
+    "tdx_is_good",
+    "hands_on_pc",
+    "english_session_understanding",
+    "english_session_understanding_2",
+    "how_i_watched_session",
+    "chatgpt_content_creation",
+    "agentforce_best_practices",
+    "agentforce_best_practices_2",
+    "what_about_agentforce",
+    "new_agentforce_in_slack",
+    "internal_case_email",
+    "agent_actions_slack",
+    "agent_actions_summary",
+    "thank_you"
+  ]
+}
+
