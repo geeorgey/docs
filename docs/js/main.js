@@ -31,17 +31,17 @@ class PresentationArchive {
       // 本来はJSONファイルから読み込むが、デモ用にハードコード
       this.presentations = [
         {
-          id: "salesforce-dx-2025",
-          title: "Salesforceとともに歩んできたDXの具体事例",
-          date: "2025-05-22",
+          id: "salesforce-11th-year-2025",
+          title: "Salesforce11年目に思っていること",
+          date: "2025-06-06",
           company: "株式会社リバネスナレッジ",
-          categories: ["Salesforce", "DX"],
-          tags: ["Salesforce", "DX", "CRM", "Slack", "Innovation", "事例"],
-          thumbnail: "images/thumbnail-salesforce-dx.png",
-          url: "presentations/salesforce-dx.html",
+          categories: ["Salesforce", "リーダーシップ"],
+          tags: ["Salesforce", "振り返り", "IT戦略", "組織変革"],
+          thumbnail: "images/slides/salesforce-11years-thumbnail.png",
+          url: "presentations/salesforce-11years.html",
           pdf: "#",
-          description: "2025年5月22日 Salesforce Innovation Day 大阪でのプレゼンテーション。リバネスグループのSalesforce活用によるDX推進の具体事例と知見を詳しく解説。",
-          slides_count: 50
+          description: "Salesforce導入から11年目を迎えて、これまでの取り組みと今後の展望について考察したプレゼンテーション。組織のDX推進における学びと課題を共有。",
+          slides_count: 33
         },
         {
           id: "ai-agent-real-2025",
@@ -57,17 +57,17 @@ class PresentationArchive {
           slides_count: 13
         },
         {
-          id: "salesforce-11th-year-2025",
-          title: "Salesforce11年目に思っていること",
-          date: "2025-06-06",
+          id: "salesforce-dx-2025",
+          title: "Salesforceとともに歩んできたDXの具体事例",
+          date: "2025-05-22",
           company: "株式会社リバネスナレッジ",
-          categories: ["Salesforce", "リーダーシップ"],
-          tags: ["Salesforce", "振り返り", "IT戦略", "組織変革"],
-          thumbnail: "images/slides/salesforce-11years-thumbnail.png",
-          url: "presentations/salesforce-11years.html",
+          categories: ["Salesforce", "DX"],
+          tags: ["Salesforce", "DX", "CRM", "Slack", "Innovation", "事例"],
+          thumbnail: "images/thumbnail-salesforce-dx.png",
+          url: "presentations/salesforce-dx.html",
           pdf: "#",
-          description: "Salesforce導入から11年目を迎えて、これまでの取り組みと今後の展望について考察したプレゼンテーション。組織のDX推進における学びと課題を共有。",
-          slides_count: 33
+          description: "2025年5月22日 Salesforce Innovation Day 大阪でのプレゼンテーション。リバネスグループのSalesforce活用によるDX推進の具体事例と知見を詳しく解説。",
+          slides_count: 50
         }
       ];
       

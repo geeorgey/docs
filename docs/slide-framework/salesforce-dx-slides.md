@@ -11,10 +11,6 @@ event: "Salesforce Innovation Day 大阪 DX推進企業の集い"
 株式会社リバネスナレッジ 代表取締役社長  
 吉田丈治
 
-最後にも見せます  
-今日の資料  
-http://Lne.st/
-
 ---
 
 ## はじめまして、吉田丈治(George YOSHIDA)です
