@@ -31,6 +31,19 @@ class PresentationArchive {
       // 本来はJSONファイルから読み込むが、デモ用にハードコード
       this.presentations = [
         {
+          id: "growth-mindset-2025",
+          title: "勝手に成長するということの重要性について",
+          date: "2025-06-12",
+          company: "株式会社リバネスナレッジ",
+          categories: ["成長戦略", "組織運営"],
+          tags: ["成長戦略", "ツール選択", "組織運営", "DX", "AI", "Salesforce", "Slack"],
+          thumbnail: "images/thumbnail-growth-mindset.png",
+          url: "presentations/growth-mindset.html",
+          pdf: "#",
+          description: "組織とツールの成長戦略について考える。Salesforce、AI、コミュニケーションツールの選択が組織のキャパシティを決める重要性を解説したnoteブログをプレゼンテーション形式で再構成。",
+          slides_count: 22
+        },
+        {
           id: "salesforce-11th-year-2025",
           title: "Salesforce11年目に思っていること",
           date: "2025-06-06",
