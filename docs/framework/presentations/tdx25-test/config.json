@@ -1,0 +1,198 @@
+{
+  "id": "tdx25-test",
+  "title": "TDX25'と生成AI活用とAIエージェント",
+  "template": "business",
+  "theme": "default",
+  "author": "吉田丈治(George YOSHIDA)",
+  "date": "2025-03-21",
+  "description": "TDXGG 2025での発表資料。TDX初参加の体験談と生成AI活用、Agentforce in Slackの実践的な活用方法について詳しく解説。",
+  "aspectRatio": "11:9",
+  "ogp": {
+    "image": "/docs/images/ogp/tdx25-test-default.png",
+    "type": "website"
+  },
+  "navigation": {
+    "showSidebar": true,
+    "showControls": true,
+    "enableKeyboard": true,
+    "enableFullscreen": true
+  },
+  "slides": [
+    {
+      "id": "slide-1",
+      "title": "TDX25'と生成AI活用とAIエージェント",
+      "template": "title",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-2",
+      "title": "はじめまして、吉田丈治(George YOSHIDA)です",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-3",
+      "title": "宣伝：Salesblazer Community Japan キックオフしました 🎉",
+      "template": "section",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-4",
+      "title": "Salesforceとの関わり方",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-5",
+      "title": "@Agentforce Innovation Day Service",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-6",
+      "title": "TDXに初参加",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-7",
+      "title": "一番の衝撃は",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-8",
+      "title": "TDXは良いぞという話",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-9",
+      "title": "英語なんて怖くない！",
+      "template": "section",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-10",
+      "title": "英語のセッションを深く理解する",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-11",
+      "title": "英語のセッションを深く理解する２",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-12",
+      "title": "こんな風にセッションを見てました",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-13",
+      "title": "ChatGPTにコンテンツにしてもらってしまう",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-14",
+      "title": "Top 10 Best Practices for Building with Agentforce",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-15",
+      "title": "Top 10 Best Practices for Building with Agentforce (続き)",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-16",
+      "title": "Agentforceをどうするか",
+      "template": "section",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-17",
+      "title": "[New]Agentforce in Slackの活用をスタート",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-18",
+      "title": "社内事例: メール作成に特化したエージェントを設定して呼び出す",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-19",
+      "title": "Slackに関するエージェントアクションが増えていた！",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-20",
+      "title": "エージェントアクションまとめてみた",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-21",
+      "title": "Thank you ！",
+      "template": "title",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-22",
+      "title": "",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    }
+  ]
+}

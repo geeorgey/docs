@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プレゼンテーション一覧</title>
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 50px;
+            font-weight: 700;
+        }
+        
+        .presentation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .presentation-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .presentation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .presentation-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        .presentation-meta {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 15px;
+        }
+        
+        .presentation-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .presentation-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .template-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+        
+        .framework-info {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .framework-info h2 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        
+        .framework-info p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 プレゼンテーション一覧</h1>
+        
+        <div class="framework-info">
+            <h2>📋 新しいプレゼンテーションフレームワーク</h2>
+            <p>Markdownから動的にプレゼンテーションを生成する新しいフレームワークを導入しました。</p>
+            <p>既存のプレゼンテーションも新しいフレームワークで表示できるようになりました。</p>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">テンプレート</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">2</span>
+                    <span class="stat-label">移行済みプレゼンテーション</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">レスポンシブ対応</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="presentation-grid">
+            <!-- TDX25 プレゼンテーション -->
+            <div class="presentation-card">
+                <div class="presentation-title">
+                    TDX25'と生成AI活用とAIエージェント
+                    <span class="template-badge">Business</span>
+                </div>
+                <div class="presentation-meta">
+                    作成者: 吉田丈治(George YOSHIDA) | 日付: 2025-03-21 | イベント: TDXGG 2025
+                </div>
+                <div class="presentation-description">
+                    TDXGG 2025での発表資料。TDX初参加の体験談と生成AI活用、Agentforce in Slackの実践的な活用方法について詳しく解説。
+                </div>
+                <div class="presentation-links">
+                    <a href="/presentations/tdx25-test.html" class="btn">📺 プレゼンテーション表示</a>
+                    <a href="/framework/presentations/tdx25-framework-test/slides.md" class="btn btn-secondary">📝 Markdownソース</a>
+                </div>
+            </div>
+            
+            <!-- genai-approach プレゼンテーション -->
+            <div class="presentation-card">
+                <div class="presentation-title">
+                    リバネスグループにおける生成AIへのアプローチ
+                    <span class="template-badge">Technical</span>
+                </div>
+                <div class="presentation-meta">
+                    作成者: 吉田丈治 | 日付: 2025-04-04 | イベント: 生成AIとSlackの活用
+                </div>
+                <div class="presentation-description">
+                    生成AIとSlackの活用について、リバネスグループでの実践的な取り組みを詳しく解説。Party on SlackやAgentforce in Slackの活用事例を紹介。
+                </div>
+                <div class="presentation-links">
+                    <a href="/presentations/genai-approach.html" class="btn">📺 プレゼンテーション表示</a>
+                    <a href="/framework/presentations/genai-approach/slides.md" class="btn btn-secondary">📝 Markdownソース</a>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 50px;">
+            <h2>🛠️ フレームワーク情報</h2>
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px;">
+                <a href="/framework/" class="btn">🔧 フレームワーク詳細</a>
+                <a href="/framework/presentation-generator.js" class="btn btn-secondary">⚙️ 生成ツール</a>
+                <a href="/" class="btn btn-secondary">🏠 ホームに戻る</a>
+            </div>
+        </div>
+        
+        <div style="margin-top: 50px; text-align: center; opacity: 0.8;">
+            <p>🚀 Markdownから美しいプレゼンテーションを簡単に作成</p>
+            <p>💡 複数テンプレート対応で用途に応じたデザイン選択可能</p>
+            <p>📱 PC・モバイル両対応のレスポンシブデザイン</p>
+        </div>
+    </div>
+</body>
+</html>
+

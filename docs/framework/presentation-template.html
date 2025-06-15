@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>リバネスグループにおける生成AIへのアプローチ</title>
-    <meta name="description" content="生成AIとSlackの活用について、リバネスグループでの実践的な取り組みを詳しく解説">
-    <meta property="og:title" content="リバネスグループにおける生成AIへのアプローチ">
-    <meta property="og:description" content="生成AIとSlackの活用について、リバネスグループでの実践的な取り組みを詳しく解説">
-    <meta property="og:image" content="/docs/images/ogp/genai-approach-default.png">
+    <title>{{title}}</title>
+    <meta name="description" content="{{description}}">
+    <meta property="og:title" content="{{title}}">
+    <meta property="og:description" content="{{description}}">
+    <meta property="og:image" content="{{ogImage}}">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://geeorgey.github.io/docs/presentations/genai-approach.html">
+    <meta property="og:url" content="{{url}}">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="リバネスグループにおける生成AIへのアプローチ">
-    <meta name="twitter:description" content="生成AIとSlackの活用について、リバネスグループでの実践的な取り組みを詳しく解説">
-    <meta name="twitter:image" content="/docs/images/ogp/genai-approach-default.png">
+    <meta name="twitter:title" content="{{title}}">
+    <meta name="twitter:description" content="{{description}}">
+    <meta name="twitter:image" content="{{ogImage}}">
     
     <!-- 外部ライブラリ -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -21,10 +21,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     
     <!-- フレームワークCSS -->
-    <link href="/docs/framework/themes/default.css" rel="stylesheet">
+    <link href="/docs/framework/themes/{{theme}}.css" rel="stylesheet">
     
     <!-- カスタムCSS（オプション） -->
-    
+    {{#customCSS}}
+    <link href="{{customCSS}}" rel="stylesheet">
+    {{/customCSS}}
 </head>
 <body>
     <!-- プレゼンテーションコンテナはJavaScriptで動的に生成 -->
@@ -40,7 +42,9 @@
     <script src="https://cdn.jsdelivr.net/npm/marked@4.3.0/marked.min.js"></script>
     
     <!-- カスタムJavaScript（オプション） -->
-    
+    {{#customJS}}
+    <script src="{{customJS}}"></script>
+    {{/customJS}}
     
     <style>
         /* ローディング画面 */

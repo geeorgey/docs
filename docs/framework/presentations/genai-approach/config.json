@@ -1,0 +1,438 @@
+{
+  "id": "genai-approach",
+  "title": "リバネスグループにおける生成AIへのアプローチ",
+  "template": "technical",
+  "theme": "default",
+  "author": "吉田丈治",
+  "date": "2025-04-04",
+  "description": "生成AIとSlackの活用について、リバネスグループでの実践的な取り組みを詳しく解説",
+  "aspectRatio": "11:9",
+  "ogp": {
+    "image": "/docs/images/ogp/genai-approach-default.png",
+    "type": "website"
+  },
+  "navigation": {
+    "showSidebar": true,
+    "showControls": true,
+    "enableKeyboard": true,
+    "enableFullscreen": true
+  },
+  "slides": [
+    {
+      "id": "slide-1",
+      "title": "リバネスグループにおける生成AIへのアプローチ",
+      "template": "title",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-2",
+      "title": "Slack AI議事録を起動します",
+      "template": "section",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-3",
+      "title": "はじめまして、吉田丈治(George YOSHIDA)です",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-4",
+      "title": "with VIP",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-5",
+      "title": "Slackとの関わり方",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-6",
+      "title": "リバネスナレッジの紹介",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-7",
+      "title": "リバネスナレッジの特徴は、リバネスの存在にあります",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-8",
+      "title": "提供中のSlackアプリケーション",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-9",
+      "title": "Agent対応",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-10",
+      "title": "生成AIの取り組みについて",
+      "template": "section",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-11",
+      "title": "2023年3月にParty on Slackをリリース",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-12",
+      "title": "2024年にParty on Slackで実現してきたこと",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-13",
+      "title": "自社プロダクトへの応用",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-14",
+      "title": "自社プロダクトへの応用",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-15",
+      "title": "2024年のエポックメイキングな出来事",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-16",
+      "title": "そして大幅な革新が続いている2025年へ突入",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-17",
+      "title": "ChatGPT,ClaudeのプロジェクトおよびNotebookLM",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-18",
+      "title": "音声対話はもはや見分けがつかない。ただしまだ英語のみ",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-19",
+      "title": "オペレーター",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-20",
+      "title": "AIエンジニア Devinの採用",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-21",
+      "title": "モバイルアプリ開発 Rork",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-22",
+      "title": "OpenAIから4o-imageのリリース",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-23",
+      "title": "ローカルに自分の分身を Second Me",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-24",
+      "title": "Slack AI",
+      "template": "section",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-25",
+      "title": "Slack連携　＋　Slack AI",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-26",
+      "title": "Slackのまとめに対する\"私の\"考え方",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-27",
+      "title": "生の情報を接種しないパターン：スレッドの要約",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-28",
+      "title": "生の情報を接種しないパターン：チャンネルの要約",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-29",
+      "title": "言語の壁が壊れはじめている",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-30",
+      "title": "情報収集も自動化したほうがよい理由",
+      "template": "section",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-31",
+      "title": "Slackには情報収集自動化機能がある",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-32",
+      "title": "まとめBefore/After",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-33",
+      "title": "人間は一歩目が一番重い",
+      "template": "section",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-34",
+      "title": "議事録を廃止できないか",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-35",
+      "title": "たたき台がまず作られることの重要性",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-36",
+      "title": "AI議事録は使い物になるか？",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-37",
+      "title": "検索体験が変わっていく",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-38",
+      "title": "特定の目的を持った情報抽出へ",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-39",
+      "title": "ファイルの自動要約",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-40",
+      "title": "Slack のエンタープライズサーチが良い",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-41",
+      "title": "Slack Sales Elevateについて",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-42",
+      "title": "商談の変化をSlackに通知する",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-43",
+      "title": "Sales Elevateの良いところ",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-44",
+      "title": "AI議事録を止めてみましょう",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-45",
+      "title": "Agent Builder",
+      "template": "section",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-46",
+      "title": "Agentforceは2種類存在している",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-47",
+      "title": "日本語が選べるようになってました(ついに)",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-48",
+      "title": "[New]Agentforce in Slackの活用をスタート",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-49",
+      "title": "社内事例: メール作成に特化したエージェントを設定して呼び出す",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-50",
+      "title": "Slackに関するエージェントアクションが増えていた！",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-51",
+      "title": "AI議事録の結果は？",
+      "template": "content",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    },
+    {
+      "id": "slide-52",
+      "title": "Thank you ！",
+      "template": "title",
+      "layout": "center",
+      "image": null,
+      "notes": ""
+    }
+  ]
+}

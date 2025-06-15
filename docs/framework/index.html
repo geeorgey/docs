@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プレゼンテーションフレームワーク テスト</title>
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+        
+        .status {
+            font-size: 1.5rem;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+        
+        .success {
+            background: rgba(46, 204, 113, 0.3);
+            border: 2px solid #2ecc71;
+        }
+        
+        .error {
+            background: rgba(231, 76, 60, 0.3);
+            border: 2px solid #e74c3c;
+        }
+        
+        .feature-list {
+            text-align: left;
+            margin: 30px 0;
+        }
+        
+        .feature-list li {
+            margin: 10px 0;
+            font-size: 1.2rem;
+        }
+        
+        .feature-list li::before {
+            content: '✅ ';
+            margin-right: 10px;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            margin: 10px;
+            transition: background 0.3s;
+        }
+        
+        .button:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 プレゼンテーションフレームワーク</h1>
+        
+        <div class="status success">
+            <strong>✅ フレームワーク構築完了</strong>
+        </div>
+        
+        <h2>📋 実装済み機能</h2>
+        <ul class="feature-list">
+            <li>Markdownからプレゼンテーション生成</li>
+            <li>複数テンプレートシステム（Business, Technical, Minimal）</li>
+            <li>YAMLフロントマター対応</li>
+            <li>レスポンシブデザイン</li>
+            <li>動的OGP設定</li>
+            <li>11:9縦横比対応</li>
+            <li>プレゼンテーション生成ツール</li>
+        </ul>
+        
+        <h2>🛠️ 利用可能なテンプレート</h2>
+        <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin: 20px 0;">
+            <div style="background: rgba(52, 73, 94, 0.8); padding: 20px; border-radius: 10px; min-width: 200px;">
+                <h3>Business</h3>
+                <p>ビジネス向けプレゼンテーション</p>
+            </div>
+            <div style="background: rgba(231, 76, 60, 0.8); padding: 20px; border-radius: 10px; min-width: 200px;">
+                <h3>Technical</h3>
+                <p>技術発表・勉強会向け</p>
+            </div>
+            <div style="background: rgba(149, 165, 166, 0.8); padding: 20px; border-radius: 10px; min-width: 200px;">
+                <h3>Minimal</h3>
+                <p>ミニマルデザイン</p>
+            </div>
+        </div>
+        
+        <h2>📖 使用方法</h2>
+        <div style="text-align: left; background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 10px; margin: 20px 0;">
+            <pre style="color: #f8f8f2; font-family: 'Fira Code', monospace;">
+# Markdownファイルを作成
+---
+title: "プレゼンテーションタイトル"
+template: "business"
+author: "作成者名"
+---
+
+# スライド1
+<!-- template: title -->
+タイトルスライドの内容
+
+---
+
+# スライド2
+<!-- template: content -->
+<!-- layout: center -->
+通常のコンテンツスライド
+            </pre>
+        </div>
+        
+        <div style="text-align: left; background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 10px; margin: 20px 0;">
+            <pre style="color: #f8f8f2; font-family: 'Fira Code', monospace;">
+# プレゼンテーション生成
+node presentation-generator.js slides.md --template business
+            </pre>
+        </div>
+        
+        <div style="margin-top: 40px;">
+            <a href="/docs/presentations/" class="button">📁 プレゼンテーション一覧</a>
+            <a href="/docs/framework/" class="button">🔧 フレームワーク詳細</a>
+        </div>
+        
+        <div style="margin-top: 30px; font-size: 0.9rem; opacity: 0.8;">
+            <p>🚀 Markdownから美しいプレゼンテーションを簡単に作成</p>
+            <p>💡 複数テンプレート対応で用途に応じたデザイン選択可能</p>
+        </div>
+    </div>
+</body>
+</html>
+
