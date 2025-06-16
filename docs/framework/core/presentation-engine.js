@@ -18,6 +18,9 @@ class PresentationEngine {
         this.slides = [];
         this.metadata = {};
         this.isFullscreen = false;
+        this.presentationId = null;
+        this.markdownPath = null;
+        this.markdownViewerUrl = null;
         
         this.init();
     }
@@ -117,6 +120,9 @@ class PresentationEngine {
             // プレゼンテーションIDをURLから取得
             const pathParts = window.location.pathname.split('/');
             const presentationId = pathParts[pathParts.length - 1].replace('.html', '');
+            this.presentationId = presentationId;
+            this.markdownPath = `/docs/framework/presentations/${presentationId}/slides.md`;
+            this.markdownViewerUrl = `/docs/markdown-viewer.html?file=${this.markdownPath}`;
             
             // 設定ファイルを読み込み
             const configResponse = await fetch(`/framework/presentations/${presentationId}/config.json`);
@@ -330,6 +336,7 @@ class PresentationEngine {
                     </div>
                     <div class="controls">
                         <button class="control-btn" id="prev-btn" onclick="presentationEngine.previousSlide()">← 前へ</button>
+                        <a class="control-btn" id="markdown-btn" href="${this.markdownViewerUrl}" target="_blank" rel="noopener">📝 Markdown</a>
                         <button class="control-btn fullscreen-btn" onclick="presentationEngine.toggleFullscreen()">🔍 全画面</button>
                         <button class="control-btn" id="next-btn" onclick="presentationEngine.nextSlide()">次へ →</button>
                     </div>
