@@ -235,6 +235,7 @@ body {
     transition: all 0.3s ease;
     font-size: 18px;
     color: var(--text-color);
+    text-decoration: none;
 }
 
 .control-btn:hover {
@@ -584,6 +585,9 @@ body {
     font-weight: 500;
     width: auto;
     height: auto;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
 }
 
 .controls .control-btn:hover {
