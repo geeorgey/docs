@@ -119,13 +119,13 @@ class PresentationEngine {
             const presentationId = pathParts[pathParts.length - 1].replace('.html', '');
             
             // 設定ファイルを読み込み
-            const configResponse = await fetch(`${this.config.baseUrl}/presentations/${presentationId}/config.json`);
+            const configResponse = await fetch(`/framework/presentations/${presentationId}/config.json`);
             if (configResponse.ok) {
                 const config = await configResponse.json();
                 this.metadata = config;
                 
                 // Markdownファイルを読み込み
-                const markdownResponse = await fetch(`${this.config.baseUrl}/presentations/${presentationId}/slides.md`);
+                const markdownResponse = await fetch(`/docs/framework/presentations/${presentationId}/slides.md`);
                 if (markdownResponse.ok) {
                     const markdownContent = await markdownResponse.text();
                     this.slides = this.parseMarkdown(markdownContent);
