@@ -38,9 +38,9 @@ class PresentationArchive {
           categories: ["AI", "Salesforce"],
           tags: ["TDX", "生成AI", "Agentforce", "Slack", "ChatGPT", "Advanced Voice Mode"],
           thumbnail: "images/thumbnail-tdx25.png",
-                 url: "/docs/presentations/tdx25-test.html",
+          url: "presentations/tdx25-test.html",
           pdf: "#",
-          markdown: "/docs/markdown-viewer.html?file=/framework/presentations/tdx25-framework-test/slides.md",lides.md",slides.md",des.md",
+          markdown: "markdown-viewer.html?file=/framework/presentations/tdx25-framework-test/slides.md",
           description: "TDXGG 2025での発表資料。TDX初参加の体験談と生成AI活用、Agentforce in Slackの実践的な活用方法について詳しく解説。",
           slides_count: 22
         },
@@ -52,32 +52,48 @@ class PresentationArchive {
           categories: ["AI", "Slack"],
           tags: ["生成AI", "Slack", "AI", "DX", "組織変革", "Agentforce", "ChatGPT", "Party on Slack"],
           thumbnail: "images/thumbnail-genai-approach.png",
-          url: "/docs/presentations/genai-approach.html",
+          url: "presentations/genai-approach.html",
           pdf: "#",
-          markdown: "/docs/markdown-viewer.html?file=/framework/presentations/genai-approach/slides.md",
+          markdown: "markdown-viewer.html?file=/framework/presentations/genai-approach/slides.md",
           description: "リバネスグループの生成AI活用事例とSlack連携による組織変革の実践。Party on SlackからSlack AI、Agentforceまでの取り組みを詳しく解説。",
           slides_count: 65
         },
-                url: "presentations/growth-mindset.html",
+        {
+          id: "growth-mindset-2025",
+          title: "成長マインドセット",
+          date: "2025-05-15",
+          company: "株式会社リバネスナレッジ",
+          categories: ["リーダーシップ", "組織変革"],
+          tags: ["成長", "マインドセット", "組織", "人材育成"],
+          thumbnail: "images/thumbnail-growth-mindset.png",
+          url: "presentations/growth-mindset.html",
           pdf: "#",
-          markdown: "markdown-viewer.html?file=/framework/presentations/growth-mindset/slides.md",        {
+          markdown: "markdown-viewer.html?file=/framework/presentations/growth-mindset/slides.md",
+          description: "個人の成長と組織の成長を促すためのマインドセットに関するプレゼンテーション。",
+          slides_count: 30
+        },
+        {
           id: "salesforce-11th-year-2025",
           title: "Salesforce11年目に思っていること",
           date: "2025-06-06",
           company: "株式会社リバネスナレッジ",
           categories: ["Salesforce", "リーダーシップ"],
           tags: ["Salesforce", "振り返り", "IT戦略", "組織変革"],
-          thumbnail: "images/slides/salesforce-11years-thumbnail.png          url: "presentations/salesforce-dx.html",
+          thumbnail: "images/thumbnail-salesforce-11years.png",
+          url: "presentations/salesforce-11years.html",
           pdf: "#",
-          markdown: "markdown-viewer.html?file=/framework/presentations/salesforce-dx/slides.md",s/slides.md",
-             {
+          markdown: "markdown-viewer.html?file=/framework/presentations/salesforce-11years/slides.md",
+          description: "Salesforce導入から11年間の振り返りと、今後のDX推進に向けた展望について。",
+          slides_count: 45
+        },
+        {
           id: "ai-agent-real-2025",
           title: "AIエージェント実運用のリアル",
           date: "2025-06-02",
           company: "株式会社リバネスナレッジ",
           categories: ["AI", "テクノロジー"],
           tags: ["AI", "エージェント", "生成AI", "Agentforce", "Slack", "実運用"],
-          thumbnail: "images/thumbnail-ai-agent.png",
+          thumbnail: "images/thumbnail-ai-agent-real.png",
           url: "presentations/ai-agent-real.html",
           pdf: "#",
           markdown: "markdown-viewer.html?file=/framework/presentations/ai-agent-real/slides.md",
@@ -375,4 +391,5 @@ if ('serviceWorker' in navigator) {
       });
   });
 }
+
 
