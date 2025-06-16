@@ -405,7 +405,9 @@
                 this.showLoading();
                 
                 try {
-                    const response = await fetch(path);
+                    // パスから先頭の /docs/ を取り除く
+                    const relativePath = path.startsWith('/docs/') ? path.substring(6) : path;
+                    const response = await fetch(relativePath);
                     if (!response.ok) {
                         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
                     }
@@ -478,4 +480,5 @@
     </script>
 </body>
 </html>
+
 
