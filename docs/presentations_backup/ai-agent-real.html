@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIエージェント実運用のリアル</title>
+    
+    <!-- OGP Meta Tags -->
+    <meta property="og:title" content="AIエージェント実運用のリアル">
+    <meta property="og:description" content="リバネスグループにおけるAI・エージェント利用の実践的な取り組みと知見を共有するプレゼンテーション。生成AIからエージェントAIまでの活用事例と現場での実感を詳しく解説。">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://geeorgey.github.io/docs/presentations/ai-agent-real.html">
+    <meta property="og:image" content="https://geeorgey.github.io/docs/images/ogp-ai-agent-default.png">
+    <meta property="og:site_name" content="吉田丈治 プレゼンテーションアーカイブ">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AIエージェント実運用のリアル">
+    <meta name="twitter:description" content="リバネスグループにおけるAI・エージェント利用の実践的な取り組みと知見を共有するプレゼンテーション。生成AIからエージェントAIまでの活用事例と現場での実感を詳しく解説。">
+    <meta name="twitter:image" content="https://geeorgey.github.io/docs/images/ogp-ai-agent-default.png">
+    
+    <!-- Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Noto Sans JP', system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f8fafc;
+        }
+        
+        .slide-container {
+            position: relative;
+            background: #f8fafc;
+        }
+        
+        .slide {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            padding: 40px;
+            margin: 20px 0;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* タイトルスライド */
+        .slide:first-child {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #f97316 100%);
+            text-align: center;
+        }
+        
+        .slide h1 {
+            color: white;
+            border-bottom: 3px solid #f97316;
+            padding-bottom: 10px;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .slide:first-child h1 {
+            font-size: 3rem;
+            border-bottom: none;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .slide h2 {
+            color: #f97316;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .slide h3 {
+            color: #fbbf24;
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .slide h4 {
+            color: #f97316;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .slide p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .slide strong {
+            color: #f97316;
+            font-weight: 600;
+        }
+        
+        .slide em {
+            color: #fbbf24;
+            font-style: italic;
+        }
+        
+        .slide ul, .slide ol {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .slide li {
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+        
+        .slide table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .slide th, .slide td {
+            padding: 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .slide th {
+            background: rgba(249,115,22,0.3);
+            font-weight: 600;
+            color: #fbbf24;
+        }
+        
+        .slide blockquote {
+            border-left: 4px solid #f97316;
+            padding-left: 1rem;
+            margin: 1rem 0;
+            font-style: italic;
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 4px;
+        }
+        
+        .slide code {
+            background: rgba(255,255,255,0.2);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .slide pre {
+            background: rgba(0,0,0,0.3);
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        
+        .slide pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        /* ナビゲーション */
+        .navigation {
+            text-align: center;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .nav-button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .nav-button:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+        
+        .nav-button:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .fullscreen-button {
+            background: #f97316;
+            font-size: 0.9rem;
+            padding: 0.6rem 1.2rem;
+        }
+        
+        .fullscreen-button:hover {
+            background: #ea580c;
+        }
+        
+        /* スライド一覧 */
+        .slide-overview {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem auto;
+            max-width: 900px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .slide-overview h3 {
+            color: #1e40af;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .slide-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 0.8rem;
+        }
+        
+        .slide-item {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: #374151;
+        }
+        
+        .slide-item:hover {
+            background: #e5e7eb;
+            transform: translateY(-1px);
+        }
+        
+        .slide-item.active {
+            background: #3b82f6;
+            color: white;
+            border-color: #2563eb;
+        }
+        
+        .slide-number {
+            font-weight: 600;
+            color: #1e40af;
+            font-size: 0.9rem;
+        }
+        
+        .slide-item.active .slide-number {
+            color: #fbbf24;
+        }
+        
+        .slide-title {
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+            line-height: 1.3;
+        }
+        
+        /* 全画面表示 */
+        .fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* 全画面表示時にナビゲーションとスライド一覧を非表示 */
+        .slide-container.fullscreen .navigation {
+            display: none !important;
+        }
+        
+        .slide-container.fullscreen .slide-overview {
+            display: none !important;
+        }
+        
+        .fullscreen .slide {
+            max-width: 90vw;
+            max-height: 90vh;
+            margin: 0;
+            font-size: 1.2rem;
+        }
+        
+        .fullscreen .slide h1 {
+            font-size: 3.5rem;
+        }
+        
+        .fullscreen .slide h2 {
+            font-size: 2.5rem;
+        }
+        
+        .fullscreen .slide h3 {
+            font-size: 2rem;
+        }
+        
+        .fullscreen .slide p {
+            font-size: 1.3rem;
+        }
+        
+        .fullscreen-exit {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(156, 163, 175, 0.8);
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+        }
+        
+        .fullscreen-exit:hover {
+            background: rgba(156, 163, 175, 1);
+        }
+        
+        /* タップエリア（全画面時） */
+        .tap-area {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+            z-index: 9998;
+            cursor: pointer;
+            display: none;
+        }
+        
+        .tap-area.left {
+            left: 0;
+        }
+        
+        .tap-area.right {
+            right: 0;
+        }
+        
+        .fullscreen .tap-area {
+            display: block;
+        }
+        
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .slide {
+                padding: 20px;
+                margin: 10px 0;
+                min-height: 400px;
+            }
+            
+            .slide h1 {
+                font-size: 2rem;
+            }
+            
+            .slide:first-child h1 {
+                font-size: 2.5rem;
+            }
+            
+            .slide h2 {
+                font-size: 1.5rem;
+            }
+            
+            .slide h3 {
+                font-size: 1.3rem;
+            }
+            
+            .slide p {
+                font-size: 1rem;
+            }
+            
+            .navigation {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+            
+            .nav-button {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .slide-list {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 0.5rem;
+            }
+            
+            .fullscreen .slide {
+                max-width: 95vw;
+                max-height: 95vh;
+                padding: 15px;
+            }
+            
+            .fullscreen .slide h1 {
+                font-size: 2.5rem;
+            }
+            
+            .fullscreen .slide h2 {
+                font-size: 2rem;
+            }
+            
+            .fullscreen .slide h3 {
+                font-size: 1.5rem;
+            }
+            
+            .fullscreen .slide p {
+                font-size: 1.1rem;
+            }
+        }
+        
+        /* アニメーション */
+        .slide {
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* ローディング */
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #6b7280;
+        }
+        
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #e5e7eb;
+            border-top: 2px solid #3b82f6;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div id="slide-content" class="loading">スライドを読み込み中...</div>
+        
+        <div class="navigation">
+            <button id="prev-btn" class="nav-button" onclick="previousSlide()">
+                ← 前へ
+            </button>
+            <button id="fullscreen-btn" class="nav-button fullscreen-button" onclick="toggleFullscreen()">
+                🔍 全画面
+            </button>
+            <button id="next-btn" class="nav-button" onclick="nextSlide()">
+                次へ →
+            </button>
+        </div>
+        
+        <div class="slide-overview">
+            <h3>スライド一覧</h3>
+            <div id="slide-list" class="slide-list">
+                <!-- スライド一覧がここに動的に生成されます -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- 全画面表示用のタップエリア -->
+    <div class="tap-area left" onclick="previousSlide()"></div>
+    <div class="tap-area right" onclick="nextSlide()"></div>
+    
+    <script>
+        let slides = [];
+        let currentSlide = 1;
+        let totalSlides = 0;
+        let isFullscreen = false;
+        
+        // マークダウンファイルを読み込み
+        async function loadSlides() {
+            try {
+                const response = await fetch('../slide-framework/ai-agent-slides.md');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const markdown = await response.text();
+                
+                // YAMLフロントマターを除去
+                let content = markdown;
+                if (content.startsWith('---')) {
+                    const parts = content.split('---');
+                    if (parts.length >= 3) {
+                        content = parts.slice(2).join('---');
+                    }
+                }
+                
+                // スライドを分割（---で区切られている）
+                slides = content.split('\n---\n').map(slide => slide.trim()).filter(slide => slide);
+                totalSlides = slides.length;
+                
+                // URLパラメータから初期スライドを取得
+                const urlParams = new URLSearchParams(window.location.search);
+                const slideParam = urlParams.get('slide');
+                if (slideParam && !isNaN(slideParam)) {
+                    currentSlide = Math.max(1, Math.min(parseInt(slideParam), totalSlides));
+                }
+                
+                generateSlideList();
+                showSlide(currentSlide);
+                updateNavigation();
+                updateOGP();
+                
+            } catch (error) {
+                console.error('スライドの読み込みに失敗しました:', error);
+                document.getElementById('slide-content').innerHTML = '<div class="slide"><h1>スライドの読み込みに失敗しました</h1><p>ファイルが見つからないか、ネットワークエラーが発生しました。</p></div>';
+            }
+        }
+        
+        // スライド一覧を生成
+        function generateSlideList() {
+            const slideList = document.getElementById('slide-list');
+            slideList.innerHTML = '';
+            
+            slides.forEach((slide, index) => {
+                const slideNumber = index + 1;
+                const title = extractTitle(slide);
+                
+                const slideItem = document.createElement('div');
+                slideItem.className = 'slide-item';
+                slideItem.onclick = () => goToSlide(slideNumber);
+                
+                slideItem.innerHTML = `
+                    <div class="slide-number">${slideNumber}. ${title}</div>
+                `;
+                
+                slideList.appendChild(slideItem);
+            });
+        }
+        
+        // スライドタイトルを抽出
+        function extractTitle(slideContent) {
+            const lines = slideContent.split('\n');
+            for (let line of lines) {
+                line = line.trim();
+                if (line.startsWith('# ')) {
+                    return line.substring(2).trim();
+                }
+            }
+            return `スライド ${slides.indexOf(slideContent) + 1}`;
+        }
+        
+        // 指定されたスライドを表示
+        function showSlide(slideNumber) {
+            if (slideNumber < 1 || slideNumber > totalSlides) return;
+            
+            currentSlide = slideNumber;
+            const slideContent = slides[slideNumber - 1];
+            const html = marked.parse(slideContent);
+            
+            // ローディングクラスを削除してスライドを表示
+            const slideContentElement = document.getElementById('slide-content');
+            slideContentElement.classList.remove('loading');
+            slideContentElement.innerHTML = `
+                <div class="slide">
+                    <div style="position: absolute; top: 10px; right: 20px; font-size: 0.9rem; opacity: 0.7;">
+                        ${currentSlide} / ${totalSlides}
+                    </div>
+                    ${html}
+                </div>
+            `;
+            
+            // スライド一覧のアクティブ状態を更新
+            document.querySelectorAll('.slide-item').forEach((item, index) => {
+                item.classList.toggle('active', index === slideNumber - 1);
+            });
+            
+            // URLを更新
+            const url = new URL(window.location);
+            url.searchParams.set('slide', slideNumber);
+            window.history.replaceState({}, '', url);
+            
+            updateNavigation();
+            updateOGP();
+        }
+        
+        // ナビゲーションボタンの状態を更新
+        function updateNavigation() {
+            document.getElementById('prev-btn').disabled = currentSlide === 1;
+            document.getElementById('next-btn').disabled = currentSlide === totalSlides;
+        }
+        
+        // OGPメタタグを動的に更新
+        function updateOGP() {
+            const slideTitle = extractTitle(slides[currentSlide - 1]);
+            const mainTitle = "AIエージェント実運用のリアル";
+            
+            let title, description, image;
+            
+            if (currentSlide === 1) {
+                title = `${mainTitle} (${currentSlide}/${totalSlides})`;
+                description = "リバネスグループにおけるAI・エージェント利用の実践的な取り組みと知見を共有するプレゼンテーション。";
+                image = "https://geeorgey.github.io/docs/images/ogp-ai-agent-01.png";
+            } else if (currentSlide === 2) {
+                title = `${slideTitle} | ${mainTitle} (${currentSlide}/${totalSlides})`;
+                description = "吉田丈治氏のプロフィールと経歴。リバネス創業からSalesforce導入、Dreamforce登壇まで。";
+                image = "https://geeorgey.github.io/docs/images/ogp-ai-agent-02.png";
+            } else {
+                title = `${slideTitle} | ${mainTitle} (${currentSlide}/${totalSlides})`;
+                description = `AIエージェント実運用のリアル - ${slideTitle}について詳しく解説。`;
+                image = "https://geeorgey.github.io/docs/images/ogp-ai-agent-default.png";
+            }
+            
+            // メタタグを更新
+            updateMetaTag('og:title', title);
+            updateMetaTag('twitter:title', title);
+            updateMetaTag('og:description', description);
+            updateMetaTag('twitter:description', description);
+            updateMetaTag('og:image', image);
+            updateMetaTag('twitter:image', image);
+            
+            // ページタイトルも更新
+            document.title = title;
+        }
+        
+        // メタタグを更新するヘルパー関数
+        function updateMetaTag(property, content) {
+            let meta = document.querySelector(`meta[property="${property}"]`) || 
+                      document.querySelector(`meta[name="${property}"]`);
+            if (meta) {
+                meta.setAttribute('content', content);
+            }
+        }
+        
+        // スライド移動関数
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                showSlide(currentSlide + 1);
+            }
+        }
+        
+        function previousSlide() {
+            if (currentSlide > 1) {
+                showSlide(currentSlide - 1);
+            }
+        }
+        
+        function goToSlide(slideNumber) {
+            showSlide(slideNumber);
+        }
+        
+        // 全画面表示の切り替え
+        function toggleFullscreen() {
+            const container = document.querySelector('.slide-container');
+            const navigation = document.querySelector('.navigation');
+            const slideOverview = document.querySelector('.slide-overview');
+            
+            if (!isFullscreen) {
+                container.classList.add('fullscreen');
+                document.getElementById('fullscreen-btn').innerHTML = '❌ 終了';
+                isFullscreen = true;
+                
+                // ナビゲーションとスライド一覧を直接非表示
+                navigation.style.display = 'none';
+                slideOverview.style.display = 'none';
+                
+                // 全画面終了ボタンを追加
+                const exitBtn = document.createElement('button');
+                exitBtn.className = 'fullscreen-exit';
+                exitBtn.innerHTML = '❌';
+                exitBtn.onclick = toggleFullscreen;
+                document.body.appendChild(exitBtn);
+                
+            } else {
+                container.classList.remove('fullscreen');
+                document.getElementById('fullscreen-btn').innerHTML = '🔍 全画面';
+                isFullscreen = false;
+                
+                // ナビゲーションとスライド一覧を再表示
+                navigation.style.display = '';
+                slideOverview.style.display = '';
+                
+                // 全画面終了ボタンを削除
+                const exitBtn = document.querySelector('.fullscreen-exit');
+                if (exitBtn) {
+                    exitBtn.remove();
+                }
+            }
+        }
+        
+        // キーボードショートカット
+        document.addEventListener('keydown', function(e) {
+            switch(e.key) {
+                case 'ArrowLeft':
+                case 'ArrowUp':
+                    e.preventDefault();
+                    previousSlide();
+                    break;
+                case 'ArrowRight':
+                case 'ArrowDown':
+                case ' ':
+                    e.preventDefault();
+                    nextSlide();
+                    break;
+                case 'f':
+                case 'F':
+                    e.preventDefault();
+                    toggleFullscreen();
+                    break;
+                case 'Escape':
+                    if (isFullscreen) {
+                        e.preventDefault();
+                        toggleFullscreen();
+                    }
+                    break;
+            }
+        });
+        
+        // ブラウザの戻る/進むボタン対応
+        window.addEventListener('popstate', function(e) {
+            const urlParams = new URLSearchParams(window.location.search);
+            const slideParam = urlParams.get('slide');
+            if (slideParam && !isNaN(slideParam)) {
+                const slideNumber = Math.max(1, Math.min(parseInt(slideParam), totalSlides));
+                if (slideNumber !== currentSlide) {
+                    showSlide(slideNumber);
+                }
+            }
+        });
+        
+        // 初期化
+        document.addEventListener('DOMContentLoaded', loadSlides);
+    </script>
+</body>
+</html>
+

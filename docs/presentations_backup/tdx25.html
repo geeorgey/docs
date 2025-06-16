@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">TDX25'と生成AI活用とAIエージェント</title>
+    <meta id="page-description" name="description" content="TDXGG 2025での発表資料。TDX初参加の体験談と生成AI活用、Agentforce in Slackの実践的な活用方法について詳しく解説。">
+    <meta id="page-og-title" property="og:title" content="TDX25'と生成AI活用とAIエージェント">
+    <meta id="page-og-description" property="og:description" content="TDXGG 2025での発表資料。TDX初参加の体験談と生成AI活用、Agentforce in Slackの実践的な活用方法について詳しく解説。">
+    <meta id="page-og-image" property="og:image" content="https://geeorgey.github.io/docs/images/ogp/tdx25-default.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://geeorgey.github.io/docs/presentations/tdx25.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TDX25'と生成AI活用とAIエージェント">
+    <meta name="twitter:description" content="TDXGG 2025での発表資料。TDX初参加の体験談と生成AI活用、Agentforce in Slackの実践的な活用方法について詳しく解説。">
+    <meta name="twitter:image" content="https://geeorgey.github.io/docs/images/ogp/tdx25-default.png">
+    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: linear-gradient(135deg, #4A90E2 0%, #FF7F50 100%);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        
+        .presentation-container {
+            display: flex;
+            min-height: 100vh;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            gap: 20px;
+        }
+        
+        .slide-viewer {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .slide-frame {
+            width: 100%;
+            max-width: 1280px;
+            aspect-ratio: 11 / 9;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .slide-content {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .control-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            color: #333;
+        }
+        
+        .control-btn:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+        
+        .control-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .slide-counter {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .sidebar {
+            width: 300px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+        }
+        
+        .sidebar h3 {
+            margin: 0 0 20px 0;
+            color: #2C3E50;
+            font-size: 18px;
+            font-weight: 700;
+        }
+        
+        .slide-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .slide-item {
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        .slide-item:hover {
+            background: rgba(74, 144, 226, 0.1);
+        }
+        
+        .slide-item.active {
+            background: #4A90E2;
+            color: white;
+        }
+        
+        .fullscreen-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 20px;
+            color: #333;
+            z-index: 1000;
+        }
+        
+        .fullscreen-btn:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+        
+        .fullscreen-mode {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: black;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .fullscreen-mode .slide-frame {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 0;
+        }
+        
+        .fullscreen-exit {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(128, 128, 128, 0.7);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 16px;
+            color: white;
+            z-index: 10000;
+        }
+        
+        .fullscreen-navigation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 9998;
+            display: flex;
+        }
+        
+        .nav-left, .nav-right {
+            flex: 1;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .presentation-container {
+                flex-direction: column;
+                padding: 10px;
+                max-width: 100vw;
+            }
+            
+            .sidebar {
+                width: 100%;
+                max-height: 200px;
+                order: -1;
+            }
+            
+            .slide-frame {
+                border-radius: 10px;
+            }
+            
+            .controls {
+                gap: 10px;
+                margin-top: 10px;
+            }
+            
+            .control-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+            
+            .fullscreen-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container" id="presentation-container">
+        <div class="slide-viewer">
+            <div class="slide-frame">
+                <iframe id="slide-content" class="slide-content" src="https://geeorgey.github.io/docs/slide-framework/tdx25/title.html"></iframe>
+            </div>
+            <div class="controls">
+                <button class="control-btn" id="prev-btn" onclick="previousSlide()">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="slide-counter">
+                    <span id="current-slide">1</span> / <span id="total-slides">22</span>
+                </div>
+                <button class="control-btn" id="next-btn" onclick="nextSlide()">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="sidebar" id="sidebar">
+            <h3>スライド一覧</h3>
+            <ul class="slide-list" id="slide-list">
+                <!-- スライド一覧はJavaScriptで動的に生成 -->
+            </ul>
+        </div>
+    </div>
+    
+    <button class="fullscreen-btn" id="fullscreen-btn" onclick="toggleFullscreen()">
+        <i class="fas fa-expand"></i>
+    </button>
+    
+    <script>
+        const slides = [
+            { id: 'title', title: 'TDX25\'と生成AI活用とAIエージェント', file: 'title.html' },
+            { id: 'profile', title: 'はじめまして、吉田丈治(George YOSHIDA)です', file: 'profile.html' },
+            { id: 'salesblazer_community_japan', title: '宣伝：Salesblazer Community Japan キックオフしました 🎉', file: 'salesblazer_community_japan.html' },
+            { id: 'salesforce_relationship', title: 'Salesforceとの関わり方', file: 'salesforce_relationship.html' },
+            { id: 'agentforce_innovation_day', title: '@Agentforce Innovation Day Service', file: 'agentforce_innovation_day.html' },
+            { id: 'japan_consultation', title: '日本版のコンサルテーション受けて来た!', file: 'japan_consultation.html' },
+            { id: 'tdx_first_participation', title: 'TDXに初参加', file: 'tdx_first_participation.html' },
+            { id: 'biggest_impact', title: '一番の衝撃は', file: 'biggest_impact.html' },
+            { id: 'tdx_is_good', title: 'TDXは良いぞという話', file: 'tdx_is_good.html' },
+            { id: 'hands_on_pc', title: 'ハンズオン・ミニハックは自分のPCで', file: 'hands_on_pc.html' },
+            { id: 'english_session_understanding', title: '英語のセッションを深く理解する', file: 'english_session_understanding.html' },
+            { id: 'english_session_understanding_2', title: '英語のセッションを深く理解する２', file: 'english_session_understanding_2.html' },
+            { id: 'how_i_watched_session', title: 'こんな風にセッションを見てました', file: 'how_i_watched_session.html' },
+            { id: 'chatgpt_content_creation', title: 'ChatGPTにコンテンツにしてもらってしまう', file: 'chatgpt_content_creation.html' },
+            { id: 'agentforce_best_practices', title: 'Top 10 Best Practices for Building with Agentforce', file: 'agentforce_best_practices.html' },
+            { id: 'agentforce_best_practices_2', title: 'Top 10 Best Practices for Building with Agentforce', file: 'agentforce_best_practices_2.html' },
+            { id: 'what_about_agentforce', title: 'Agentforceをどうするか', file: 'what_about_agentforce.html' },
+            { id: 'new_agentforce_in_slack', title: '[New]Agentforce in Slackの活用をスタート', file: 'new_agentforce_in_slack.html' },
+            { id: 'internal_case_email', title: '社内事例: メール作成に特化したエージェントを設定して呼び出す', file: 'internal_case_email.html' },
+            { id: 'agent_actions_slack', title: 'Slackに関するエージェントアクションが増えていた！', file: 'agent_actions_slack.html' },
+            { id: 'agent_actions_summary', title: 'エージェントアクションまとめてみた', file: 'agent_actions_summary.html' },
+            { id: 'thank_you', title: 'Thank you ！', file: 'thank_you.html' }
+        ];
+        
+        let currentSlideIndex = 0;
+        let isFullscreen = false;
+        
+        function initializePresentation() {
+            // URLパラメータから開始スライドを取得
+            const urlParams = new URLSearchParams(window.location.search);
+            const slideParam = urlParams.get('slide');
+            if (slideParam) {
+                const slideIndex = parseInt(slideParam) - 1;
+                if (slideIndex >= 0 && slideIndex < slides.length) {
+                    currentSlideIndex = slideIndex;
+                }
+            }
+            
+            // スライド一覧を生成
+            generateSlideList();
+            
+            // 初期スライドを表示
+            showSlide(currentSlideIndex);
+            
+            // キーボードイベントリスナーを追加
+            document.addEventListener('keydown', handleKeyPress);
+        }
+        
+        function generateSlideList() {
+            const slideList = document.getElementById('slide-list');
+            slideList.innerHTML = '';
+            
+            slides.forEach((slide, index) => {
+                const li = document.createElement('li');
+                li.className = 'slide-item';
+                li.textContent = `${index + 1}. ${slide.title}`;
+                li.onclick = () => goToSlide(index);
+                slideList.appendChild(li);
+            });
+        }
+        
+        function showSlide(index) {
+            if (index < 0 || index >= slides.length) return;
+            
+            currentSlideIndex = index;
+            const slide = slides[index];
+            
+            // スライドを表示
+            document.getElementById("slide-content").src = `https://geeorgey.github.io/docs/slide-framework/tdx25/${slide.file}`;
+            
+            // カウンターを更新
+            document.getElementById('current-slide').textContent = index + 1;
+            
+            // サイドバーのアクティブ状態を更新
+            document.querySelectorAll('.slide-item').forEach((item, i) => {
+                item.classList.toggle('active', i === index);
+            });
+            
+            // ボタンの状態を更新
+            document.getElementById('prev-btn').disabled = index === 0;
+            document.getElementById('next-btn').disabled = index === slides.length - 1;
+            
+            // URLを更新
+            const newUrl = new URL(window.location);
+            newUrl.searchParams.set('slide', index + 1);
+            window.history.replaceState({}, '', newUrl);
+            
+            // OGPメタタグを更新
+            updateOGP(slide, index + 1);
+        }
+        
+        function updateOGP(slide, slideNumber) {
+            document.getElementById('page-title').textContent = `${slide.title} - TDX25'と生成AI活用とAIエージェント`;
+            document.getElementById('page-description').content = `スライド ${slideNumber}: ${slide.title}`;
+            document.getElementById('page-og-title').content = `${slide.title} - TDX25'と生成AI活用とAIエージェント`;
+            document.getElementById('page-og-description').content = `スライド ${slideNumber}: ${slide.title}`;
+            
+            // スライド固有のOGP画像があれば使用
+            const ogpImage = `https://geeorgey.github.io/docs/images/ogp/tdx25-${String(slideNumber).padStart(2, '0')}.png`;
+            document.getElementById('page-og-image').content = ogpImage;
+        }
+        
+        function goToSlide(index) {
+            showSlide(index);
+        }
+        
+        function previousSlide() {
+            if (currentSlideIndex > 0) {
+                showSlide(currentSlideIndex - 1);
+            }
+        }
+        
+        function nextSlide() {
+            if (currentSlideIndex < slides.length - 1) {
+                showSlide(currentSlideIndex + 1);
+            }
+        }
+        
+        function toggleFullscreen() {
+            if (!isFullscreen) {
+                enterFullscreen();
+            } else {
+                exitFullscreen();
+            }
+        }
+        
+        function enterFullscreen() {
+            isFullscreen = true;
+            const container = document.getElementById('presentation-container');
+            const sidebar = document.getElementById('sidebar');
+            const fullscreenBtn = document.getElementById('fullscreen-btn');
+            
+            // フルスクリーンモードのHTML構造を作成
+            const fullscreenDiv = document.createElement('div');
+            fullscreenDiv.className = 'fullscreen-mode';
+            fullscreenDiv.id = 'fullscreen-mode';
+            
+            const slideFrame = document.querySelector('.slide-frame').cloneNode(true);
+            fullscreenDiv.appendChild(slideFrame);
+            
+            // 終了ボタンを追加
+            const exitBtn = document.createElement('button');
+            exitBtn.className = 'fullscreen-exit';
+            exitBtn.innerHTML = '❌';
+            exitBtn.onclick = exitFullscreen;
+            fullscreenDiv.appendChild(exitBtn);
+            
+            // ナビゲーション領域を追加
+            const navDiv = document.createElement('div');
+            navDiv.className = 'fullscreen-navigation';
+            
+            const navLeft = document.createElement('div');
+            navLeft.className = 'nav-left';
+            navLeft.onclick = previousSlide;
+            
+            const navRight = document.createElement('div');
+            navRight.className = 'nav-right';
+            navRight.onclick = nextSlide;
+            
+            navDiv.appendChild(navLeft);
+            navDiv.appendChild(navRight);
+            fullscreenDiv.appendChild(navDiv);
+            
+            document.body.appendChild(fullscreenDiv);
+            
+            // 元の要素を非表示
+            container.style.display = 'none';
+            fullscreenBtn.style.display = 'none';
+        }
+        
+        function exitFullscreen() {
+            isFullscreen = false;
+            const fullscreenMode = document.getElementById('fullscreen-mode');
+            const container = document.getElementById('presentation-container');
+            const fullscreenBtn = document.getElementById('fullscreen-btn');
+            
+            if (fullscreenMode) {
+                fullscreenMode.remove();
+            }
+            
+            container.style.display = 'flex';
+            fullscreenBtn.style.display = 'flex';
+        }
+        
+        function handleKeyPress(event) {
+            switch(event.key) {
+                case 'ArrowLeft':
+                    previousSlide();
+                    break;
+                case 'ArrowRight':
+                case ' ':
+                    nextSlide();
+                    break;
+                case 'Escape':
+                    if (isFullscreen) {
+                        exitFullscreen();
+                    }
+                    break;
+                case 'f':
+                case 'F':
+                    toggleFullscreen();
+                    break;
+            }
+        }
+        
+        // 初期化
+        document.addEventListener('DOMContentLoaded', initializePresentation);
+    </script>
+</body>
+</html>
+

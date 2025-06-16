@@ -329,34 +329,37 @@ class PresentationEngine {
                         </div>
                     </div>
                     <div class="controls">
-                        <button class="control-btn" id="prev-btn" onclick="presentationEngine.previousSlide()">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <div class="slide-counter">
-                            <span id="current-slide">1</span> / <span id="total-slides">${this.slides.length}</span>
-                        </div>
-                        <button class="control-btn" id="next-btn" onclick="presentationEngine.nextSlide()">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
+                        <button class="control-btn" id="prev-btn" onclick="presentationEngine.previousSlide()">← 前へ</button>
+                        <button class="control-btn fullscreen-btn" onclick="presentationEngine.toggleFullscreen()">🔍 全画面</button>
+                        <button class="control-btn" id="next-btn" onclick="presentationEngine.nextSlide()">次へ →</button>
                     </div>
-                </div>
-                
-                <div class="sidebar" id="sidebar">
-                    <h3>スライド一覧</h3>
-                    <ul class="slide-list" id="slide-list">
-                        ${this.generateSlideList()}
-                    </ul>
                 </div>
             </div>
             
-            <button class="fullscreen-btn" id="fullscreen-btn" onclick="presentationEngine.toggleFullscreen()">
-                <i class="fas fa-expand"></i>
-            </button>
+            <div class="slide-overview-section">
+                <h3>スライド一覧</h3>
+                <div class="slide-grid" id="slide-grid">
+                    ${this.generateSlideGrid()}
+                </div>
+            </div>
         `;
     }
     
     /**
-     * スライド一覧の生成
+     * スライドグリッドの生成
+     */
+    generateSlideGrid() {
+        return this.slides.map((slide, index) => 
+            `<div class="slide-thumbnail ${index === this.currentSlideIndex ? 'active' : ''}" onclick="presentationEngine.goToSlide(${index})">
+                <div class="slide-number">${index + 1}</div>
+                <div class="slide-title">${slide.title}</div>
+                <div class="slide-preview">${slide.content.substring(0, 100)}...</div>
+            </div>`
+        ).join('');
+    }
+    
+    /**
+     * スライド一覧の生成（旧版、互換性のため残す）
      */
     generateSlideList() {
         return this.slides.map((slide, index) => 
@@ -443,6 +446,12 @@ class PresentationEngine {
      * サイドバーのアクティブ状態更新
      */
     updateSidebarActive(index) {
+        // スライドグリッドのアクティブ状態を更新
+        document.querySelectorAll('.slide-thumbnail').forEach((item, i) => {
+            item.classList.toggle('active', i === index);
+        });
+        
+        // 旧版のサイドバーがある場合も更新
         document.querySelectorAll('.slide-item').forEach((item, i) => {
             item.classList.toggle('active', i === index);
         });

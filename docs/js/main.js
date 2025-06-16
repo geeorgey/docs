@@ -38,8 +38,9 @@ class PresentationArchive {
           categories: ["AI", "Salesforce"],
           tags: ["TDX", "生成AI", "Agentforce", "Slack", "ChatGPT", "Advanced Voice Mode"],
           thumbnail: "images/thumbnail-tdx25.png",
-          url: "presentations/tdx25.html",
+          url: "presentations/tdx25-test.html",
           pdf: "#",
+          markdown: "markdown-viewer.html?file=/framework/presentations/tdx25-framework-test/slides.md",
           description: "TDXGG 2025での発表資料。TDX初参加の体験談と生成AI活用、Agentforce in Slackの実践的な活用方法について詳しく解説。",
           slides_count: 22
         },
@@ -48,6 +49,15 @@ class PresentationArchive {
           title: "リバネスグループにおける生成AIへのアプローチ",
           date: "2025-04-04",
           company: "株式会社リバネスナレッジ",
+          categories: ["AI", "Slack"],
+          tags: ["生成AI", "Slack", "AI", "DX", "組織変革", "Agentforce", "ChatGPT", "Party on Slack"],
+          thumbnail: "images/thumbnail-genai-approach.png",
+          url: "presentations/genai-approach.html",
+          pdf: "#",
+          markdown: "markdown-viewer.html?file=/framework/presentations/genai-approach/slides.md",
+          description: "リバネスグループの生成AI活用事例とSlack連携による組織変革の実践。Party on SlackからSlack AI、Agentforceまでの取り組みを詳しく解説。",
+          slides_count: 65
+        }
           categories: ["AI", "Slack"],
           tags: ["生成AI", "Slack", "AI", "DX", "組織変革", "Agentforce", "ChatGPT", "Party on Slack"],
           thumbnail: "images/thumbnail-genai-approach.png",
@@ -262,6 +272,12 @@ class PresentationArchive {
               <i class="icon-eye"></i>
               閲覧
             </a>
+            ${presentation.markdown ? `
+            <a href="${presentation.markdown}" class="btn btn-secondary" target="_blank" rel="noopener">
+              <i class="icon-file-text"></i>
+              Markdown
+            </a>
+            ` : ''}
           </div>
         </div>
       </div>

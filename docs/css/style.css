@@ -723,3 +723,34 @@ p {
   border-width: 0;
 }
 
+
+.btn-secondary {
+  background-color: var(--secondary);
+  color: var(--white);
+}
+
+.btn-secondary:hover {
+  background-color: #0088c7;
+}
+
+/* アイコンスタイル */
+.icon-eye::before {
+  content: "👁️";
+  margin-right: 0.25rem;
+}
+
+.icon-file-text::before {
+  content: "📝";
+  margin-right: 0.25rem;
+}
+
+.icon-calendar::before {
+  content: "📅";
+  margin-right: 0.25rem;
+}
+
+.icon-building::before {
+  content: "🏢";
+  margin-right: 0.25rem;
+}
+
