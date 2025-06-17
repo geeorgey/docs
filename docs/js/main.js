@@ -108,9 +108,9 @@ class PresentationArchive {
           categories: ["AI", "Salesforce"],
           tags: ["TDX", "生成AI", "Agentforce", "Slack", "ChatGPT", "Advanced Voice Mode"],
           thumbnail: "images/thumbnail-tdx25.png",
-          url: "/docs/presentations/tdx25.html",
+          url: "/presentations/tdx25.html",
           pdf: "#",
-          markdown: "/docs/markdown-viewer.html?file=/docs/presentations/tdx25/slides.md",
+          markdown: "/markdown-viewer.html?file=/presentations/tdx25/slides.md",
           description: "TDXGG 2025での発表資料。TDX初参加の体験談と生成AI活用、Agentforce in Slackの実践的な活用方法について詳しく解説。",
           slides_count: 22
         }
