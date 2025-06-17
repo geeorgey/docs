@@ -352,7 +352,9 @@ body {
 
 .fullscreen-mode .sidebar,
 .fullscreen-mode .controls,
-.fullscreen-mode .fullscreen-btn {
+.fullscreen-mode .fullscreen-btn,
+.fullscreen-mode .slide-overview-section,
+.fullscreen-mode .slide-grid {
     display: none;
 }
 
