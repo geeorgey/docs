@@ -1,0 +1,27 @@
+{
+    "title": "TDX25 参加レポート",
+    "author": "吉田丈治",
+    "date": "2025",
+    "template": "business",
+    "theme": "default",
+    "aspectRatio": "16:9",
+    "slideCount": 25,
+    "metadata": {
+        "description": "TrailblazerDX 2025 参加体験記",
+        "keywords": "TDX25, TrailblazerDX, Salesforce"
+    },
+    "layout": {
+        "showSidebar": true,
+        "showControls": true,
+        "showProgress": true
+    },
+    "animation": {
+        "enabled": true,
+        "duration": 300,
+        "easing": "ease-in-out"
+    },
+    "export": {
+        "format": "html",
+        "quality": "high"
+    }
+}

@@ -121,17 +121,17 @@ class PresentationEngine {
             const pathParts = window.location.pathname.split('/');
             const presentationId = pathParts[pathParts.length - 1].replace('.html', '');
             this.presentationId = presentationId;
-            this.markdownPath = `/docs/framework/presentations/${presentationId}/slides.md`;
+            this.markdownPath = `/presentations/${presentationId}/slides.md`;
             this.markdownViewerUrl = `/docs/markdown-viewer.html?file=${this.markdownPath}`;
             
             // 設定ファイルを読み込み
-            const configResponse = await fetch(`/framework/presentations/${presentationId}/config.json`);
+            const configResponse = await fetch(`/presentations/${presentationId}/config.json`);
             if (configResponse.ok) {
                 const config = await configResponse.json();
                 this.metadata = config;
                 
                 // Markdownファイルを読み込み
-                const markdownResponse = await fetch(`/docs/framework/presentations/${presentationId}/slides.md`);
+                const markdownResponse = await fetch(`/presentations/${presentationId}/slides.md`);
                 if (markdownResponse.ok) {
                     const markdownContent = await markdownResponse.text();
                     this.slides = this.parseMarkdown(markdownContent);
@@ -389,8 +389,8 @@ class PresentationEngine {
         const slideContent = this.renderSlide(slide);
         document.getElementById('slide-content').innerHTML = slideContent;
         
-        // カウンターを更新
-        document.getElementById('current-slide').textContent = index + 1;
+        // カウンターを更新（現在のUIデザインでは不要）
+        // document.getElementById('current-slide').textContent = index + 1;
         
         // サイドバーのアクティブ状態を更新
         this.updateSidebarActive(index);
@@ -410,7 +410,7 @@ class PresentationEngine {
      */
     renderSlide(slide) {
         // テンプレートに基づいてスライドをレンダリング
-        const templateRenderer = window.templateRenderers?.[slide.template] || this.defaultRenderer;
+        const templateRenderer = window.templateRenderers?.[slide.template] || this.defaultRenderer.bind(this);
         return templateRenderer(slide);
     }
     
@@ -424,7 +424,7 @@ class PresentationEngine {
                     <h1>${slide.title}</h1>
                 </div>
                 <div class="slide-body">
-                    ${this.markdownToHTML(slide.content)}
+                    ${presentationEngine.markdownToHTML(slide.content)}
                     ${slide.image ? `<img src="${slide.image}" alt="Slide Image" class="slide-image">` : ''}
                 </div>
             </div>

@@ -1,0 +1,27 @@
+{
+    "title": "グロースマインドセット",
+    "author": "吉田丈治",
+    "date": "2024",
+    "template": "minimal",
+    "theme": "default",
+    "aspectRatio": "16:9",
+    "slideCount": 15,
+    "metadata": {
+        "description": "グロースマインドセットについてのプレゼンテーション",
+        "keywords": "グロースマインドセット, 成長, マインドセット"
+    },
+    "layout": {
+        "showSidebar": true,
+        "showControls": true,
+        "showProgress": true
+    },
+    "animation": {
+        "enabled": true,
+        "duration": 300,
+        "easing": "ease-in-out"
+    },
+    "export": {
+        "format": "html",
+        "quality": "high"
+    }
+}
