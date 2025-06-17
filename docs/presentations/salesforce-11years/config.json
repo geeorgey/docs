@@ -1,0 +1,27 @@
+{
+    "title": "Salesforce11年間の振り返り",
+    "author": "吉田丈治",
+    "date": "2024",
+    "template": "business",
+    "theme": "default",
+    "aspectRatio": "16:9",
+    "slideCount": 25,
+    "metadata": {
+        "description": "Salesforce11年間の振り返りプレゼンテーション",
+        "keywords": "Salesforce, 振り返り, キャリア"
+    },
+    "layout": {
+        "showSidebar": true,
+        "showControls": true,
+        "showProgress": true
+    },
+    "animation": {
+        "enabled": true,
+        "duration": 300,
+        "easing": "ease-in-out"
+    },
+    "export": {
+        "format": "html",
+        "quality": "high"
+    }
+}

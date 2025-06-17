@@ -1,0 +1,27 @@
+{
+    "title": "AIエージェントの現実と可能性",
+    "author": "吉田丈治",
+    "date": "2024",
+    "template": "technical",
+    "theme": "default",
+    "aspectRatio": "16:9",
+    "slideCount": 20,
+    "metadata": {
+        "description": "AIエージェントの現実と可能性について",
+        "keywords": "AI, エージェント, 技術"
+    },
+    "layout": {
+        "showSidebar": true,
+        "showControls": true,
+        "showProgress": true
+    },
+    "animation": {
+        "enabled": true,
+        "duration": 300,
+        "easing": "ease-in-out"
+    },
+    "export": {
+        "format": "html",
+        "quality": "high"
+    }
+}

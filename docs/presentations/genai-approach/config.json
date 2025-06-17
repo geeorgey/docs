@@ -1,0 +1,27 @@
+{
+    "title": "リバネスグループにおける生成AIへのアプローチ",
+    "author": "吉田丈治",
+    "date": "2025",
+    "template": "business",
+    "theme": "default",
+    "aspectRatio": "16:9",
+    "slideCount": 15,
+    "metadata": {
+        "description": "生成AIとSlackの活用について、リバネスグループでの実践的な取り組みを詳しく解説",
+        "keywords": "生成AI, Slack, リバネス, AI活用"
+    },
+    "layout": {
+        "showSidebar": true,
+        "showControls": true,
+        "showProgress": true
+    },
+    "animation": {
+        "enabled": true,
+        "duration": 300,
+        "easing": "ease-in-out"
+    },
+    "export": {
+        "format": "html",
+        "quality": "high"
+    }
+}
