@@ -1,14 +1,14 @@
 {
-    "title": "TDX25 参加レポート",
+    "title": "TDX25'と生成AI活用とAIエージェント",
     "author": "吉田丈治",
-    "date": "2025",
+    "date": "2025年3月21日",
     "template": "business",
     "theme": "default",
     "aspectRatio": "16:9",
-    "slideCount": 25,
+    "slideCount": 22,
     "metadata": {
-        "description": "TrailblazerDX 2025 参加体験記",
-        "keywords": "TDX25, TrailblazerDX, Salesforce"
+        "description": "TDX25'と生成AI活用とAIエージェントについて",
+        "keywords": "TDX25, 生成AI, AIエージェント, Salesforce, Agentforce"
     },
     "layout": {
         "showSidebar": true,
