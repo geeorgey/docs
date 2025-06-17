@@ -113,6 +113,16 @@ class PresentationEngine {
     }
     
     /**
+     * 環境に応じたベースパスを取得
+     */
+    getBasePath() {
+        if (window.location.hostname === 'geeorgey.github.io') {
+            return '/docs';
+        }
+        return '';
+    }
+
+    /**
      * プレゼンテーションデータの読み込み
      */
     async loadPresentation() {
@@ -121,17 +131,19 @@ class PresentationEngine {
             const pathParts = window.location.pathname.split('/');
             const presentationId = pathParts[pathParts.length - 1].replace('.html', '');
             this.presentationId = presentationId;
-            this.markdownPath = `/presentations/${presentationId}/slides.md`;
-            this.markdownViewerUrl = `/docs/markdown-viewer.html?file=${this.markdownPath}`;
+            
+            const basePath = this.getBasePath();
+            this.markdownPath = `${basePath}/presentations/${presentationId}/slides.md`;
+            this.markdownViewerUrl = `${basePath}/docs/markdown-viewer.html?file=${this.markdownPath}`;
             
             // 設定ファイルを読み込み
-            const configResponse = await fetch(`/presentations/${presentationId}/config.json`);
+            const configResponse = await fetch(`${basePath}/presentations/${presentationId}/config.json`);
             if (configResponse.ok) {
                 const config = await configResponse.json();
                 this.metadata = config;
                 
                 // Markdownファイルを読み込み
-                const markdownResponse = await fetch(`/presentations/${presentationId}/slides.md`);
+                const markdownResponse = await fetch(`${basePath}/presentations/${presentationId}/slides.md`);
                 if (markdownResponse.ok) {
                     const markdownContent = await markdownResponse.text();
                     this.slides = this.parseMarkdown(markdownContent);
